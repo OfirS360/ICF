@@ -1,0 +1,87 @@
+body
+{
+    display: grid;
+    grid-template-rows: 100px 100px;
+    background-color: rgb(11, 12, 16);
+}
+
+#TopBar {
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 98vw;
+    background-color: rgb(32, 40, 51);
+    border-radius: 0.75rem;
+}
+
+#TopImg {
+    height: 5rem;
+}
+
+
+#Left {
+
+}
+#Right {
+    
+}
+
+.TopButtons {
+    background-color: rgb(9, 191, 202);
+    color: white;
+    align-self: flex-end;
+    border: 0;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    margin-right: 1rem;
+    font-size: 15px;
+    font-family: "Heebo", system-ui;
+    box-shadow: 0px 0px -2px rgba(0, 0, 0, 1);
+
+    transition: color box-shadow;
+    transition-duration: 700ms;
+}
+
+.TopButtons:hover {
+    color: rgb(180, 255, 237);
+    box-shadow: 0px 0px 10px rgba(9, 191, 202, 0.35);
+}
+
+#Title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row-start: 2;
+}
+
+.Title1 {
+    color: rgb(9, 191, 202);
+    font-family: "Heebo", system-ui;
+    font-weight: 900;
+    font-size: 4em;
+}
+
+.Title3 {
+    color: rgb(9, 191, 202);
+    font-family: "Heebo", system-ui;
+    font-weight: 900;
+    font-size: 2.5em;
+    margin-top: 20px;
+}
+
+/* Login Page */
+#LoginBox {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: rgb(32, 40, 51);
+    width: 500px;
+    height: 500px;
+}
