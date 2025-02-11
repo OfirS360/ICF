@@ -57,6 +57,15 @@ body
     box-shadow: 0px 0px 10px rgba(9, 191, 202, 0.35);
 }
 
+#blur {
+    position: absolute;
+    left: 15%;
+    top: 15%;
+    box-shadow: 0px 0px 10000px 65px rgb(0, 242, 255);
+    translate: -50% -50%;
+    z-index: -1;
+}
+
 #Title {
     display: flex;
     align-items: center;
@@ -67,7 +76,8 @@ body
     color: rgb(9, 191, 202);
     font-family: "Heebo", system-ui;
     font-weight: 900;
-    font-size: 5vw;
+    font-size: clamp(2em, 5vw, 7rem);
+    
 }
 
 .Title3 {
