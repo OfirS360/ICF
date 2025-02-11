@@ -1,43 +1,50 @@
 body
 {
-    display: grid;
-    grid-template-rows: 100px 100px;
+    display: block;
     background-color: rgb(11, 12, 16);
+
+    max-width: 1200px;
+    margin: 0 auto; /* מרכז את התוכן */
+    padding: 10px;
 }
 
 #TopBar {
-    position: absolute;
+    position: relative;
     left: 50%;
     translate: -50%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    width: 98vw;
+    width: 80vw;
     background-color: rgb(32, 40, 51);
     border-radius: 0.75rem;
+    padding: 5px 5px;
 }
 
 #TopImg {
     height: 5rem;
+    margin-left: 5px;
 }
 
 
 #Left {
-
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100%;
 }
 #Right {
-    
+    flex-wrap: nowrap;
 }
 
 .TopButtons {
     background-color: rgb(9, 191, 202);
     color: white;
-    align-self: flex-end;
     border: 0;
     border-radius: 0.75rem;
-    padding: 0.75rem 1rem;
-    margin-right: 1rem;
-    font-size: 15px;
+    margin-right: 10px;
+    padding: 10px 15px;
+    font-size: 100%;
     font-family: "Heebo", system-ui;
     box-shadow: 0px 0px -2px rgba(0, 0, 0, 1);
 
@@ -54,14 +61,13 @@ body
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-row-start: 2;
 }
 
 .Title1 {
     color: rgb(9, 191, 202);
     font-family: "Heebo", system-ui;
     font-weight: 900;
-    font-size: 300%;
+    font-size: 10ch;
 }
 
 .Title3 {
