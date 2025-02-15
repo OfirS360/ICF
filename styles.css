@@ -1,111 +1,184 @@
 body
 {
-    display: block;
-    background-color: rgb(11, 12, 16);
+    background-color: #0b0c10;
 
-    max-width: 1200px;
-    margin: 0 auto; /* מרכז את התוכן */
-    padding: 10px;
+    margin-top: 150px;
+    
+    
 }
 
-#TopBar {
-    position: relative;
-    left: 50%;
-    translate: -50%;
+#Header {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+
+    max-height: 200px;
+
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 90vw;
-    height: fit-content;
-    background-color: rgb(32, 40, 51);
-    border-radius: 0.75rem;
-    padding: 5px 5px;
+    flex-wrap: wrap;
+
+    background-color: #202833;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 40px;
+
+    box-sizing: border-box;
+
+    border-end-end-radius: 20px;
+    border-end-start-radius: 20px;
+}
+
+@media screen and (max-width: 870px) {
+    body {
+        margin-top: 250px;
+    }
+
+    #Header {
+        justify-content: center;
+    }
 }
 
 #TopImg {
-    height: 75px;
-    margin-left: 5px;
+    height: 100px;
 }
 
-
-#Left {
+#H_Left {
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
     align-items: center;
-    height: 50%;
-
-}
-#Right {
-    flex-wrap: nowrap;
 }
 
-.TopButtons {
-    background-color: rgb(9, 191, 202);
-    color: white;
-    border: 0;
-    border-radius: 0.75rem;
-    margin-right: 5px;
-    margin-left: 5px;
-    padding: 10px 15px;
-    font-size: 100%;
+#H_Middle {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.H_Buttons {
+    position: relative;
+    display: inline-block;
+
     font-family: "Heebo", system-ui;
-    box-shadow: 0px 0px -2px rgba(0, 0, 0, 1);
+    color: #b2b2b2;
+    font-size: 20px;
+    text-decoration: none;
+    
+    margin-left: 15px;
 
-    transition: color box-shadow;
-    transition-duration: 700ms;
+    transition: color 0.3s, text-decoration 0.3s;
 }
 
-.TopButtons:hover {
-    color: rgb(180, 255, 237);
-    box-shadow: 0px 0px 10px rgba(9, 191, 202, 0.35);
+.H_Buttons::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px; 
+    background-color: #f5f5f5;
+    transition: width 0.3s ease, left 0.3s ease;
 }
 
-#Title {
+.H_Buttons:hover::before {
+    width: 100%;
+    left: 0;
+    color: #f5f5f5;
+}
+
+.H_Buttons:hover {
+    color: #f5f5f5;
+}
+
+.HM_Buttons {
+    margin-left: 30px;
+}
+
+#Divider {
+    font-family: "Heebo", system-ui;
+    color: #f5f5f5;
+
+    margin-left: 15px;
+}
+
+/* Start */
+
+#Start {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-.Title1 {
-    color: rgb(9, 191, 202);    
-    font-family: "Heebo", system-ui !important;
+.MainTitle {
+    font-family: "Heebo", system-ui;
+    color: #09bfca;
     font-weight: 900;
-    font-size: clamp(2em, 7vw, 7rem);
-    margin-bottom: 0px;
-    
+    font-size: 50px;
+    text-align: center;
+
+    margin-bottom: 0;
+    margin-top: 5px;
 }
 
-.Title2 {
-    color: rgb(224, 224, 224);
-    font-family: "Heebo", system-ui !important;
+.SubTitle {
+    font-family: "Heebo", system-ui;
+    color: #f5f5f5;
     font-weight: 900;
-    font-size: clamp(2em, 7vw, 7rem);
-    margin-top: 0px;
-    
+    font-size: 50px;
+    text-align: center;
+
+    margin-bottom: 0;
+    margin-top: 5px;
+    margin-bottom: 50px;
 }
 
-.Title3 {
-    color: rgb(9, 191, 202);
-    font-family: "Heebo", system-ui !important;
-    font-weight: 900;
-    font-size: 2.5em;
-    margin-top: 20px;
-}
-
-/* Login Page */
-#LoginBox {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    translate: -50% -50%;
+#SubBox_1 {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    background-color: rgb(32, 40, 51);
-    width: 500px;
-    height: 500px;
+}
+
+.SubBoxText {
+    font-family: "Heebo", system-ui;
+    color: #f5f5f5;
+    text-align: center;
+
+    max-width: 150ch;
+}
+
+#VideoBox {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 50px;
+}
+
+#Video {
+    width: 960px;
+}
+
+@media screen and (max-width: 980px) {
+    #Video {
+        width: 80vw;
+    }
+}
+
+#VideoTitle {
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+
+#YoutubeLink {
+    color: #09bfca;
+    text-decoration: none;
+
+    transition: color 0.3s;
+}
+
+#YoutubeLink:hover {
+    color: #0ff0fc;
 }
