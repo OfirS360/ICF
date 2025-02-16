@@ -48,8 +48,13 @@
             </script>
         </select>
 
-        <label class="Reg_Ask" dir="rtl" for="arma_experience">האם יש לך ניסיון ב-Arma?</label>
-        <input class="Checkbox" type="checkbox" id="arma_experience" name="arma_experience">
+        <label class="Reg_Ask" dir="rtl" for="arma_experience">האם יש לך ניסיון ב-Arma? <span class="ReqTxt">*</span></label>
+        <div class="RadioBox">
+            <input type="radio" class="Checkbox" id="Yes_arma_experience" name="Q1" value="1">
+            <label class="CheckboxTxt">כן</label>
+            <input type="radio" class="Checkbox" id="No_arma_experience" name="Q1" value="0">
+            <label class="CheckboxTxt">לא</label>
+        </div>
 
         <label class="Reg_Ask" dir="rtl" for="arma_hours">מספר השעות ששיחקת ב-Arma: <span class="ReqTxt">*</span></label>
         <input class="TextInput" type="number" id="arma_hours" name="arma_hours" min="0" max="1000" dir="rtl" required>
@@ -63,21 +68,30 @@
         <label class="Reg_Ask" dir="rtl" for="join_reason" >מדוע אתה רוצה להצטרף לקלאן שלנו? <span class="ReqTxt">*</span></label>
         <textarea class="TextInput" id="join_reason" name="join_reason" rows="3" required dir="rtl"></textarea>
 
-        <label class="Reg_Ask" dir="rtl" for="military_experience">האם יש לך ניסיון צבאי?</label>
-        <input class="Checkbox" type="checkbox" id="military_experience" name="military_experience">
+        <label class="Reg_Ask" dir="rtl" for="military_experience">האם יש לך ניסיון צבאי? <span class="ReqTxt">*</span></label>
+        <div class="RadioBox">
+            <input type="radio" class="Checkbox" id="Yes_military_experience" name="Q2" value="1">
+            <label class="CheckboxTxt" for="yes">כן</label>
+            <input type="radio" class="Checkbox" id="No_military_experience" name="Q2" value="0">
+            <label class="CheckboxTxt" for="no">לא</label>
+        </div>
 
         <label class="Reg_Ask" dir="rtl" for="weekly_hours">כמה שעות בשבוע אתה יכול להשתתף בפעילויות הקלאן? <span class="ReqTxt">*</span></label>
         <select class="TextInput" id="weekly_hours" name="weekly_hours" required dir="rtl">
-            <option value="" selected disabled>בחר מספר שעות <span class="ReqTxt">*</span></option>
+            <option value="" selected disabled>בחר מספר שעות</option>
             <option value="1-3">1-3 שעות</option>
             <option value="4-6">4-6 שעות</option>
             <option value="7-10">7-10 שעות</option>
             <option value="11+">11+ שעות</option>
         </select>
 
-        <label class="Reg_Ask" dir="rtl" for="friday_availability">האם אתה זמין בימי שישי בין 13:30-16:30?</label>
-        <input class="Checkbox" type="checkbox" id="friday_availability" name="friday_availability">
-
+        <label class="Reg_Ask" dir="rtl" for="friday_availability">האם אתה מסוגל להתחייב להגיע בימי שישי בשעות 13:30-16:00 לפחות פעמים בחודש 2/4? <span class="ReqTxt">*</span></label>
+        <div class="RadioBox">
+            <input type="radio" class="Checkbox" id="Yes_friday_availability" name="Q3" value="1">
+            <label class="CheckboxTxt" for="yes">כן</label>
+            <input type="radio" class="Checkbox" id="No_friday_availability" name="Q3" value="0">
+            <label class="CheckboxTxt" for="no">לא</label>
+        </div>
         <input class="Button" id="submit" type="submit" value="שלח טופס">
 
     </div>
