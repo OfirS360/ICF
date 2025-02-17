@@ -11,16 +11,16 @@ sumbit.onclick = () => {
         MilitaryExperience: document.getElementById("Yes_military_experience").checked,
         WeeklyHours: document.getElementById("weekly_hours").value,
         FridayAvilable: document.getElementById("Yes_friday_availability").checked,
+        Avilability: document.getElementById("Yes_availability").checked
     };
+
+    console.log(getSelectedJoinValue());
 
     if (formData.FullName == "" || formData.Age == "" || formData.JoinReason == "" || formData.WeeklyHours == "" || !getSelectedJoinValue())
     {
         alert("נא למלא את החסר בטופס.")
         return;
     }
-        
-
-    console.log(formData);
 
     fetch("http://localhost:3000/RegisterFormSend", {
         method: "POST",
@@ -33,6 +33,9 @@ sumbit.onclick = () => {
     .then(data => {
         console.log("Success:", data);
         console.log("Form submitted successfully!");
+
+        window.location.href = "index.html";
+        alert("הטופס נשלח, את שאר הפרטים תקבל בקרוב")
     })
     .catch(error => {
         console.error("Error:", error);
@@ -47,10 +50,13 @@ function getSelectedJoinValue() {
     let No_MilitaryExperience = document.getElementById("No_military_experience");
     let Yes_FridayAvilable = document.getElementById("Yes_friday_availability"); 
     let No_FridayAvilable = document.getElementById("No_friday_availability"); 
+    let Yes_Avilable = document.getElementById("Yes_availability"); 
+    let No_Avilable = document.getElementById("No_availability"); 
 
     if (!(Yes_ArmaExperience.checked || No_ArmaExperience.checked)) return false;
     if (!(Yes_MilitaryExperience.checked || No_MilitaryExperience.checked)) return false;
     if (!(Yes_FridayAvilable.checked || No_FridayAvilable.checked)) return false;
+    if (!(Yes_Avilable.checked || No_Avilable.checked)) return false;
 
     return true;
     
