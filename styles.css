@@ -429,3 +429,14 @@ body
         margin-left: 0;
     }
 }
+
+/* Login Page */
+#LoginBox {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+
+    width: 500px;
+    margin: 0 auto;
+}
