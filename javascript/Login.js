@@ -12,7 +12,7 @@ sumbit.onclick = () => {
         return;
     }
 
-    fetch("https://95.217.11.99:3000/Login", {
+    fetch("http://141.95.71.115:27195/Login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
