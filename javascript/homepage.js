@@ -11,7 +11,7 @@ let T_Rank = document.getElementById("RankImg")
 
 T_Username.textContent = "שלום, " + UserData.Name;
 T_Role.textContent = UserData.Position
-T_Rank.src = `img/Rank${13}.png`
+T_Rank.src = `img/Rank${UserData.Rank}.png`
 
 if (UserData.Rank > 4) {
     T_Rank.style.width = "22px"
