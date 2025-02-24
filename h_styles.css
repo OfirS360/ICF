@@ -1,70 +1,134 @@
 body
 {
+    display: flex;
     background-color: #0b0c10;
+
+    margin: 0;
+    padding: 0;
 }
 
-#Home_Header {
+.sidebar {
     position: fixed;
-    width: 100%;
     left: 0;
     top: 0;
 
-    max-height: 200px;
+    width: 250px;
+    height: 100vh;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-
-    background-color: #202833;
+    background: #202833;
+    color: white;
+    font-family: "Heebo", system-ui;
 
     padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 10px;
-    padding-right: 20px;
 
-    box-sizing: border-box;
+    transition: 0.3s;
 }
 
-#Home_Right {
+.sidebar a {
+    display: block;
+    
+    text-decoration: none;
+    text-align: right;
+    white-space: nowrap;
+    color: white;
+
+    padding: 15px;
+
+    transition: 0.3s;
+}
+
+a img {
+    vertical-align: middle;
+    margin-left: 8px;
+    color: #09bfca;
+}
+
+.sidebar a:hover {
+    background: #323f52;
+}
+
+.content {
+    margin-left: 250px;
+
+    padding: 20px;
+    flex-grow: 1;
+}
+
+#Header {
     display: flex;
-    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+#Headertxt {
+    margin-right: 20px;
+
+    font-size: 20px;
+    font-weight: 900;
+    color: #09bfca;
+    white-space: nowrap;
+}
+
+#sidebarimg {
+    height: 75px;
+}
+
+#CurrectPage {
+    border-right: 5px solid #09bfca;
+    box-shadow: -5px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Profile Page */
+#avatar {
+    height: 60px;
+    border-radius: 100px;
+    margin-left: 10px;
+}
+
+#TopProfile {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    width: min-content;
+    height: min-content;
+
+    background-color: #202833;
+    font-family: "Heebo", system-ui;
+    font-weight: 500;
+    border-radius: 75px;
+
+    padding: 10px;
+    padding-left: 30px;
 }
 
 #Text_Right {
+    display: flex;
+    flex-direction: column;
+}
+
+#RankImg {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: rotate(45deg) translateX(-50%) translateY(-50%);
+
     align-self: center;
+    height: min-content;
 }
 
 .TopTest {
-    font-family: "Heebo", system-ui;
+    font-size: 15px;
     color: #f5f5f5;
-    font-size: 20px;
+    text-align: center;
 
-    text-align: right;
-
-    align-self: center;
+    white-space: nowrap;
 
     margin: 0;
 }
 
 #Role {
-    font-size: 15px;
-}
-
-#avatar {
-    height: 80px;
-    margin-left: 20px;
-
-    border-radius: 50px;
-}
-
-#Top_TextRight {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-}
-
-#RankImg {
-    width: 50px;
-    margin-right: 15px;
+    font-weight: 200;
 }

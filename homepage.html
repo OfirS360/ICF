@@ -11,16 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
     <title>ICF - אזור אישי</title>
 
-    <script language='javascript' type='text/javascript'>
-    history.pushState(null, null, location.href);
-    window.onpopstate = function () {
-        history.pushState(null, null, location.href);
-    };
-    </script>
 </head>
 <body>
 
-    <div id="Home_Header">
+
+    
+    <!-- <div id="Home_Header">
         <div id="Home_Left">
             
         </div>
@@ -35,8 +31,46 @@
                 <p class="TopTest" id="Role" dir="rtl"></p>
             </div>
         </div>
+    </div> -->
+
+    <div class="sidebar" id="sidebar">
+        <div id="Header">
+            <img src="img/ICF_Logo.png" alt="" id="sidebarimg">
+            <p id="Headertxt">אזור אישי</p>
+        </div>
+        <a href="#" id="CurrectPage" dir="rtl">
+            <img src="img/profile.png" height="20px" alt="">
+            הפרופיל שלי
+        </a>
+        <a href="#" dir="rtl">
+            <img src="img/chat.png" height="20px" alt="">
+            צא'טים - בקרוב
+        </a>
+        <a href="#" dir="rtl">
+            <img src="img/calendar.png" height="20px" alt="">
+            אירועים
+        </a>
+        <a href="#" dir="rtl">
+            <img src="img/dog-tag.png" height="20px" alt="">
+            הפק"ל שלי
+        </a>
+        <a href="#" dir="rtl">
+            <img src="img/report.png" height="20px" alt="">
+            בקשות ודיווחים
+        </a>
     </div>
 
-    
+    <div class="content" id="content" dir="rtl">
+
+        <div id="TopProfile">
+            <img src="" alt="" id="avatar">
+            <img src="img/Rank1.png" alt="" id="RankImg">
+            <div id="Text_Right">
+                <p class="TopTest" id="Username" dir="rtl">שלום, null</p>
+                <p class="TopTest" id="Role" dir="rtl">תפקיד</p>
+            </div>
+        </div>
+
+    </div>
 </body>
 </html>
