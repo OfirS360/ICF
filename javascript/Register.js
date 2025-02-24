@@ -23,7 +23,7 @@ sumbit.onclick = () => {
 
     console.log(formData.FridayAvilable)
 
-    fetch("http://95.217.11.99:3000/RegisterFormSend", {
+    fetch("https://95.217.11.99:3000/RegisterFormSend", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
