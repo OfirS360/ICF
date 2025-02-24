@@ -12,7 +12,7 @@ sumbit.onclick = () => {
         return;
     }
 
-    fetch("http://141.95.71.115:27195/Login", {
+    fetch("https://icf-oq7aqqzmx-ofirs360s-projects.vercel.app/Login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
