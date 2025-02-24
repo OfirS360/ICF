@@ -23,7 +23,7 @@ sumbit.onclick = () => {
 
     console.log(formData.FridayAvilable)
 
-    fetch("https://icf-oq7aqqzmx-ofirs360s-projects.vercel.app/RegisterFormSend", {
+    fetch("https://icf-api-ten.vercel.app/RegisterFormSend", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

@@ -12,7 +12,7 @@ sumbit.onclick = () => {
         return;
     }
 
-    fetch("https://icf-oq7aqqzmx-ofirs360s-projects.vercel.app/Login", {
+    fetch("https://icf-api-ten.vercel.app/Login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
