@@ -1,6 +1,7 @@
 let UserData = sessionStorage.getItem("userData")
 UserData = JSON.parse(UserData)
 let SteamAvatar = sessionStorage.getItem("SteamAvatar")
+console.log(SteamAvatar)
 
 if (!UserData) {
     alert("נא לבצע התחברות לפני כניסה לאזור האישי!")
