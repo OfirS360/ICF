@@ -63,6 +63,9 @@ a img {
 }
 
 .content {
+    display: flex;
+    flex-direction: column;
+
     margin-left: 250px;
 
     padding: 20px;
@@ -93,6 +96,48 @@ a img {
 #CurrectPage {
     border-right: 5px solid #09bfca;
     box-shadow: -5px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.Title1 {
+    color: #09bfca;
+    font-family: "Heebo", system-ui;
+    font-weight: 900;
+    font-size: 50px;
+}
+
+.TextInput {
+    font-family: "Heebo", system-ui;
+    color: #f5f5f5;
+    text-align: right;
+    background-color: #202833;
+    font-size: 15px;
+    border: none;
+    border-radius: 20px;
+
+    padding: 10px 15px;
+    margin-bottom: 30px;
+
+    width: 100%;
+
+    transition: background-color 0.3s;
+}
+
+.TextInput:focus {
+    outline: none;
+    
+    background-color: #293342;
+}
+
+.Reg_Ask {
+    font-family: "Heebo", system-ui;
+    color: #f5f5f5;
+    text-align: center;
+    font-size: 20px;
+
+    display: flex;
+    justify-content: flex-start;
+
+    margin-bottom: 10px;
 }
 
 /* Profile Page */
@@ -147,4 +192,32 @@ a img {
 
 #Role {
     font-weight: 200;
+}
+
+#ProfileDataBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ProfileBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    margin-top: 50px;
+
+    width: 28%;
+}
+
+#ProfileDataBoxMiddle {
+    border-right: 2px solid #09bfca;
+    border-left: 2px solid #09bfca;
+
+    width: 35%;
+}
+
+.ProfileTitle {
+    align-self: center;
+    text-align: center;
 }

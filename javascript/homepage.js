@@ -4,10 +4,10 @@ let UserData = sessionStorage.getItem("userData")
 UserData = JSON.parse(UserData)
 console.log(UserData)
 
-if (!UserData) {
-    alert("נא לבצע התחברות לפני כניסה לאזור האישי!")
-    window.location.replace("index.html");
-}
+// if (!UserData) {
+//     alert("נא לבצע התחברות לפני כניסה לאזור האישי!")
+//     window.location.replace("index.html");
+// }
 
 let T_Username = document.getElementById("Username")
 let T_Avatar = document.getElementById("avatar")
@@ -15,10 +15,31 @@ let T_Role = document.getElementById("Role")
 let T_Rank = document.getElementById("RankImg")
 let B_Disconnect = document.getElementById("Disconnect")
 
+let I_Name = document.getElementById("InputName")
+let I_SteamId = document.getElementById("InputSteamId")
+let I_Age = document.getElementById("InputAge")
+let I_Rank = document.getElementById("InputRank")
+let I_Role = document.getElementById("InputRole")
+let I_Position = document.getElementById("InputPosition")
+let I_Status = document.getElementById("InputStatus")
+
+const RankInText = [ "טוראי", "טוראי ראשון", "סמל", "סמל ראשון", "רב סמל", "רב סמל ראשון", "רב סמל מתקדם", "רב סמל בכיר", "רב נגד משנה", "רב נגד", "סגן משנה", "סגן", "סרן", "רב סרן", "סגן אלוף", "אלוף משנה"]
+
 T_Username.textContent = "שלום, " + UserData.Name;
 T_Role.textContent = UserData.Position
 T_Rank.src = `img/Rank${UserData.Rank}.png`
 T_Avatar.src = "img/def_img.png"
+
+I_Name.textContent = UserData.Name;
+I_SteamId.textContent = UserData.SteamId;
+I_Age.textContent = UserData.Age;
+I_Role.textContent = UserData.Role;
+I_Position.textContent = UserData.Position;
+I_Rank.textContent = RankInText[UserData.Rank];
+if (UserData.Status == 1)
+    I_Status.textContent = "פעיל";
+else
+    I_Status.textContent = "לא פעיל";
 
 if (UserData.Rank > 4) {
     T_Rank.style.width = "22px"
