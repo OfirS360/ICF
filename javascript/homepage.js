@@ -22,7 +22,7 @@ else {
     T_Rank.style.transform = `rotate(-20deg)`;
 }
 
-fetch(`https://cors-anywhere.herokuapp.com/https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${SteamApi}&steamids=${UserData.SteamId}`)
+fetch(`https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${SteamApi}&steamids=${UserData.SteamId}`)
 .then(response => response.text())
 .then(data => {
      try {
