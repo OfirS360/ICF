@@ -22,17 +22,6 @@ else {
     T_Rank.style.transform = `rotate(-20deg)`;
 }
 
-fetch(`https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${SteamApi}&steamids=${UserData.SteamId}`)
-.then(response => response.text())
-.then(data => {
-     try {
-        const parsedData = JSON.parse(data);
-        const avatarUrl = parsedData.response.players[0].avatarfull;
-        T_Avatar.src = avatarUrl;
-        console.log(parsedData);
-    } catch (error) {
-        console.log("Error")
-        T_Avatar.src = `img/def_img.png`
-    }
-})
-.catch(error => console.error('שגיאה בקשת ה-API:', error));
+fetch("https://icf-api-ten.vercel.app/getSteamUser/76561198981322632")
+    .then(response => response.json())
+    .then(data => console.log(data));   
