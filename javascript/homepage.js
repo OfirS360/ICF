@@ -63,6 +63,7 @@ fetch(`https://icf-api-ten.vercel.app/getSteamUser/${UserData.SteamId}`)
         if (data.response.players.length > 0) {
             T_Avatar.src = data.response.players[0].avatarfull
             sessionStorage.setItem("SteamAvatar", data.response.players[0].avatarfull)
+            console.log(data.response.players[0].avatarfull)
         }
         else {
             console.log("המתשמש steam לא נמצא")
