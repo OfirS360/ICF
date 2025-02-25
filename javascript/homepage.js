@@ -23,7 +23,7 @@ else {
     T_Rank.style.transform = `rotate(-20deg)`;
 }
 
-fetch("https://icf-api-ten.vercel.app/getSteamUser/76561198981322632")
+fetch(`https://icf-api-ten.vercel.app/getSteamUser/${UserData.SteamId}`)
     .then(response => response.json())
     .then(data => {
         console.log(data)
