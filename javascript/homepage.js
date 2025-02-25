@@ -35,7 +35,7 @@ I_SteamId.value = UserData.SteamId;
 I_Age.value = UserData.Age;
 I_Role.value = UserData.Role;
 I_Position.value = UserData.Position;
-I_Rank.value = RankInText[UserData.Rank];
+I_Rank.value = RankInText[UserData.Rank - 1];
 if (UserData.Status == 1)
     I_Status.value = "פעיל";
 else
