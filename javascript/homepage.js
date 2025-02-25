@@ -30,16 +30,17 @@ T_Role.textContent = UserData.Position
 T_Rank.src = `img/Rank${UserData.Rank}.png`
 T_Avatar.src = "img/def_img.png"
 
-I_Name.textContent = UserData.Name;
-I_SteamId.textContent = UserData.SteamId;
-I_Age.textContent = UserData.Age;
-I_Role.textContent = UserData.Role;
-I_Position.textContent = UserData.Position;
-I_Rank.textContent = RankInText[UserData.Rank];
+I_Name.value = UserData.Name;
+I_SteamId.value = UserData.SteamId;
+I_Age.value = UserData.Age;
+I_Role.value = UserData.Role;
+I_Position.value = UserData.Position;
+I_Rank.value = RankInText[UserData.Rank];
 if (UserData.Status == 1)
-    I_Status.textContent = "פעיל";
+    I_Status.value = "פעיל";
 else
-    I_Status.textContent = "לא פעיל";
+    I_Status.value = "לא פעיל";
+
 
 if (UserData.Rank > 4) {
     T_Rank.style.width = "22px"
