@@ -8,6 +8,7 @@ let T_Username = document.getElementById("Username")
 let T_Avatar = document.getElementById("avatar")
 let T_Role = document.getElementById("Role")
 let T_Rank = document.getElementById("RankImg")
+let B_Disconnect = document.getElementById("Disconnect")
 
 T_Username.textContent = "שלום, " + UserData.Name;
 T_Role.textContent = UserData.Position
@@ -23,12 +24,18 @@ else {
     T_Rank.style.transform = `rotate(-20deg)`;
 }
 
+B_Disconnect.onclick = () => {
+    sessionStorage.clear()
+    window.location.replace("index.html");
+}
+
 fetch(`https://icf-api-ten.vercel.app/getSteamUser/${UserData.SteamId}`)
     .then(response => response.json())
     .then(data => {
         console.log(data)
         if (data.response.players.length > 0) {
             T_Avatar.src = data.response.players[0].avatarfull
+            sessionStorage.setItem("SteamAvatar", JSON.stringify(data.response.players[0].avatarfull))
         }
         else {
             console.log("המתשמש steam לא נמצא")
