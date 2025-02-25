@@ -12,6 +12,7 @@ let T_Rank = document.getElementById("RankImg")
 T_Username.textContent = "שלום, " + UserData.Name;
 T_Role.textContent = UserData.Position
 T_Rank.src = `img/Rank${UserData.Rank}.png`
+T_Avatar.src = "img/def_img.png"
 
 if (UserData.Rank > 4) {
     T_Rank.style.width = "22px"
@@ -24,4 +25,16 @@ else {
 
 fetch("https://icf-api-ten.vercel.app/getSteamUser/76561198981322632")
     .then(response => response.json())
-    .then(data => console.log(data));   
+    .then(data => {
+        console.log(data)
+        if (data.response.players.length > 0) {
+            T_Avatar.src = data.response.players[0].avatarfull
+        }
+        else {
+            console.log("המתשמש steam לא נמצא")
+        }
+    }
+    )
+    .catch(error => {
+        console.error("API:", error);
+    });
