@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-    <script src="javascript/homepage.js" defer></script>
+    <script src="javascript/h_events.js" defer></script>
     <link rel="stylesheet" href="h_styles.css">
     <link rel="shortcut icon" type="x-icon" href="img/ICF_Logo.png">
 
@@ -13,13 +13,12 @@
 
 </head>
 <body>
-
     <div class="sidebar" id="sidebar">
         <div id="Header">
             <img src="img/ICF_Logo.png" alt="" id="sidebarimg">
             <p id="Headertxt">אזור אישי</p>
         </div>
-        <a href="homepage.html" id="CurrectPage" dir="rtl">
+        <a href="homepage.html" dir="rtl">
             <img src="img/profile.png" height="20px" alt="">
             הפרופיל שלי
         </a>
@@ -27,7 +26,7 @@
             <img src="img/chat.png" height="20px" alt="">
             צא'טים - בקרוב
         </a>
-        <a href="h_events.html" dir="rtl">
+        <a href="h_events.html" id="CurrectPage" dir="rtl">
             <img src="img/calendar.png" height="20px" alt="">
             אירועים
         </a>
@@ -57,40 +56,6 @@
             </div>
         </div>
 
-        <div id="ProfileDataBox">
-            <div class="ProfileBox">
-                <h1 class="Title1 ProfileTitle">פרופיל</h1>
-    
-                <label for="" dir="rtl" class="Reg_Ask">שם:</label>
-                <input type="text" class="TextInput" id="InputName" readonly>
-    
-                <label for="" dir="rtl" class="Reg_Ask">SteamId:</label>
-                <input type="text" class="TextInput" id="InputSteamId" readonly>
-    
-                <label for="" dir="rtl" class="Reg_Ask">גיל:</label>
-                <input type="text" class="TextInput" id="InputAge" readonly>
-
-                <label for="" dir="rtl" class="Reg_Ask">דרגה:</label>
-                <input type="text" class="TextInput" id="InputRank" readonly>
-    
-                <label for="" dir="rtl" class="Reg_Ask">תפקיד:</label>
-                <input type="text" class="TextInput" id="InputRole" readonly>
-    
-                <label for="" dir="rtl" class="Reg_Ask">מיקום:</label>
-                <input type="text" class="TextInput" id="InputPosition" readonly>
-    
-                <label for="" dir="rtl" class="Reg_Ask">סטטוס:</label>
-                <input type="text" class="TextInput" id="InputStatus" readonly>
-            </div>
-    
-            <div class="ProfileBox" id="ProfileDataBoxMiddle">
-                <h1 class="Title1 ProfileTitle">הסמכות וקורסים</h1>
-            </div>
-
-            <div class="ProfileBox">
-                <h1 class="Title1 ProfileTitle">משימות</h1>
-            </div>
-        </div>
     </div>
 </body>
 </html>
