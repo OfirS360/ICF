@@ -224,3 +224,86 @@ a img {
     margin-right: 5px;
     margin-left: 5px;
 }
+
+/* Events Page */
+#EventsBox {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    margin-top: 50px;
+
+    height: auto;
+}
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 100px);
+    grid-template-rows: 50px;
+    grid-auto-rows: 100px;
+    gap: 2px;
+    background-color: #151a22;
+
+    padding: 2px;
+}
+
+.c_header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #202732;
+    color: #09bfca;
+    text-align: center;
+    font-family: "Heebo", system-ui;
+    font-weight: 800;
+}
+
+.c_contact {
+    background-color: #293342;
+    color: #f5f5f5;
+
+    font-family: "Heebo", system-ui;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 5px;
+
+    transition: background-color 0.3s;
+}
+
+.c_btn:hover {
+    background-color: #323f52;
+}
+
+.c_dark {
+    color: #ababab8f;
+}
+
+.currect_div {
+    color: #09bfca;
+    font-size: 25px;
+}
+
+#Details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 400px;
+    height: 100%;
+
+    background-color: #151a22;
+    border-radius: 10px;
+    font-family: "Heebo", system-ui;
+    color: #f5f5f5;
+
+    margin-right: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.D_Title {
+    align-self: center;
+
+    color: #09bfca;
+}
