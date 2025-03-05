@@ -99,9 +99,9 @@ function UpdateCalender() {
 
             for (let i = 0; i < data.results.length; i++) {
                 let EventDate = new Date(data.results[i].Date)
-                let eventDay = EventDate.getDay();
+                let eventDay = EventDate.getDate();
 
-                let EventParent = document.querySelector(`#${eventDay}`)
+                let EventParent = document.getElementById(eventDay)
                 let newDiv = document.createElement('div')
                 newDiv.classList.add('Event')
                 newDiv.textContent = data.results[i].Title
