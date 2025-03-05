@@ -37,8 +37,7 @@ function UpdateCalender() {
     let divdays = document.querySelectorAll('.c_contact')
     divdays.forEach(day => {
         day.remove()
-    })
-    console.log(month, " ", year)   
+    }) 
     TC_Title.textContent = months[month - 1] + ", " + year
 
     let days = generateMonthDays(year, month);
