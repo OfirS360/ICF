@@ -12,6 +12,9 @@ const Calender = document.getElementById("calendar")
 const ForwardBtn = document.getElementById("Back")
 const BackBtn = document.getElementById("Forward")
 
+const EventName = document.getElementById("EventName")
+const EventDescription = document.getElementById("EventDescription")
+
 UpdateCalender()
 
 BackBtn.onclick = () => {
@@ -82,12 +85,23 @@ function UpdateCalender() {
     let daysbnt = document.querySelectorAll('#calendar .c_btn')
 
     daysbnt.forEach(day => {
-    day.addEventListener('click', function() {
-        let LastDivPressed = document.querySelector('.currect_div')
-        if (LastDivPressed)
-            LastDivPressed.classList.remove('currect_div')
-        LastDivPressed = this
-        LastDivPressed.classList.add('currect_div')
+        day.addEventListener('click', function() {
+            let LastDivPressed = document.querySelector('.currect_div')
+            if (LastDivPressed)
+                LastDivPressed.classList.remove('currect_div')
+            LastDivPressed = this
+            LastDivPressed.classList.add('currect_div')
+
+            fetch(`https://icf-api-ten.vercel.app/GetCurrentMonthEvents?Year=${year}&Month=${month}&Day=${this.id}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.results && data.results.length > 0) {
+                    EventName.textContent = data.results[0].Title
+                    EventDescription.textContent = data.results[0].Description
+                } 
+            })
+            .catch(error => {
+            })
         })
     })
 
@@ -95,7 +109,6 @@ function UpdateCalender() {
     .then(response => response.json())
     .then(data => {
         if (data.results && data.results.length > 0) {
-            console.log(data)
 
             for (let i = 0; i < data.results.length; i++) {
                 let EventDate = new Date(data.results[i].Date)
