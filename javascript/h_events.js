@@ -8,6 +8,7 @@ let day = today.getDate();
 let TC_Title = document.getElementById("TC_Title")
 const EventBox = document.getElementById("EventsBox")
 const Calender = document.getElementById("calendar")
+const DetailsBox = document.getElementById("Details")
 
 const ForwardBtn = document.getElementById("Back")
 const BackBtn = document.getElementById("Forward")
@@ -95,7 +96,7 @@ function UpdateCalender() {
             fetch(`https://icf-api-ten.vercel.app/GetCurrentDayEvent?Year=${year}&Month=${month}&Day=${this.id}`)
             .then(response => response.json())
             .then(data => {
-                
+
                 let Details = document.querySelectorAll(".D_Contex")
                 for (let i = 0; i < Details.length; i++) {
                     Details[i].remove()
@@ -116,6 +117,10 @@ function UpdateCalender() {
                     let Time = document.createElement("p")
                     Time.classList.add('D_Contex')
                     Time.textContent = "שעה - " + data.results[0].Time
+
+                    DetailsBox.appendChild(EventType)
+                    DetailsBox.appendChild(Creator)
+                    DetailsBox.appendChild(Time)
                 }
                 else {
                     EventName.textContent = "פרטים"
