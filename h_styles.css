@@ -254,6 +254,7 @@ a img {
 
     background-color: #202732;
     color: #09bfca;
+    font-size: 20px;
     text-align: center;
     font-family: "Heebo", system-ui;
     font-weight: 800;
@@ -281,7 +282,8 @@ a img {
 
 .currect_div {
     color: #09bfca;
-    font-size: 25px;
+
+    border-bottom: 2px solid #09bfca;
 }
 
 #Details {
@@ -306,4 +308,46 @@ a img {
     align-self: center;
 
     color: #09bfca;
+}
+
+.C_Title {
+    color: #09bfca;
+    font-family: "Heebo", system-ui;
+    font-weight: 900;
+
+    margin: 0;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#Cal_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Cal_Btn {
+    background-color: #202833;
+    color: #09bfca;
+    font-size: 15px;
+
+    border: none;
+    border-radius: 5px;
+    padding: 0;
+
+    height: 30px;
+    width: 40px;
+}
+
+.Event {
+    width: 100%;
+    height: 10px;
+    color: #f5f5f5;
+
+    font-size: 10px;
+    background-color: #202732;
+    padding-top: 4px;
+    padding-bottom: 4px;
+
+    margin: 0 auto;
 }
