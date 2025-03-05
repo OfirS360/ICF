@@ -103,7 +103,7 @@ function UpdateCalender() {
     })
     .then(response => response.json())
     .then(data => {
-        if (data.success) {
+        if (data.results.length > 0) {
             console.log(data)
         } 
     })
