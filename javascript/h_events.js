@@ -94,13 +94,7 @@ function UpdateCalender() {
 
     let CurrectMonth = {year, month}
 
-    fetch("https://icf-api-ten.vercel.app/GetCurrentMonthEvents", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(CurrectMonth)
-    })
+    fetch("https://icf-api-ten.vercel.app/GetCurrentMonthEvents")
     .then(response => response.json())
     .then(data => {
         if (data.results.length > 0) {
