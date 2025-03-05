@@ -93,14 +93,17 @@ function UpdateCalender() {
             LastDivPressed = this
             LastDivPressed.classList.add('currect_div')
 
+            let Details = document.querySelectorAll(".D_Contex")
+            for (let i = 0; i < Details.length; i++) {
+                Details[i].remove()
+            }
+
+            EventName.textContent = "טוען מידע..."
+            EventDescription.textContent = "נא המתן מספר שניות"
+
             fetch(`https://icf-api-ten.vercel.app/GetCurrentDayEvent?Year=${year}&Month=${month}&Day=${this.id}`)
             .then(response => response.json())
             .then(data => {
-
-                let Details = document.querySelectorAll(".D_Contex")
-                for (let i = 0; i < Details.length; i++) {
-                    Details[i].remove()
-                }
 
                 if (data.results && data.results.length > 0) {
                     EventName.textContent = data.results[0].Title
