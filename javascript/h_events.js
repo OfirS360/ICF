@@ -92,13 +92,35 @@ function UpdateCalender() {
             LastDivPressed = this
             LastDivPressed.classList.add('currect_div')
 
-            fetch(`https://icf-api-ten.vercel.app/GetCurrentMonthEvents?Year=${year}&Month=${month}&Day=${this.id}`)
+            fetch(`https://icf-api-ten.vercel.app/GetCurrentDayEvent?Year=${year}&Month=${month}&Day=${this.id}`)
             .then(response => response.json())
             .then(data => {
+                
+                let Details = document.querySelectorAll(".D_Contex")
+                for (let i = 0; i < Details.length; i++) {
+                    Details[i].remove()
+                }
+
                 if (data.results && data.results.length > 0) {
                     EventName.textContent = data.results[0].Title
-                    EventDescription.textContent = data.results[0].Description
-                } 
+                    EventDescription.textContent = "תיאור - " + data.results[0].Description
+                    // D_Contex
+                    let EventType = document.createElement("p")
+                    EventType.classList.add('D_Contex')
+                    EventType.textContent = "סוג האירוע - " + data.results[0].EventType
+
+                    let Creator = document.createElement("p")
+                    Creator.classList.add('D_Contex')
+                    Creator.textContent = "יוצר האירוע - " + data.results[0].Creator
+
+                    let Time = document.createElement("p")
+                    Time.classList.add('D_Contex')
+                    Time.textContent = "שעה - " + data.results[0].Time
+                }
+                else {
+                    EventName.textContent = "פרטים"
+                    EventDescription.textContent = "אין אירוע ביום זה."
+                }
             })
             .catch(error => {
             })
