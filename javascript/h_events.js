@@ -96,6 +96,18 @@ function UpdateCalender() {
     .then(data => {
         if (data.results && data.results.length > 0) {
             console.log(data)
+
+            for (let i = 0; i < data.results.length; i++) {
+                let EventDate = new Date(data.results[i].Date)
+                let eventDay = EventDate.getDay();
+
+                let EventParent = document.querySelector(`#${eventDay}`)
+                let newDiv = document.createElement('div')
+                newDiv.classList.add('Event')
+                newDiv.textContent = data.results[i].Title
+
+                EventParent.appendChild(newDiv)
+            }
         } 
     })
     .catch(error => {
