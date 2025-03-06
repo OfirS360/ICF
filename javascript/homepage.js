@@ -83,9 +83,7 @@ fetch(`https://icf-api-ten.vercel.app/GetCloseEvents`)
             const CloseEvents = document.getElementById("CloseEvents")
                 for(let i = 0; i < data.results.length; i++)
                 {
-                    
-                    let IsoDate = data.results[i].Date
-                    let Date = new Date(IsoDate)
+                    let FixedDate = new Date(data.results[i].Date);
 
                     let CE_DivBox = document.createElement('div')
                     CE_DivBox.classList.add('CloseEventBox')
@@ -103,7 +101,7 @@ fetch(`https://icf-api-ten.vercel.app/GetCloseEvents`)
 
                     let CE_Date = document.createElement('p')
                     CE_Date.classList.add('CE_Contex')
-                    CE_Date.textContent = "תאריך - " + Date
+                    CE_Date.textContent = "תאריך - " + FixedDate
 
                     let CE_Time = document.createElement('p')
                     CE_Time.classList.add('CE_Contex')
