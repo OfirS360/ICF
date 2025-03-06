@@ -101,7 +101,7 @@ fetch(`https://icf-api-ten.vercel.app/GetCloseEvents`)
 
                     let CE_Date = document.createElement('p')
                     CE_Date.classList.add('CE_Contex')
-                    CE_Date.textContent = "תאריך - " + FixedDate
+                    CE_Date.textContent = "תאריך - " + FixedDate.toLocaleDateString()
 
                     let CE_Time = document.createElement('p')
                     CE_Time.classList.add('CE_Contex')
