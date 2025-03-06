@@ -81,8 +81,10 @@ fetch(`https://icf-api-ten.vercel.app/GetCloseEvents`)
 
         if (data.results && data.results.length > 0) {
             const CloseEvents = document.getElementById("CloseEvents")
+                console.log(data.results)
                 for(let i = 0; i < data.results.length; i++)
                 {
+                    
                     let IsoDate = data.results[i].Date
                     let Date = new Date(IsoDate)
 
