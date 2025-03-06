@@ -56,6 +56,7 @@ B_Disconnect.onclick = () => {
     window.location.replace("index.html");
 }
 
+// Steam Profile
 fetch(`https://icf-api-ten.vercel.app/getSteamUser/${UserData.SteamId}`)
     .then(response => response.json())
     .then(data => {
@@ -72,3 +73,45 @@ fetch(`https://icf-api-ten.vercel.app/getSteamUser/${UserData.SteamId}`)
     .catch(error => {
         console.error("API:", error);
     });
+
+// Close Events
+fetch(`https://icf-api-ten.vercel.app/GetCloseEvents`)
+    .then(response => response.json())
+    .then(data => {
+
+        if (data.results && data.results.length > 0) {
+            const CloseEvents = document.getElementById("CloseEvents")
+                for(let i = 0; i < data.results.length; i++)
+                {
+                    let CE_DivBox = document.createElement('div')
+                    CE_DivBox.classList.add('CloseEventBox')
+
+                    CloseEvents.appendChild(CE_DivBox)
+
+                    let CE_Title = document.createElement('p')
+                    CE_Title.classList.add('CE_Contex')
+                    CE_Title.classList.add('CE_Title')
+                    CE_Title.textContent = data.results[i].Title
+
+                    let CE_Descrition = document.createElement('p')
+                    CE_Descrition.classList.add('CE_Contex')
+                    CE_Descrition.textContent = data.results[i].Description
+
+                    let CE_Date = document.createElement('p')
+                    CE_Date.classList.add('CE_Contex')
+                    CE_Date.textContent = data.results[i].Date
+
+                    let CE_Time = document.createElement('p')
+                    CE_Time.classList.add('CE_Contex')
+                    CE_Time.textContent = data.results[i].Time
+
+                    CE_DivBox.appendChild(CE_Title)
+                    CE_DivBox.appendChild(CE_Descrition)
+                    CE_DivBox.appendChild(CE_Date)
+                    CE_DivBox.appendChild(CE_Time)
+                }
+        }
+    })
+    .catch(error => {
+
+    })
