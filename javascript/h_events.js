@@ -22,10 +22,11 @@ if (UserData.Premission_Level > 0)
 {
     let AddEventBtn = document.createElement("button")
     AddEventBtn.classList.add("PlusBtn")
+    AddEventBtn.textContent = "+"
     DetailsBox.appendChild(AddEventBtn)
 
     AddEventBtn.onclick = () => {
-        window.location.href("h_createevent.html");
+        window.location.href = "h_createevent.html";
     }
 }
 
