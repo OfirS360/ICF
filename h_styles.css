@@ -383,3 +383,25 @@ a img {
 
     margin: 0 auto;
 }
+
+.PlusBtn {
+    margin-top: auto;
+    margin-bottom: 30px;
+    align-self: center;
+
+    background-color: #202833;
+    color: #09bfca;
+    font-size: 30px;
+
+    border: none;
+    border-radius: 50px;
+
+    width: 65px;
+    height: 65px;
+
+    transition: background-color 0.3s;
+}
+
+.PlusBtn:hover {
+    background-color: #2b3544;
+}

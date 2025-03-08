@@ -1,3 +1,5 @@
+let UserData = sessionStorage.getItem("userData")
+
 const today = new Date();
 const months = ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"];
 
@@ -17,6 +19,17 @@ const EventName = document.getElementById("EventName")
 const EventDescription = document.getElementById("EventDescription")
 
 UpdateCalender()
+
+if (UserData.Premission_Level > 0)
+{
+    let AddEventBtn = document.createElement("button")
+    AddEventBtn.classList.add("PlusBtn")
+    DetailsBox.appendChild(AddEventBtn)
+
+    AddEventBtn.onclick = () => {
+        window.location.href("h_createevent.html");
+    }
+}
 
 BackBtn.onclick = () => {
     month--
