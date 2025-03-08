@@ -1,4 +1,5 @@
 let UserData = sessionStorage.getItem("userData")
+UserData = JSON.parse(UserData)
 
 const today = new Date();
 const months = ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"];
