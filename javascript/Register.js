@@ -21,8 +21,6 @@ sumbit.onclick = () => {
         return;
     }
 
-    console.log(formData.FridayAvilable)
-
     fetch("https://icf-api-ten.vercel.app/RegisterFormSend", {
         method: "POST",
         headers: {

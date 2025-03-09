@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-    <script src="javascript/homepage.js" defer></script>
+    <script src="javascript/h_createevent.js" defer></script>
     <link rel="stylesheet" href="h_styles.css">
     <link rel="shortcut icon" type="x-icon" href="img/ICF_Logo.png">
 
@@ -13,6 +13,67 @@
 
 </head>
 <body>
-    
+    <div class="sidebar" id="sidebar">
+        <div id="Header">
+            <img src="img/ICF_Logo.png" alt="" id="sidebarimg">
+            <p id="Headertxt">אזור אישי</p>
+        </div>
+        <a href="homepage.html" dir="rtl">
+            <img src="img/profile.png" height="20px" alt="">
+            הפרופיל שלי
+        </a>
+        <a href="#" dir="rtl">
+            <img src="img/chat.png" height="20px" alt="">
+            צא'טים - בקרוב
+        </a>
+        <a href="h_events.html" id="CurrectPage" dir="rtl">
+            <img src="img/calendar.png" height="20px" alt="">
+            אירועים
+        </a>
+        <a href="#" dir="rtl">
+            <img src="img/dog-tag.png" height="20px" alt="">
+            הפק"ל שלי
+        </a>
+        <a href="#" dir="rtl">
+            <img src="img/report.png" height="20px" alt="">
+            בקשות ודיווחים
+        </a>
+
+        <a href="#" dir="rtl" id="Disconnect">
+            <img src="img/logout.png" height="20px" alt="">
+            התנתק
+        </a>
+    </div>
+
+    <div class="content" id="content" dir="rtl">
+
+        <form action="" id="CreateEventForm">
+            <h1 id="CE_Title">הוספת אירוע</h1>
+
+            <label for="Title" class="Reg_Ask">שם האירוע: <span class="ReqTxt">*</span></label>
+            <input type="text" class="TextInput" id="Title" required>
+
+            <label for="Description" class="Reg_Ask">תיאור: <span class="ReqTxt">*</span></label>
+            <textarea class="TextInput" rows="3" required dir="rtl" id="Description"></textarea>
+
+            <label for="Date" class="Reg_Ask">תאריך: <span class="ReqTxt">*</span></label>
+            <input type="date" id="Date" class="TextInput" dir="rtl" required>
+
+            <label for="Time" class="Reg_Ask">שעה: <span class="ReqTxt">*</span></label>
+            <input type="time" id="Time" class="TextInput" required>
+
+            <label class="Reg_Ask">סוג האירוע: <span class="ReqTxt">*</span></label>
+            <select class="TextInput" id="type" required>
+                <option value="" selected disabled>בחר סוג משימה</option>
+                <option value="משימה">משימה</option>
+                <option value="משימה קבועה">משימה קבועה</option>
+                <option value="אימון">אימון</option>
+                <option value="אימון">אימון צוותי</option>
+                <option value="קמפיין">קמפיין</option>
+            </select>
+
+            <input class="Button" id="submit" type="submit" value="צור אירוע">
+        </form>
+    </div>
 </body>
 </html>
