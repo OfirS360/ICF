@@ -4,7 +4,7 @@ SubmitBtn.onclick = () => {
     let FormEventDate = {
         Title: document.getElementById("Title").value,
         Description: document.getElementById("Description").value,
-        Date: document.getElementById("Date").value,
+        Date: new Date(document.getElementById("Date").value).toISOString().split('T')[0],
         Creator: UserData.Name,
         Time: document.getElementById("Time").value,
         Type: document.getElementById("type").value
@@ -12,9 +12,6 @@ SubmitBtn.onclick = () => {
 
     if (!(FormEventDate.Title == "" || FormEventDate.Description == "" || FormEventDate.Date == "" || FormEventDate.Time == "" || FormEventDate.Type == ""))
     {
-        console.log(FormEventDate)
-        alert("בדיקה")
-
         fetch("https://icf-api-ten.vercel.app/EventFormSend", {
             method: "POST",
             headers: {
@@ -26,7 +23,7 @@ SubmitBtn.onclick = () => {
         .then(data => {
             console.log("Success:", data);
             console.log("Form submitted successfully!");
-    
+            alert("האירוע נוצר")
             window.location.href = "h_events.html";
         })
         .catch(error => {
