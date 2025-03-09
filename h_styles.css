@@ -322,6 +322,7 @@ a img {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    position: relative;
 
     width: 400px;
     height: 100%;
@@ -385,8 +386,11 @@ a img {
 }
 
 .PlusBtn {
-    margin-top: auto;
-    margin-bottom: 30px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+
     align-self: center;
 
     background-color: #202833;
