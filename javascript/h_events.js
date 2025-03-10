@@ -174,7 +174,7 @@ function UpdateCalender() {
         let EventDate = new Date(EventsData[i].Date)
         let eventDay = EventDate.getDate();
 
-        if (EventDate.getMonth() == month)
+        if (EventDate.getMonth() == month - 1)
         {
             let EventParent = document.getElementById(eventDay)
             let newDiv = document.createElement('div')
