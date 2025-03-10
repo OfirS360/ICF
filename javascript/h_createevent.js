@@ -1,5 +1,10 @@
 const SubmitBtn = document.getElementById("submit")
 
+if (UserData.Premission_Level == 0)
+{
+    window.location.href = "h_events.html";
+}
+
 SubmitBtn.onclick = () => {
     let FormEventDate = {
         Title: document.getElementById("Title").value,
