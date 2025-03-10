@@ -210,6 +210,9 @@ a img {
     margin-top: 50px;
 
     width: 28%;
+    height: 700px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #ProfileDataBoxMiddle {
@@ -232,7 +235,7 @@ a img {
     flex-direction: column;
 
     align-self: center;
-    width: 100%;
+    width: 85%;
     height: 150px;
 
     padding: 15px;
