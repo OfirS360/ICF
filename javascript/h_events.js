@@ -19,40 +19,26 @@ const BackBtn = document.getElementById("Forward")
 const EventName = document.getElementById("EventName")
 const EventDescription = document.getElementById("EventDescription")
 
-UpdateCalender()
+if (EventsData) {
+    UpdateCalender();
+} else {
 
-if (!EventsData)
-{
     fetch(`https://icf-api-ten.vercel.app/GetAllEvents`)
-    .then(response => response.json())
-    .then(data => {
-        if (data.results && data.results.length > 0) {
-            
-            sessionStorage.setItem("Events", JSON.stringify(data.results))
-            EventsData = sessionStorage.getItem("Events")
-            EventsData = JSON.parse(EventsData)
+        .then(response => response.json())
+        .then(data => {
 
-            for (let i = 0; i < data.results.length; i++) {
-                
-                let EventDate = new Date(data.results[i].Date)
-                let eventDay = EventDate.getDate();
+            if (data.results && data.results.length > 0) {
+                sessionStorage.setItem("Events", JSON.stringify(data.results));
+                EventsData = JSON.parse(sessionStorage.getItem("Events"));
 
-                if (EventDate.getMonth() == month)
-                {
-                    let EventParent = document.getElementById(eventDay)
-                    let newDiv = document.createElement('div')
-                    newDiv.classList.add('Event')
-                    newDiv.textContent = data.results[i].Title
-    
-                    EventParent.appendChild(newDiv)
-                }
+                UpdateCalender();
             }
-        } 
-    })
-    .catch(error => {
-
-    })
+        })
+        .catch(error => {
+            console.error("Error fetching events:", error);
+        });
 }
+
 
 if (UserData.Premission_Level > 0)
 {
