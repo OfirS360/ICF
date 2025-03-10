@@ -1,3 +1,6 @@
+let EventsData = sessionStorage.getItem("Events")
+EventsData = JSON.parse(EventsData)
+
 const today = new Date();
 const months = ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"];
 
@@ -17,6 +20,39 @@ const EventName = document.getElementById("EventName")
 const EventDescription = document.getElementById("EventDescription")
 
 UpdateCalender()
+
+if (!EventsData)
+{
+    fetch(`https://icf-api-ten.vercel.app/GetAllEvents`)
+    .then(response => response.json())
+    .then(data => {
+        if (data.results && data.results.length > 0) {
+            
+            sessionStorage.setItem("Events", JSON.stringify(data.results))
+            EventsData = sessionStorage.getItem("Events")
+            EventsData = JSON.parse(EventsData)
+
+            for (let i = 0; i < data.results.length; i++) {
+                
+                let EventDate = new Date(data.results[i].Date)
+                let eventDay = EventDate.getDate();
+
+                if (EventDate.getMonth() == month)
+                {
+                    let EventParent = document.getElementById(eventDay)
+                    let newDiv = document.createElement('div')
+                    newDiv.classList.add('Event')
+                    newDiv.textContent = data.results[i].Title
+    
+                    EventParent.appendChild(newDiv)
+                }
+            }
+        } 
+    })
+    .catch(error => {
+
+    })
+}
 
 if (UserData.Premission_Level > 0)
 {
@@ -147,27 +183,21 @@ function UpdateCalender() {
         })
     })
 
-    fetch(`https://icf-api-ten.vercel.app/GetCurrentMonthEvents?Year=${year}&Month=${month}`)
-    .then(response => response.json())
-    .then(data => {
-        if (data.results && data.results.length > 0) {
+    for (let i = 0; i < EventsData.length; i++) {
+                
+        let EventDate = new Date(EventsData[i].Date)
+        let eventDay = EventDate.getDate();
 
-            for (let i = 0; i < data.results.length; i++) {
-                let EventDate = new Date(data.results[i].Date)
-                let eventDay = EventDate.getDate();
+        if (EventDate.getMonth() == month)
+        {
+            let EventParent = document.getElementById(eventDay)
+            let newDiv = document.createElement('div')
+            newDiv.classList.add('Event')
+            newDiv.textContent = data.results[i].Title
 
-                let EventParent = document.getElementById(eventDay)
-                let newDiv = document.createElement('div')
-                newDiv.classList.add('Event')
-                newDiv.textContent = data.results[i].Title
-
-                EventParent.appendChild(newDiv)
-            }
-        } 
-    })
-    .catch(error => {
-
-    })
+            EventParent.appendChild(newDiv)
+        }
+    }
 }
 
 // כל הימים בחודש
