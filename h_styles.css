@@ -295,6 +295,7 @@ a img {
 }
 
 .c_contact {
+    position: relative;
     background-color: #293342;
     color: #f5f5f5;
 
@@ -375,7 +376,11 @@ a img {
 }
 
 .Event {
-    width: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 97%;
     height: 10px;
     color: #f5f5f5;
 
