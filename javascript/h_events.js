@@ -179,7 +179,7 @@ function UpdateCalender() {
             let EventParent = document.getElementById(eventDay)
             let newDiv = document.createElement('div')
             newDiv.classList.add('Event')
-            newDiv.textContent = data.results[i].Title
+            newDiv.textContent = EventsData[i].Title
 
             EventParent.appendChild(newDiv)
         }
