@@ -253,6 +253,7 @@ function getLastDaysOfMonth(year, month, daysCount) {
 
 // לחיצה על כפתור התפקדות
 function HitpakdutBtn(IsComing, Id) {
+    console.log(IsComing, Id, UserData.Team, UserData.SteamId)
     let HitpakdutData = {
         Team: UserData.Team,
         IsComing: IsComing,
@@ -265,7 +266,8 @@ function HitpakdutBtn(IsComing, Id) {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(HitpakdutData)
+        body: JSON.stringify(HitpakdutData),
+        mode: "no-cors"
     })
     .then(response => response.json())
     .then(data => {
