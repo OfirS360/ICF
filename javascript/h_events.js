@@ -124,7 +124,7 @@ function UpdateCalender() {
             LastDivPressed = this
             LastDivPressed.classList.add('currect_div')
 
-            let Details = document.querySelectorAll(".D_Contex")
+            let Details = document.querySelectorAll(".D_Contex, .DS_Title")
             for (let i = 0; i < Details.length; i++) {
                 Details[i].remove()
             }
@@ -146,6 +146,7 @@ function UpdateCalender() {
                     if (CountEvents > 1) {
                         let NewEventTitle = document.createElement("h1")
                         NewEventTitle.classList.add("D_Title")
+                        NewEventTitle.classList.add("DS_Title")
                         NewEventTitle.textContent = EventsData[i].Title
 
                         DetailsBox.appendChild(NewEventTitle)
