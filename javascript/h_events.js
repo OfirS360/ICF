@@ -182,12 +182,16 @@ function UpdateCalender() {
                     let Y_Btn = document.createElement("button")
                     Y_Btn.classList.add("YN_Btn")
                     Y_Btn.textContent = "מגיע"
-                    Y_Btn.addEventListener('click', HitpakdutBtn(true, EventsData[i].Id))
+                    Y_Btn.addEventListener('click', function() {
+                        HitpakdutBtn(true, EventsData[i].Id)
+                    });                    
 
                     let N_Btn = document.createElement("button")
                     N_Btn.classList.add("YN_Btn")
                     N_Btn.textContent = "לא מגיע"
-                    N_Btn.addEventListener('click', HitpakdutBtn(false, EventsData[i].Id))
+                    N_Btn.addEventListener('click', function() {
+                        HitpakdutBtn(false, EventsData[i].Id)
+                    });
 
                     YN_Box.appendChild(Y_Btn)
                     YN_Box.appendChild(N_Btn)
