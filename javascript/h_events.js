@@ -19,7 +19,7 @@ const BackBtn = document.getElementById("Forward")
 const EventName = document.getElementById("EventName")
 const EventDescription = document.getElementById("EventDescription")
 
-let IsTimeOut = false
+let IsHaveEvent = false
 
 fetch(`https://icf-api-ten.vercel.app/GetAllEvents`)
     .then(response => response.json())
@@ -117,8 +117,6 @@ function UpdateCalender() {
 
     daysbnt.forEach(day => {
         day.addEventListener('click', function() {
-            if (IsTimeOut)
-                return
 
             let LastDivPressed = document.querySelector('.currect_div')
             if (LastDivPressed)
@@ -130,46 +128,45 @@ function UpdateCalender() {
             for (let i = 0; i < Details.length; i++) {
                 Details[i].remove()
             }
+       
+            IsHaveEvent = false
 
-            EventName.textContent = "טוען מידע..."
-            EventDescription.textContent = "נא המתן מספר שניות"
+            for (let i = 0; i < EventsData.length; i++)
+            {
+                let CurrectEventDate = new Date(EventsData[i].Date)
+                let EventDay = CurrectEventDate.getDate()
+                let EventMonth = CurrectEventDate.getMonth()
 
-            IsTimeOut = true
-            fetch(`https://icf-api-ten.vercel.app/GetCurrentDayEvent?Year=${year}&Month=${month}&Day=${this.id}`)
-            .then(response => response.json())
-            .then(data => {
+                if(EventMonth == month - 1 && EventDay == this.id)
+                {
+                    IsHaveEvent = true
 
-                if (data.results && data.results.length > 0) {
-                    EventName.textContent = data.results[0].Title
-                    EventDescription.textContent = "תיאור - " + data.results[0].Description
-                    // D_Contex
+                    EventName.textContent = EventsData.Title
+                    EventDescription.textContent = "תיאור - " + EventsData.Description
+
                     let EventType = document.createElement("p")
                     EventType.classList.add('D_Contex')
-                    EventType.textContent = "סוג האירוע - " + data.results[0].EventType
+                    EventType.textContent = "סוג האירוע - " + EventsData.EventType
 
                     let Creator = document.createElement("p")
                     Creator.classList.add('D_Contex')
-                    Creator.textContent = "יוצר האירוע - " + data.results[0].Creator
+                    Creator.textContent = "יוצר האירוע - " + EventsData.Creator
 
                     let Time = document.createElement("p")
                     Time.classList.add('D_Contex')
-                    Time.textContent = "שעה - " + data.results[0].Time
+                    Time.textContent = "שעה - " + EventsData.Time
 
                     DetailsBox.appendChild(EventType)
                     DetailsBox.appendChild(Creator)
                     DetailsBox.appendChild(Time)
                 }
-                else {
-                    EventName.textContent = "פרטים"
-                    EventDescription.textContent = "אין אירוע ביום זה."
-                }
+            }
 
-                IsTimeOut = false
-            })
-            .catch(error => {
-                IsTimeOut = false
-            })
-            
+            if (!IsHaveEvent)
+            {
+                EventName.textContent = "פרטים"
+                EventDescription.textContent = "אין אירוע ביום זה."
+            }
         })
     })
 
