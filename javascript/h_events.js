@@ -19,8 +19,6 @@ const BackBtn = document.getElementById("Forward")
 const EventName = document.getElementById("EventName")
 const EventDescription = document.getElementById("EventDescription")
 
-let IsHaveEvent = false
-
 fetch(`https://icf-api-ten.vercel.app/GetAllEvents`)
     .then(response => response.json())
     .then(data => {
@@ -124,12 +122,11 @@ function UpdateCalender() {
             LastDivPressed = this
             LastDivPressed.classList.add('currect_div')
 
-            let Details = document.querySelectorAll(".D_Contex, .DS_Title")
+            let Details = document.querySelectorAll(".D_Contex, .DS_Title, .Space")
             for (let i = 0; i < Details.length; i++) {
                 Details[i].remove()
             }
        
-            IsHaveEvent = false
             let CountEvents = 0
 
             for (let i = 0; i < EventsData.length; i++)
@@ -140,7 +137,6 @@ function UpdateCalender() {
 
                 if(EventMonth == month - 1 && EventDay == this.id)
                 {
-                    IsHaveEvent = true
                     CountEvents++
 
                     if (CountEvents > 1) {
@@ -174,8 +170,12 @@ function UpdateCalender() {
                 }
             }
 
-            if (!IsHaveEvent)
-            {
+            if (CountEvents > 0) {
+                let Space = document.createElement("div")
+                Space.classList.add('Space')
+                DetailsBox.appendChild(Space)
+            }
+            else {
                 EventName.textContent = "פרטים"
                 EventDescription.textContent = "אין אירוע ביום זה."
             }
