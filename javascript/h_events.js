@@ -19,6 +19,8 @@ const BackBtn = document.getElementById("Forward")
 const EventName = document.getElementById("EventName")
 const EventDescription = document.getElementById("EventDescription")
 
+let IsTimeOut = false
+
 fetch(`https://icf-api-ten.vercel.app/GetAllEvents`)
     .then(response => response.json())
     .then(data => {
@@ -115,6 +117,9 @@ function UpdateCalender() {
 
     daysbnt.forEach(day => {
         day.addEventListener('click', function() {
+            if (IsTimeOut)
+                return
+
             let LastDivPressed = document.querySelector('.currect_div')
             if (LastDivPressed)
                 LastDivPressed.classList.remove('currect_div')
@@ -129,6 +134,7 @@ function UpdateCalender() {
             EventName.textContent = "טוען מידע..."
             EventDescription.textContent = "נא המתן מספר שניות"
 
+            IsTimeOut = true
             fetch(`https://icf-api-ten.vercel.app/GetCurrentDayEvent?Year=${year}&Month=${month}&Day=${this.id}`)
             .then(response => response.json())
             .then(data => {
@@ -157,9 +163,13 @@ function UpdateCalender() {
                     EventName.textContent = "פרטים"
                     EventDescription.textContent = "אין אירוע ביום זה."
                 }
+
+                IsTimeOut = false
             })
             .catch(error => {
+                IsTimeOut = false
             })
+            
         })
     })
 
