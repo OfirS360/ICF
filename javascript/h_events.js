@@ -146,7 +146,12 @@ function UpdateCalender() {
                         NewEventTitle.classList.add("DS_Title")
                         NewEventTitle.textContent = EventsData[i].Title
 
+                        let NewEventDescription = document.createElement("p")
+                        NewEventDescription.classList.add("D_Contex")
+                        NewEventDescription.textContent = "תיאור - " + EventsData[i].Description
+
                         DetailsBox.appendChild(NewEventTitle)
+                        DetailsBox.appendChild(NewEventDescription)
                     }
                     else {
                         EventName.textContent = EventsData[i].Title
