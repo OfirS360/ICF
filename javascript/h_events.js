@@ -130,6 +130,7 @@ function UpdateCalender() {
             }
        
             IsHaveEvent = false
+            let CountEvents = 0
 
             for (let i = 0; i < EventsData.length; i++)
             {
@@ -140,9 +141,19 @@ function UpdateCalender() {
                 if(EventMonth == month - 1 && EventDay == this.id)
                 {
                     IsHaveEvent = true
+                    CountEvents++
 
-                    EventName.textContent = EventsData[i].Title
-                    EventDescription.textContent = "תיאור - " + EventsData[i].Description
+                    if (CountEvents > 1) {
+                        let NewEventTitle = document.createElement("h1")
+                        NewEventTitle.classList.add("D_Title")
+                        NewEventTitle.textContent = EventsData[i].Title
+
+                        DetailsBox.appendChild(NewEventTitle)
+                    }
+                    else {
+                        EventName.textContent = EventsData[i].Title
+                        EventDescription.textContent = "תיאור - " + EventsData[i].Description
+                    }
 
                     let EventType = document.createElement("p")
                     EventType.classList.add('D_Contex')
