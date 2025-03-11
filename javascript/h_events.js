@@ -123,7 +123,7 @@ function UpdateCalender() {
             LastDivPressed = this
             LastDivPressed.classList.add('currect_div')
 
-            let Details = document.querySelectorAll(".D_Contex, .DS_Title, .Space")
+            let Details = document.querySelectorAll(".D_Contex, .DS_Title, .Space, .YN_Box, .YN_Btn")
             for (let i = 0; i < Details.length; i++) {
                 Details[i].remove()
             }
@@ -173,6 +173,24 @@ function UpdateCalender() {
                     DetailsBox.appendChild(EventType)
                     DetailsBox.appendChild(Creator)
                     DetailsBox.appendChild(Time)
+
+                    let YN_Box = document.createElement("span")
+                    YN_Box.classList.add("YN_Box")
+                    
+                    DetailsBox.appendChild(YN_Box)
+
+                    let Y_Btn = document.createElement("button")
+                    Y_Btn.classList.add("YN_Btn")
+                    Y_Btn.textContent = "מגיע"
+                    Y_Btn.addEventListener('click', HitpakdutBtn(true, EventsData[i].Id))
+
+                    let N_Btn = document.createElement("button")
+                    N_Btn.classList.add("YN_Btn")
+                    N_Btn.textContent = "לא מגיע"
+                    N_Btn.addEventListener('click', HitpakdutBtn(false, EventsData[i].Id))
+
+                    YN_Box.appendChild(Y_Btn)
+                    YN_Box.appendChild(N_Btn)
                 }
             }
 
@@ -227,4 +245,31 @@ function getLastDaysOfMonth(year, month, daysCount) {
     }
 
     return lastDays;
+}
+
+// לחיצה על כפתור התפקדות
+function HitpakdutBtn(IsComing, Id) {
+    let HitpakdutData = {
+        Team: UserData.Team,
+        IsComing: IsComing,
+        Id: Id,
+        SteamId: UserData.SteamId
+    }
+
+    fetch("https://icf-api-ten.vercel.app/UpdateHitpakdut", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(HitpakdutData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Success:", data);
+        console.log("Form submitted successfully!");
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        console.log("Error submitting the form.");
+    });
 }

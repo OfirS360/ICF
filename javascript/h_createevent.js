@@ -28,8 +28,6 @@ SubmitBtn.onclick = () => {
         .then(data => {
             console.log("Success:", data);
             console.log("Form submitted successfully!");
-            alert("האירוע נוצר")
-            window.location.href = "h_events.html";
         })
         .catch(error => {
             console.error("Error:", error);

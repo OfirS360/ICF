@@ -343,7 +343,6 @@ a img {
 
     width: 400px;
     height: 100%;
-    max-height: 700px;
 
     background-color: #151a22;
     border-radius: 10px;
@@ -428,13 +427,13 @@ a img {
 
     background-color: #202833;
     color: #09bfca;
-    font-size: 30px;
+    font-size: 35px;
 
     border: none;
     border-radius: 50px;
 
-    width: 65px;
-    height: 65px;
+    width: 75px;
+    height: 75px;
 
     transition: background-color 0.3s;
 }
@@ -510,4 +509,34 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .Space {
     margin-bottom: 25px;
+}
+
+.YN_Box {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+
+    width: 100%;
+}
+
+.YN_Btn {
+    border: none;
+
+    font-family: "Heebo", system-ui;
+    font-weight: 600;
+    font-size: 14px;
+    background-color: #202732;
+    color: #09bfca;
+
+    border-radius: 50px;
+
+    height: 50px;
+    width: 85px;
+
+    transition: background-color 0.3s;
+}
+
+.YN_Btn:hover {
+    background-color: #2b3544;
 }
