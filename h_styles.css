@@ -365,6 +365,13 @@ a img {
     color: #09bfca;
 }
 
+.DS_Title {
+    width: 100%;
+    border-block-start:2px solid;
+
+    padding-top: 20px;
+}
+
 .C_Title {
     color: #09bfca;
     font-family: "Heebo", system-ui;
@@ -415,11 +422,8 @@ a img {
 }
 
 .PlusBtn {
-    position: absolute;
-    bottom: 2%;
-    left: 50%;
-    transform: translateX(-50%);
-
+    position: fixed;
+    bottom: 5%;
     align-self: center;
 
     background-color: #202833;
@@ -505,5 +509,5 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .Space {
-    margin-bottom: 100px;
+    margin-bottom: 25px;
 }

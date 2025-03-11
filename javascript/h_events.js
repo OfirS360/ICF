@@ -9,6 +9,7 @@ let month = today.getMonth() + 1;
 let day = today.getDate();
 
 let TC_Title = document.getElementById("TC_Title")
+const Content = document.getElementById("content")
 const EventBox = document.getElementById("EventsBox")
 const Calender = document.getElementById("calendar")
 const DetailsBox = document.getElementById("Details")
@@ -41,7 +42,7 @@ if (UserData.Premission_Level > 0)
     let AddEventBtn = document.createElement("button")
     AddEventBtn.classList.add("PlusBtn")
     AddEventBtn.textContent = "+"
-    DetailsBox.appendChild(AddEventBtn)
+    Content.appendChild(AddEventBtn)
 
     AddEventBtn.onclick = () => {
         window.location.href = "h_createevent.html";
