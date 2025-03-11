@@ -141,20 +141,20 @@ function UpdateCalender() {
                 {
                     IsHaveEvent = true
 
-                    EventName.textContent = EventsData.Title
-                    EventDescription.textContent = "תיאור - " + EventsData.Description
+                    EventName.textContent = EventsData[i].Title
+                    EventDescription.textContent = "תיאור - " + EventsData[i].Description
 
                     let EventType = document.createElement("p")
                     EventType.classList.add('D_Contex')
-                    EventType.textContent = "סוג האירוע - " + EventsData.EventType
+                    EventType.textContent = "סוג האירוע - " + EventsData[i].EventType
 
                     let Creator = document.createElement("p")
                     Creator.classList.add('D_Contex')
-                    Creator.textContent = "יוצר האירוע - " + EventsData.Creator
+                    Creator.textContent = "יוצר האירוע - " + EventsData[i].Creator
 
                     let Time = document.createElement("p")
                     Time.classList.add('D_Contex')
-                    Time.textContent = "שעה - " + EventsData.Time
+                    Time.textContent = "שעה - " + EventsData[i].Time
 
                     DetailsBox.appendChild(EventType)
                     DetailsBox.appendChild(Creator)
