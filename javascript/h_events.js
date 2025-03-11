@@ -19,25 +19,21 @@ const BackBtn = document.getElementById("Forward")
 const EventName = document.getElementById("EventName")
 const EventDescription = document.getElementById("EventDescription")
 
-if (EventsData) {
-    UpdateCalender();
-} else {
+fetch(`https://icf-api-ten.vercel.app/GetAllEvents`)
+    .then(response => response.json())
+    .then(data => {
 
-    fetch(`https://icf-api-ten.vercel.app/GetAllEvents`)
-        .then(response => response.json())
-        .then(data => {
+        if (data.results && data.results.length > 0) {
+            sessionStorage.setItem("Events", JSON.stringify(data.results));
+            EventsData = JSON.parse(sessionStorage.getItem("Events"));
 
-            if (data.results && data.results.length > 0) {
-                sessionStorage.setItem("Events", JSON.stringify(data.results));
-                EventsData = JSON.parse(sessionStorage.getItem("Events"));
+            UpdateCalender();
+        }
+    })
+    .catch(error => {
+        console.error("Error fetching events:", error);
+    });
 
-                UpdateCalender();
-            }
-        })
-        .catch(error => {
-            console.error("Error fetching events:", error);
-        });
-}
 
 
 if (UserData.Premission_Level > 0)
@@ -99,8 +95,6 @@ function UpdateCalender() {
         let newDiv = document.createElement('div')
         newDiv.classList.add('c_contact')
         newDiv.classList.add('c_btn')
-        if (i == 0)
-            newDiv.classList.add('currect_div')
         newDiv.id = days[i]
         newDiv.textContent = days[i]
             
