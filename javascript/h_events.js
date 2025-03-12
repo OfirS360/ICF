@@ -4,6 +4,9 @@ EventsData = JSON.parse(EventsData)
 const today = new Date();
 const months = ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"];
 
+const Teams = ["מברג", "מכונה", "עקרב", "תלתן", "לביא", "לא מגיע"]
+const TeamsKey = ["Mavreg", "Mechine", "Akrav", "Tiltan", "Lavie", "NotComing"]
+
 let year = today.getFullYear();
 let month = today.getMonth() + 1;
 let day = today.getDate();
@@ -123,7 +126,7 @@ function UpdateCalender() {
             LastDivPressed = this
             LastDivPressed.classList.add('currect_div')
 
-            let Details = document.querySelectorAll(".D_Contex, .DS_Title, .Space, .YN_Box, .YN_Btn")
+            let Details = document.querySelectorAll(".D_Contex, .DS_Title, .Space, .YN_Box, .YN_Btn, .ProgressBar")
             for (let i = 0; i < Details.length; i++) {
                 Details[i].remove()
             }
@@ -174,6 +177,21 @@ function UpdateCalender() {
                     DetailsBox.appendChild(Creator)
                     DetailsBox.appendChild(Time)
 
+                    // Hitpakdut
+                    for (let i = 0; i < 6; i++) {
+                        let TeamLabel = document.createElement("p")
+                        TeamLabel.classList.add('D_Contex')
+                        TeamLabel.textContent = Teams[i]
+                        
+                        let Progress = document.createElement("progress")
+                        Progress.classList.add("ProgressBar")
+                        Progress.Id = EventsData[i].Id + `${i}`
+                        Progress.max = 100
+
+                        DetailsBox.appendChild(TeamLabel)
+                        DetailsBox.appendChild(Progress)
+                    }
+
                     let YN_Box = document.createElement("span")
                     YN_Box.classList.add("YN_Box")
                     
@@ -184,6 +202,7 @@ function UpdateCalender() {
                     Y_Btn.textContent = "מגיע"
                     Y_Btn.addEventListener('click', function() {
                         HitpakdutBtn(true, EventsData[i].Id)
+                        UpdateHitpakdut(EventsData[i].id)
                     });                    
 
                     let N_Btn = document.createElement("button")
@@ -191,6 +210,7 @@ function UpdateCalender() {
                     N_Btn.textContent = "לא מגיע"
                     N_Btn.addEventListener('click', function() {
                         HitpakdutBtn(false, EventsData[i].Id)
+                        UpdateHitpakdut(EventsData[i].id)
                     });
 
                     YN_Box.appendChild(Y_Btn)
@@ -249,6 +269,33 @@ function getLastDaysOfMonth(year, month, daysCount) {
     }
 
     return lastDays;
+}
+
+// מעדכן נתוני התפקדות
+function UpdateHitpakdut(EventId, HitpakdutData)
+{
+    if (!HitpakdutData)
+    {
+        fetch(`https://icf-api-ten.vercel.app/GetEventHitpakdut?EventId=${EventId}`)
+        .then(response => response.json())
+        .then(data => {
+    
+            if (data.result) {
+                HitpakdutData = data.result
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching events:", error);
+        });
+    }
+    
+    let TotalActive = HitpakdutData.length
+
+    for (let i = 0; i < 6; i++) {
+        let Progress = document.querySelector(EventId + `${i}`)
+        Progress.value = 100.0 / TotalActive * HitpakdutData[TeamsKey[i]].length
+        
+    }
 }
 
 // לחיצה על כפתור התפקדות
