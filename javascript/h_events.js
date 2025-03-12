@@ -266,13 +266,11 @@ function HitpakdutBtn(IsComing, Id) {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(HitpakdutData),
-        mode: "no-cors"
+        body: JSON.stringify(HitpakdutData)
     })
     .then(response => response.json())
     .then(data => {
         console.log("Success:", data);
-        console.log("Form submitted successfully!");
     })
     .catch(error => {
         console.error("Error:", error);
