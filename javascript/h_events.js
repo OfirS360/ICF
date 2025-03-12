@@ -178,14 +178,14 @@ function UpdateCalender() {
                     DetailsBox.appendChild(Time)
 
                     // Hitpakdut
-                    for (let i = 0; i < 6; i++) {
+                    for (let j = 0; j < 6; j++) {
                         let TeamLabel = document.createElement("p")
                         TeamLabel.classList.add('D_Contex')
-                        TeamLabel.textContent = Teams[i]
+                        TeamLabel.textContent = Teams[j]
                         
                         let Progress = document.createElement("progress")
                         Progress.classList.add("ProgressBar")
-                        Progress.Id = EventsData[i].Id + `${i}`
+                        Progress.id = `Progress${EventsData[i].Id}${j}`
                         Progress.max = 100
 
                         DetailsBox.appendChild(TeamLabel)
@@ -202,7 +202,6 @@ function UpdateCalender() {
                     Y_Btn.textContent = "מגיע"
                     Y_Btn.addEventListener('click', function() {
                         HitpakdutBtn(true, EventsData[i].Id)
-                        UpdateHitpakdut(EventsData[i].id)
                     });                    
 
                     let N_Btn = document.createElement("button")
@@ -210,11 +209,12 @@ function UpdateCalender() {
                     N_Btn.textContent = "לא מגיע"
                     N_Btn.addEventListener('click', function() {
                         HitpakdutBtn(false, EventsData[i].Id)
-                        UpdateHitpakdut(EventsData[i].id)
                     });
 
                     YN_Box.appendChild(Y_Btn)
                     YN_Box.appendChild(N_Btn)
+
+                    UpdateHitpakdut(EventsData[i].Id, null)
                 }
             }
 
@@ -272,31 +272,45 @@ function getLastDaysOfMonth(year, month, daysCount) {
 }
 
 // מעדכן נתוני התפקדות
-function UpdateHitpakdut(EventId, HitpakdutData)
-{
-    if (!HitpakdutData)
-    {
-        fetch(`https://icf-api-ten.vercel.app/GetEventHitpakdut?EventId=${EventId}`)
-        .then(response => response.json())
-        .then(data => {
-    
-            if (data.result) {
-                HitpakdutData = data.result
+async function UpdateHitpakdut(EventId, HitpakdutData) {
+    if (HitpakdutData == null) {
+        try {
+            const response = await fetch(`https://icf-api-ten.vercel.app/GetEventHitpakdut?EventId=${EventId}`);
+            const data = await response.json();
+            
+            if (data.results) {
+                HitpakdutData = data.results[0].Hitpakdut;
+            } else {
+                console.error("לא נמצאו נתוני התפקדות עבור EventId:", EventId);
+                return;
             }
-        })
-        .catch(error => {
-            console.error("Error fetching events:", error);
-        });
+        } catch (error) {
+            return;
+        }
     }
+
+    if (typeof HitpakdutData === "string") {
+        HitpakdutData = JSON.parse(HitpakdutData);
+    }    
     
-    let TotalActive = HitpakdutData.length
+    let TotalActive = 0;
 
     for (let i = 0; i < 6; i++) {
-        let Progress = document.querySelector(EventId + `${i}`)
-        Progress.value = 100.0 / TotalActive * HitpakdutData[TeamsKey[i]].length
-        
+        TotalActive += HitpakdutData[TeamsKey[i]].length
+    }
+    
+    if (TotalActive > 0) {
+        for (let i = 0; i < 6; i++) {
+            let Progress = document.querySelector(`#Progress${EventId}${i}`);
+            if (Progress) {
+                Progress.value = 100.0 / TotalActive * HitpakdutData[TeamsKey[i]].length;
+            } else {
+                console.warn(`לא נמצא #Progress${EventId}${i}`);
+            }
+        }
     }
 }
+
 
 // לחיצה על כפתור התפקדות
 function HitpakdutBtn(IsComing, Id) {
@@ -317,7 +331,11 @@ function HitpakdutBtn(IsComing, Id) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log("Success:", data);
+        if (data.results) {
+            UpdateHitpakdut(Id, data.results);
+        } else {
+            console.warn("No updated Hitpakdut data received");
+        }
     })
     .catch(error => {
         console.error("Error:", error);
