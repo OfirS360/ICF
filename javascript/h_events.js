@@ -214,7 +214,22 @@ function UpdateCalender() {
                     YN_Box.appendChild(Y_Btn)
                     YN_Box.appendChild(N_Btn)
 
-                    UpdateHitpakdut(EventsData[i].Id, null)
+                    let CurrectHitpakdut = JSON.parse(EventsData[i].Hitpakdut) 
+
+                    let TotalActive = 0;
+
+                    for (let j = 0; j < 6; j++) {
+                        TotalActive += CurrectHitpakdut[TeamsKey[j]].length
+                    }
+
+                    for (let j = 0; j < 6; j++) {
+                        let Progress = document.querySelector(`#Progress${EventsData[i].Id}${j}`);
+                        if (Progress && CurrectHitpakdut[TeamsKey[j]].length != 0) {
+                            Progress.value = 100.0 / TotalActive * CurrectHitpakdut[TeamsKey[j]].length;
+                        } else {
+                            Progress.value = 0;
+                        }
+                    }
                 }
             }
 
@@ -291,8 +306,16 @@ async function UpdateHitpakdut(EventId, HitpakdutData) {
 
     if (typeof HitpakdutData === "string") {
         HitpakdutData = JSON.parse(HitpakdutData);
-    }    
-    
+    }
+
+    for (let i = 0; i < EventsData.length; i++) {
+        if (EventsData[i].Id == EventId) {
+            EventsData[i].Hitpakdut = JSON.stringify(HitpakdutData)
+            sessionStorage.setItem("Events", JSON.stringify(EventsData[EventId]));
+        }
+        
+    }
+
     let TotalActive = 0;
 
     for (let i = 0; i < 6; i++) {
@@ -314,7 +337,6 @@ async function UpdateHitpakdut(EventId, HitpakdutData) {
 
 // לחיצה על כפתור התפקדות
 function HitpakdutBtn(IsComing, Id) {
-    console.log(IsComing, Id, UserData.Team, UserData.SteamId)
     let HitpakdutData = {
         Team: UserData.Team,
         IsComing: IsComing,
