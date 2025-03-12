@@ -365,7 +365,7 @@ a img {
 }
 
 .D_Contex {
-    margin-top: 0;
+    margin-bottom: 2px;
 }
 
 .DS_Title {
@@ -537,6 +537,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
     height: 50px;
     width: 85px;
+
+    margin-top: 15px;
 
     transition: background-color 0.3s;
 }
