@@ -161,27 +161,27 @@ function UpdateCalender() {
 
                         let NewEventDescription = document.createElement("p")
                         NewEventDescription.classList.add("D_Contex")
-                        NewEventDescription.innerHTML = '<span style="color: #09bfca; font-weight: 600;">תיאור - </span> ' + EventsData[i].Description;
+                        NewEventDescription.innerHTML = '<span style="color: #09bfca; font-weight: 600; margin-left: 5px;">תיאור - </span> ' + EventsData[i].Description;
 
                         DetailsBox.appendChild(NewEventTitle)
                         DetailsBox.appendChild(NewEventDescription)
                     }
                     else {
                         EventName.textContent = EventsData[i].Title
-                        EventDescription.innerHTML = '<span style="color: #09bfca; font-weight: 600;">תיאור - </span> ' + EventsData[i].Description
+                        EventDescription.innerHTML = '<span style="color: #09bfca; font-weight: 600; margin-left: 5px;">תיאור - </span> ' + EventsData[i].Description
                     }
 
                     let EventType = document.createElement("p")
                     EventType.classList.add('D_Contex')
-                    EventType.innerHTML = '<span style="color: #09bfca; font-weight: 600;">סוג האירוע - </span> ' + EventsData[i].EventType
+                    EventType.innerHTML = '<span style="color: #09bfca; font-weight: 600; margin-left: 5px;">סוג האירוע - </span> ' + EventsData[i].EventType
 
                     let Creator = document.createElement("p")
                     Creator.classList.add('D_Contex')
-                    Creator.innerHTML = '<span style="color: #09bfca; font-weight: 600;">יוצר האירוע - </span> ' + EventsData[i].Creator
+                    Creator.innerHTML = '<span style="color: #09bfca; font-weight: 600; margin-left: 5px;">יוצר האירוע - </span> ' + EventsData[i].Creator
 
                     let Time = document.createElement("p")
                     Time.classList.add('D_Contex')
-                    Time.innerHTML = '<span style="color: #09bfca; font-weight: 600;">שעה - </span> ' +  EventsData[i].Time.slice(0, -3)
+                    Time.innerHTML = '<span style="color: #09bfca; font-weight: 600; margin-left: 5px;">שעה - </span> ' +  EventsData[i].Time.slice(0, -3)
 
                     DetailsBox.appendChild(EventType)
                     DetailsBox.appendChild(Creator)
@@ -192,8 +192,6 @@ function UpdateCalender() {
                         let TeamLabel = document.createElement("p")
                         TeamLabel.classList.add('D_Contex')
                         TeamLabel.id = `TeamLable${EventsData[i].Id}${j}`
-
-                        console.log(TeamsKey[j], " | ", Teams[j], " | ", j)
 
                         if (j != 5) {
                             let imgSrc = `img/${TeamsKey[j]}.png`;
