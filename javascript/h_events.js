@@ -1,6 +1,14 @@
 let EventsData = sessionStorage.getItem("Events")
-if (EventsData)
-    EventsData = JSON.parse(EventsData)
+if (EventsData) {
+    try {
+        EventsData = JSON.parse(EventsData);
+    } catch (error) {
+        EventsData = [];
+    }
+} 
+else {
+    EventsData = [];
+}
 
 const today = new Date();
 const months = ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"];
