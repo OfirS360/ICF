@@ -343,6 +343,7 @@ a img {
 
     width: 400px;
     height: 100%;
+    max-height: 715px;
 
     background-color: #151a22;
     border-radius: 10px;
@@ -552,6 +553,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-radius: 20px;
 
     width: 75%;
+    min-height: 15px;
 }
 
 progress::-webkit-progress-bar {
