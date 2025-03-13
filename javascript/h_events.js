@@ -193,11 +193,21 @@ function UpdateCalender() {
                         TeamLabel.classList.add('D_Contex')
                         TeamLabel.id = `TeamLable${EventsData[i].Id}${j}`
 
-                        if (j != 5)
-                            TeamLabel.innerHTML = `<img src="img/${TeamsKey[j]}.png" class="TeamImg" alt=""> ` + Teams[j]
-                        else
-                            TeamLabel.innerHTML = Teams[j]
+                        console.log(TeamsKey[j], " | ", Teams[j], " | ", j)
 
+                        if (j != 5) {
+                            let imgSrc = `img/${TeamsKey[j]}.png`;
+                            let img = new Image();
+                            img.src = imgSrc;
+                            img.onload = function() {
+                                TeamLabel.innerHTML = `<img src="${imgSrc}" class="TeamImg" alt=""> ${Teams[j]}`;
+                            }
+                            img.onerror = function() {
+                                console.error("Error loading image:", imgSrc);
+                            }
+                        } else {
+                            TeamLabel.innerHTML = Teams[j];
+                        }
 
                         let Progress = document.createElement("progress")
                         Progress.classList.add("ProgressBar")
