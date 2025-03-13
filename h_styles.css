@@ -559,14 +559,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 progress::-webkit-progress-bar {
     background-color: #323f52;
     border-radius: 10px; 
-  }
+}
   
   progress::-webkit-progress-value {
     background-color: #09bfca;
     border-radius: 10px;
-  }
+}
   
   progress::-moz-progress-bar {
-    background-color: #09bfca   ;
+    background-color: #09bfca;
     border-radius: 10px;
-  }
+}
+
+.TeamImg {
+    height: 25px;
+    border-radius: 20px;
+}
