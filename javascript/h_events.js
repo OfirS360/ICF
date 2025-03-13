@@ -181,6 +181,7 @@ function UpdateCalender() {
                     for (let j = 0; j < 6; j++) {
                         let TeamLabel = document.createElement("p")
                         TeamLabel.classList.add('D_Contex')
+                        TeamLabel.id = `TeamLable${EventsData[i].Id}${j}`
                         TeamLabel.textContent = Teams[j]
                         
                         let Progress = document.createElement("progress")
@@ -224,6 +225,10 @@ function UpdateCalender() {
 
                     for (let j = 0; j < 6; j++) {
                         let Progress = document.querySelector(`#Progress${EventsData[i].Id}${j}`);
+                        let TeamLabel = document.querySelector(`#TeamLable${EventsData[i].Id}${j}`);
+
+                        TeamLabel.textContent = Teams[j] + " - " + CurrectHitpakdut[TeamsKey[j]].length
+
                         if (Progress && CurrectHitpakdut[TeamsKey[j]].length != 0) {
                             Progress.value = 100.0 / TotalActive * CurrectHitpakdut[TeamsKey[j]].length;
                         } else {
@@ -325,6 +330,10 @@ async function UpdateHitpakdut(EventId, HitpakdutData) {
     if (TotalActive > 0) {
         for (let i = 0; i < 6; i++) {
             let Progress = document.querySelector(`#Progress${EventId}${i}`);
+            let TeamLabel = document.querySelector(`#TeamLable${EventId}${i}`);
+
+            TeamLabel.textContent = Teams[i] + " - " + HitpakdutData[TeamsKey[i]].length
+
             if (Progress) {
                 Progress.value = 100.0 / TotalActive * HitpakdutData[TeamsKey[i]].length;
             } else {
