@@ -366,6 +366,9 @@ a img {
 }
 
 .D_Contex {
+    display: flex;
+    align-items: center;
+    
     margin-bottom: 2px;
 }
 
@@ -574,4 +577,6 @@ progress::-webkit-progress-bar {
 .TeamImg {
     height: 25px;
     border-radius: 20px;
+    
+    margin-left: 10px;
 }

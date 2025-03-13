@@ -135,7 +135,7 @@ function UpdateCalender() {
             LastDivPressed = this
             LastDivPressed.classList.add('currect_div')
 
-            let Details = document.querySelectorAll(".D_Contex, .DS_Title, .Space, .YN_Box, .YN_Btn, .ProgressBar")
+            let Details = document.querySelectorAll(".D_Contex, .DS_Title, .Space, .YN_Box, .YN_Btn, .ProgressBar, .TeamImg")
             for (let i = 0; i < Details.length; i++) {
                 if (!(Details[i].id === "EventDescription"))
                     Details[i].remove()
@@ -161,27 +161,27 @@ function UpdateCalender() {
 
                         let NewEventDescription = document.createElement("p")
                         NewEventDescription.classList.add("D_Contex")
-                        NewEventDescription.innerHTML = '<span style="color: #09bfca; font-weight: 600;">תיאור -</span> ' + EventsData[i].Description;
+                        NewEventDescription.innerHTML = '<span style="color: #09bfca; font-weight: 600;">תיאור - </span> ' + EventsData[i].Description;
 
                         DetailsBox.appendChild(NewEventTitle)
                         DetailsBox.appendChild(NewEventDescription)
                     }
                     else {
                         EventName.textContent = EventsData[i].Title
-                        EventDescription.innerHTML = '<span style="color: #09bfca; font-weight: 600;">תיאור -</span> ' + EventsData[i].Description
+                        EventDescription.innerHTML = '<span style="color: #09bfca; font-weight: 600;">תיאור - </span> ' + EventsData[i].Description
                     }
 
                     let EventType = document.createElement("p")
                     EventType.classList.add('D_Contex')
-                    EventType.innerHTML = '<span style="color: #09bfca; font-weight: 600;">סוג האירוע -</span> ' + EventsData[i].EventType
+                    EventType.innerHTML = '<span style="color: #09bfca; font-weight: 600;">סוג האירוע - </span> ' + EventsData[i].EventType
 
                     let Creator = document.createElement("p")
                     Creator.classList.add('D_Contex')
-                    Creator.innerHTML = '<span style="color: #09bfca; font-weight: 600;">יוצר האירוע -</span> ' + EventsData[i].Creator
+                    Creator.innerHTML = '<span style="color: #09bfca; font-weight: 600;">יוצר האירוע - </span> ' + EventsData[i].Creator
 
                     let Time = document.createElement("p")
                     Time.classList.add('D_Contex')
-                    Time.innerHTML = '<span style="color: #09bfca; font-weight: 600;">שעה -</span> ' +  EventsData[i].Time.slice(0, -3)
+                    Time.innerHTML = '<span style="color: #09bfca; font-weight: 600;">שעה - </span> ' +  EventsData[i].Time.slice(0, -3)
 
                     DetailsBox.appendChild(EventType)
                     DetailsBox.appendChild(Creator)
@@ -192,8 +192,13 @@ function UpdateCalender() {
                         let TeamLabel = document.createElement("p")
                         TeamLabel.classList.add('D_Contex')
                         TeamLabel.id = `TeamLable${EventsData[i].Id}${j}`
-                        TeamLabel.innerHTML = `<img src="img/${TeamsKey[i]}.png" class="TeamImg" alt=""> ` + Teams[j]
-                        
+
+                        if (j != 5)
+                            TeamLabel.innerHTML = `<img src="img/${TeamsKey[j]}.png" class="TeamImg" alt=""> ` + Teams[j]
+                        else
+                            TeamLabel.innerHTML = Teams[j]
+
+
                         let Progress = document.createElement("progress")
                         Progress.classList.add("ProgressBar")
                         Progress.id = `Progress${EventsData[i].Id}${j}`
@@ -342,7 +347,11 @@ async function UpdateHitpakdut(EventId, HitpakdutData) {
             let Progress = document.querySelector(`#Progress${EventId}${i}`);
             let TeamLabel = document.querySelector(`#TeamLable${EventId}${i}`);
 
-            TeamLabel.innerHTML = `<img src="img/${TeamsKey[i]}.png" class="TeamImg" alt="">` + Teams[i] + " - " + HitpakdutData[TeamsKey[i]].length
+            if (i != 5)
+                TeamLabel.innerHTML = `<img src="img/${TeamsKey[i]}.png" class="TeamImg" alt="">` + Teams[i] + " - " + HitpakdutData[TeamsKey[i]].length
+            else
+                TeamLabel.innerHTML = Teams[i] + " - " + HitpakdutData[TeamsKey[i]].length
+
 
             if (Progress) {
                 Progress.value = 100.0 / TotalActive * HitpakdutData[TeamsKey[i]].length;
