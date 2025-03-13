@@ -1,5 +1,6 @@
 let EventsData = sessionStorage.getItem("Events")
-EventsData = JSON.parse(EventsData)
+if (EventsData)
+    EventsData = JSON.parse(EventsData)
 
 const today = new Date();
 const months = ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"];
@@ -128,7 +129,8 @@ function UpdateCalender() {
 
             let Details = document.querySelectorAll(".D_Contex, .DS_Title, .Space, .YN_Box, .YN_Btn, .ProgressBar")
             for (let i = 0; i < Details.length; i++) {
-                Details[i].remove()
+                if (!(Details[i].id === "EventDescription"))
+                    Details[i].remove()
             }
        
             let CountEvents = 0
@@ -151,27 +153,27 @@ function UpdateCalender() {
 
                         let NewEventDescription = document.createElement("p")
                         NewEventDescription.classList.add("D_Contex")
-                        NewEventDescription.textContent = "תיאור - " + EventsData[i].Description
+                        NewEventDescription.innerHTML = '<span style="color: #09bfca; font-weight: 600;">תיאור -</span> ' + EventsData[i].Description;
 
                         DetailsBox.appendChild(NewEventTitle)
                         DetailsBox.appendChild(NewEventDescription)
                     }
                     else {
                         EventName.textContent = EventsData[i].Title
-                        EventDescription.textContent = "תיאור - " + EventsData[i].Description
+                        EventDescription.innerHTML = '<span style="color: #09bfca; font-weight: 600;">תיאור -</span> ' + EventsData[i].Description
                     }
 
                     let EventType = document.createElement("p")
                     EventType.classList.add('D_Contex')
-                    EventType.textContent = "סוג האירוע - " + EventsData[i].EventType
+                    EventType.innerHTML = '<span style="color: #09bfca; font-weight: 600;">סוג האירוע -</span> ' + EventsData[i].EventType
 
                     let Creator = document.createElement("p")
                     Creator.classList.add('D_Contex')
-                    Creator.textContent = "יוצר האירוע - " + EventsData[i].Creator
+                    Creator.innerHTML = '<span style="color: #09bfca; font-weight: 600;">יוצר האירוע -</span> ' + EventsData[i].Creator
 
                     let Time = document.createElement("p")
                     Time.classList.add('D_Contex')
-                    Time.textContent = "שעה - " + EventsData[i].Time
+                    Time.innerHTML = '<span style="color: #09bfca; font-weight: 600;">שעה -</span> ' +  EventsData[i].Time.slice(0, -3)
 
                     DetailsBox.appendChild(EventType)
                     DetailsBox.appendChild(Creator)
