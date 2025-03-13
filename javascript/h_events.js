@@ -192,7 +192,7 @@ function UpdateCalender() {
                         let TeamLabel = document.createElement("p")
                         TeamLabel.classList.add('D_Contex')
                         TeamLabel.id = `TeamLable${EventsData[i].Id}${j}`
-                        TeamLabel.textContent = Teams[j]
+                        TeamLabel.innerHTML = `<img src="img/${TeamsKey[i]}.png" class="TeamImg" alt=""> ` + Teams[j]
                         
                         let Progress = document.createElement("progress")
                         Progress.classList.add("ProgressBar")
@@ -342,7 +342,7 @@ async function UpdateHitpakdut(EventId, HitpakdutData) {
             let Progress = document.querySelector(`#Progress${EventId}${i}`);
             let TeamLabel = document.querySelector(`#TeamLable${EventId}${i}`);
 
-            TeamLabel.textContent = Teams[i] + " - " + HitpakdutData[TeamsKey[i]].length
+            TeamLabel.innerHTML = `<img src="img/${TeamsKey[i]}.png" class="TeamImg" alt="">` + Teams[i] + " - " + HitpakdutData[TeamsKey[i]].length
 
             if (Progress) {
                 Progress.value = 100.0 / TotalActive * HitpakdutData[TeamsKey[i]].length;
