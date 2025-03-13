@@ -193,20 +193,6 @@ function UpdateCalender() {
                         TeamLabel.classList.add('D_Contex')
                         TeamLabel.id = `TeamLable${EventsData[i].Id}${j}`
 
-                        if (j != 5) {
-                            let imgSrc = `img/${TeamsKey[j]}.png`;
-                            let img = new Image();
-                            img.src = imgSrc;
-                            img.onload = function() {
-                                TeamLabel.innerHTML = `<img src="${imgSrc}" class="TeamImg" alt=""> ${Teams[j]}`;
-                            }
-                            img.onerror = function() {
-                                console.error("Error loading image:", imgSrc);
-                            }
-                        } else {
-                            TeamLabel.innerHTML = Teams[j];
-                        }
-
                         let Progress = document.createElement("progress")
                         Progress.classList.add("ProgressBar")
                         Progress.id = `Progress${EventsData[i].Id}${j}`
@@ -250,7 +236,11 @@ function UpdateCalender() {
                         let Progress = document.querySelector(`#Progress${EventsData[i].Id}${j}`);
                         let TeamLabel = document.querySelector(`#TeamLable${EventsData[i].Id}${j}`);
 
-                        TeamLabel.textContent = Teams[j] + " - " + CurrectHitpakdut[TeamsKey[j]].length
+                        if (j != 5)
+                            TeamLabel.innerHTML = `<img src="img/${TeamsKey[j]}.png" class="TeamImg" alt="">` + Teams[j] + " - " + CurrectHitpakdut[TeamsKey[j]].length
+                        else
+                            TeamLabel.innerHTML =  Teams[j] + " - " + CurrectHitpakdut[TeamsKey[j]].length
+
 
                         if (Progress && CurrectHitpakdut[TeamsKey[j]].length != 0) {
                             Progress.value = 100.0 / TotalActive * CurrectHitpakdut[TeamsKey[j]].length;
