@@ -72,7 +72,7 @@ BackBtn.onclick = () => {
 
 ForwardBtn.onclick = () => {
     month++
-    if (month > 11) {
+    if (month > 12) {
         month = 1
         year++
     }
