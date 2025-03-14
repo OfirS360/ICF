@@ -229,7 +229,8 @@ function UpdateCalender() {
                     let TotalActive = 0;
 
                     for (let j = 0; j < 6; j++) {
-                        TotalActive += CurrectHitpakdut[TeamsKey[j]].length
+                        if (CurrectHitpakdut[TeamsKey[j]].length > TotalActive)
+                            TotalActive = CurrectHitpakdut[TeamsKey[j]].length
                     }
 
                     for (let j = 0; j < 6; j++) {
@@ -337,7 +338,8 @@ async function UpdateHitpakdut(EventId, HitpakdutData) {
     let TotalActive = 0;
 
     for (let i = 0; i < 6; i++) {
-        TotalActive += HitpakdutData[TeamsKey[i]].length
+        if (HitpakdutData[TeamsKey[i]].length > TotalActive)
+        TotalActive = HitpakdutData[TeamsKey[i]].length
     }
     
     if (TotalActive > 0) {
