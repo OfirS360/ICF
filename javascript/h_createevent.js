@@ -1,11 +1,13 @@
-const SubmitBtn = document.getElementById("submit")
+const Form = document.getElementById("CreateEventForm")
 
 if (UserData.Premission_Level == 0)
 {
     window.location.href = "h_events.html";
 }
 
-SubmitBtn.onclick = () => {
+Form.onsubmit = async (event) => {
+    event.preventDefault();
+
     let FormEventDate = {
         Title: document.getElementById("Title").value,
         Description: document.getElementById("Description").value,
@@ -15,7 +17,7 @@ SubmitBtn.onclick = () => {
         Type: document.getElementById("type").value
     }
 
-    if (!(FormEventDate.Title == "" || FormEventDate.Description == "" || FormEventDate.Date == "" || FormEventDate.Time == "" || FormEventDate.Type == ""))
+    if (FormEventDate.Title && FormEventDate.Description && FormEventDate.Date && FormEventDate.Time && FormEventDate.Type)
     {
         fetch("https://icf-api-ten.vercel.app/EventFormSend", {
             method: "POST",
