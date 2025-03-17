@@ -12,8 +12,8 @@ if (!UserData) {
         SteamId: SteamId
     }
 
-    CheckIfUserExist(SteamId)
-    getSteamUser(SteamId.SteamId);
+    await CheckIfUserExist(SteamId)
+    await getSteamUser(SteamId.SteamId);
 }
 
 // def_hp
@@ -156,7 +156,7 @@ async function CheckIfUserExist(SteamId) {
         
         if (data.success) {
             sessionStorage.setItem("userData", JSON.stringify(data.results));
-            UserData = sessionStorage.getItem("userData")
+            UserData = data.results
             console.log(data.results);
         } else {
             alert("המשתמש לא קיים במערכת");
