@@ -1,6 +1,6 @@
 const Form = document.getElementById("CreateEventForm")
 
-if (UserData.Premission_Level == 0)
+if (UserData2.Premission_Level == 0)
 {
     window.location.href = "h_events.html";
 }
@@ -12,7 +12,7 @@ Form.onsubmit = async (event) => {
         Title: document.getElementById("Title").value,
         Description: document.getElementById("Description").value,
         Date: new Date(document.getElementById("Date").value).toISOString().split('T')[0],
-        Creator: UserData.Name,
+        Creator: UserData2.Name,
         Time: document.getElementById("Time").value,
         Type: document.getElementById("type").value
     }
