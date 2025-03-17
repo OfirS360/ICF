@@ -37,24 +37,6 @@ I_Role.value = UserData.Role;
 I_Position.value = UserData.Position;
 I_Rank.value = RankInText[UserData.Rank - 1];
 
-// Steam Profile
-fetch(`https://icf-api-ten.vercel.app/getSteamUser/${UserData.SteamId}`)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-        if (data.response.players.length > 0) {
-            T_Avatar.src = data.response.players[0].avatarfull
-            sessionStorage.setItem("SteamAvatar", data.response.players[0].avatarfull)
-        }
-        else {
-            console.log("המתשמש steam לא נמצא")
-        }
-    }
-    )
-    .catch(error => {
-        console.error("API:", error);
-    });
-
 // Close Events
 fetch(`https://icf-api-ten.vercel.app/GetCloseEvents`)
     .then(response => response.json())
