@@ -15,6 +15,8 @@ async function initializePage() {
 
         await CheckIfUserExist(SteamId);
         await getSteamUser(SteamId.SteamId);
+
+        location.reload(true);
     }
 
     // def_hp
