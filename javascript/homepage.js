@@ -125,30 +125,6 @@ async function CheckIfUserExist(SteamId) {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
-            },
-            body: JSON.stringify(SteamId)
-        });
-
-        const data = await response.json();
-        
-        if (data.success) {
-            sessionStorage.setItem("userData", JSON.stringify(data.results));
-            UserData = sessionStorage.getItem("userData")
-        } else {
-            alert("המשתמש לא קיים במערכת");
-            window.location.replace("index.html");
-        }
-    } catch (error) {
-        console.error("שגיאה בביצוע הבקשה:", error);
-    }
-}
-
-async function CheckIfUserExist(SteamId) {
-    try {
-        const response = await fetch("https://icf-api-ten.vercel.app/Login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
             },  
             body: JSON.stringify(SteamId)
         });
@@ -157,7 +133,7 @@ async function CheckIfUserExist(SteamId) {
         
         if (data.success) {
             sessionStorage.setItem("userData", JSON.stringify(data.results));
-            UserData = data.results
+            UserData = sessionStorage.getItem("userData")
         } else {
             alert("המשתמש לא קיים במערכת");
             window.location.replace("index.html");
