@@ -14,16 +14,39 @@ if (!UserData) {
 
     CheckIfUserExist(SteamId)
     getSteamUser(SteamId.SteamId);
-
-    var script = document.createElement('script');
-    script.src = 'javascript/def_hp.js';
-    script.onload = function() {
-    console.log('הקובץ נטען והופעל בהצלחה!');
-    };
-
-    document.head.appendChild(script);
 }
 
+// def_hp
+let T_Username = document.getElementById("Username")
+let T_Avatar = document.getElementById("avatar")
+let T_Role = document.getElementById("Role")
+let T_Rank = document.getElementById("RankImg")
+let B_Disconnect = document.getElementById("Disconnect")
+
+T_Username.textContent = "שלום, " + UserData2.Name;
+T_Role.textContent = UserData2.Position
+T_Rank.src = `img/Rank${UserData2.Rank}.png`
+
+if (SteamAvatar)
+    T_Avatar.src = SteamAvatar
+else
+    T_Avatar.src = "img/def_img.png"
+
+if (UserData2.Rank > 4) {
+    T_Rank.style.width = "22px"
+    T_Rank.style.transform = `rotate(45deg)`;
+}
+else {
+    T_Rank.style.width = "45px"
+    T_Rank.style.transform = `rotate(-20deg)`;
+}
+
+B_Disconnect.onclick = () => {
+    sessionStorage.clear()
+    window.location.replace("index.html");
+}
+
+// המשך
 let I_Name = document.getElementById("InputName")
 let I_SteamId = document.getElementById("InputSteamId")
 let I_Age = document.getElementById("InputAge")
