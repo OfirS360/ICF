@@ -4,8 +4,6 @@ async function initializePage() {
     let UserData = sessionStorage.getItem("userData");
     UserData = JSON.parse(UserData);
 
-    console.log(UserData);
-
     if (!UserData) {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
@@ -18,8 +16,6 @@ async function initializePage() {
         await CheckIfUserExist(SteamId);
         await getSteamUser(SteamId.SteamId);
     }
-
-    console.log(UserData);
 
     // def_hp
     let T_Username = document.getElementById("Username");
@@ -137,7 +133,7 @@ async function CheckIfUserExist(SteamId) {
         
         if (data.success) {
             sessionStorage.setItem("userData", JSON.stringify(data.results));
-            console.log(data.results);
+            UserData = sessionStorage.getItem("userData")
         } else {
             alert("המשתמש לא קיים במערכת");
             window.location.replace("index.html");
@@ -162,7 +158,6 @@ async function CheckIfUserExist(SteamId) {
         if (data.success) {
             sessionStorage.setItem("userData", JSON.stringify(data.results));
             UserData = data.results
-            console.log(data.results);
         } else {
             alert("המשתמש לא קיים במערכת");
             window.location.replace("index.html");
