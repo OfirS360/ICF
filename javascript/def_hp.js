@@ -2,11 +2,6 @@ let UserData = sessionStorage.getItem("userData")
 UserData = JSON.parse(UserData)
 let SteamAvatar = sessionStorage.getItem("SteamAvatar")
 
-// if (!UserData) {
-//     alert("נא לבצע התחברות לפני כניסה לאזור האישי!")
-//     window.location.replace("index.html");
-// }
-
 let T_Username = document.getElementById("Username")
 let T_Avatar = document.getElementById("avatar")
 let T_Role = document.getElementById("Role")

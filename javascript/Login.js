@@ -2,6 +2,7 @@ let sumbit = document.getElementById("submit");
 
 sumbit.onclick = () => {
     window.location.href = "https://icf-api-ten.vercel.app/auth/steam";
+
 }
     // let formData = {
     //     SteamId: document.getElementById("SteamId").value,
