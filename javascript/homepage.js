@@ -66,6 +66,13 @@ I_Role.value = UserData.Role;
 I_Position.value = UserData.Position;
 I_Rank.value = RankInText[UserData.Rank - 1];
 
+if (UserData.Status) {
+    I_Status.value = "פעיל"
+}
+else {
+    I_Status.value = "לא פעיל"
+}
+
 // Close Events
 fetch(`https://icf-api-ten.vercel.app/GetCloseEvents`)
     .then(response => response.json())
