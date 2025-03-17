@@ -49,7 +49,7 @@ fetch(`https://icf-api-ten.vercel.app/GetAllEvents`)
 
 
 
-if (UserData.Premission_Level > 0)
+if (UserData2.Premission_Level > 0)
 {
     let AddEventBtn = document.createElement("button")
     AddEventBtn.classList.add("PlusBtn")
@@ -228,16 +228,16 @@ function UpdateCalender() {
 
                     let TotalActive = 0;
 
-                    for (let j = 0; j < 6; j++) {
+                    for (let j = 0; j < Object.keys(CurrectHitpakdut).length; j++) {
                         if (CurrectHitpakdut[TeamsKey[j]].length > TotalActive)
                             TotalActive = CurrectHitpakdut[TeamsKey[j]].length
                     }
 
-                    for (let j = 0; j < 6; j++) {
+                    for (let j = 0; j < Object.keys(CurrectHitpakdut).length; j++) {
                         let Progress = document.querySelector(`#Progress${EventsData[i].Id}${j}`);
                         let TeamLabel = document.querySelector(`#TeamLable${EventsData[i].Id}${j}`);
 
-                        if (j != 5)
+                        if (!(Object.keys(CurrectHitpakdut)[j] === "Coming" || Object.keys(CurrectHitpakdut)[j] === "NotComing"))
                             TeamLabel.innerHTML = `<img src="img/${TeamsKey[j]}.png" class="TeamImg" alt="">` + Teams[j] + " - " + CurrectHitpakdut[TeamsKey[j]].length
                         else
                             TeamLabel.innerHTML =  Teams[j] + " - " + CurrectHitpakdut[TeamsKey[j]].length
@@ -337,17 +337,17 @@ async function UpdateHitpakdut(EventId, HitpakdutData) {
 
     let TotalActive = 0;
 
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < Object.keys(HitpakdutData).length; i++) {
         if (HitpakdutData[TeamsKey[i]].length > TotalActive)
         TotalActive = HitpakdutData[TeamsKey[i]].length
     }
     
     if (TotalActive > 0) {
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < Object.keys(HitpakdutData).length; i++) {
             let Progress = document.querySelector(`#Progress${EventId}${i}`);
             let TeamLabel = document.querySelector(`#TeamLable${EventId}${i}`);
 
-            if (i != 5)
+            if (!(Object.keys(HitpakdutData)[i] === "Coming" || Object.keys(HitpakdutData)[i] === "NotComing"))
                 TeamLabel.innerHTML = `<img src="img/${TeamsKey[i]}.png" class="TeamImg" alt="">` + Teams[i] + " - " + HitpakdutData[TeamsKey[i]].length
             else
                 TeamLabel.innerHTML = Teams[i] + " - " + HitpakdutData[TeamsKey[i]].length
@@ -366,10 +366,10 @@ async function UpdateHitpakdut(EventId, HitpakdutData) {
 // לחיצה על כפתור התפקדות
 function HitpakdutBtn(IsComing, Id) {
     let HitpakdutData = {
-        Team: UserData.Team,
+        Team: UserData2.Team,
         IsComing: IsComing,
         Id: Id,
-        SteamId: UserData.SteamId
+        SteamId: UserData2.SteamId
     }
 
     fetch("https://icf-api-ten.vercel.app/UpdateHitpakdut", {

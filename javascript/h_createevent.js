@@ -8,7 +8,7 @@ if (UserData.Premission_Level == 0)
 Form.onsubmit = async (event) => {
     event.preventDefault();
 
-    let FormEventDate = {
+    let FormEventData = {
         Title: document.getElementById("Title").value,
         Description: document.getElementById("Description").value,
         Date: new Date(document.getElementById("Date").value).toISOString().split('T')[0],
@@ -17,14 +17,18 @@ Form.onsubmit = async (event) => {
         Type: document.getElementById("type").value
     }
 
-    if (FormEventDate.Title && FormEventDate.Description && FormEventDate.Date && FormEventDate.Time && FormEventDate.Type)
+    if (FormEventData.Type === "אימון צוותי") {
+        FormEventData.Team = UserData2.Team
+    }
+
+    if (FormEventData.Title && FormEventData.Description && FormEventData.Date && FormEventData.Time && FormEventData.Type)
     {
         fetch("https://icf-api-ten.vercel.app/EventFormSend", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(FormEventDate)
+            body: JSON.stringify(FormEventData)
         })
         .then(response => response.json())
         .then(data => {
