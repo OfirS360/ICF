@@ -23,6 +23,8 @@ let T_Role = document.getElementById("Role")
 let T_Rank = document.getElementById("RankImg")
 let B_Disconnect = document.getElementById("Disconnect")
 
+let SteamAvatar = sessionStorage.getItem("SteamAvatar")
+
 T_Username.textContent = "שלום, " + UserData.Name;
 T_Role.textContent = UserData.Position
 T_Rank.src = `img/Rank${UserData.Rank}.png`
