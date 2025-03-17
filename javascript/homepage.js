@@ -124,6 +124,7 @@ async function CheckIfUserExist(SteamId) {
         
         if (data.success) {
             sessionStorage.setItem("userData", JSON.stringify(data.results));
+            UserData = sessionStorage.getItem("userData")
             console.log(data.results);
         } else {
             alert("המשתמש לא קיים במערכת");
