@@ -3,6 +3,8 @@ const SteamApi = `3E37434837BF21352A799F672E4062F1`;
 let UserData = sessionStorage.getItem("userData")
 UserData = JSON.parse(UserData)
 
+console.log(UserData)
+
 if (!UserData) {
     const queryString = window.location.search
     const urlParams = new URLSearchParams(queryString)
@@ -15,6 +17,8 @@ if (!UserData) {
     await CheckIfUserExist(SteamId)
     await getSteamUser(SteamId.SteamId);
 }
+
+console.log(UserData)
 
 // def_hp
 let T_Username = document.getElementById("Username")
