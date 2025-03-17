@@ -1,23 +1,7 @@
 let sumbit = document.getElementById("submit");
 
 sumbit.onclick = () => {
-
-    fetch("https://icf-api-ten.vercel.app/profile", {
-        method: "GET",
-        credentials: "include"
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("User not authenticated");
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log("User Data:", data);
-    })
-    .catch(error => {
-        console.log("Error:", error);
-    });
+    window.location.href = "https://icf-api-ten.vercel.app/auth/steam";
 }
     // let formData = {
     //     SteamId: document.getElementById("SteamId").value,
