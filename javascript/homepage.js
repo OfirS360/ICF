@@ -13,6 +13,7 @@ if (!UserData) {
     }
 
     CheckIfUserExist(SteamId)
+    getSteamUser(SteamId.SteamId);
 
     var script = document.createElement('script');
     script.src = 'javascript/def_hp.js';
@@ -120,5 +121,45 @@ async function CheckIfUserExist(SteamId) {
         }
     } catch (error) {
         console.error("שגיאה בביצוע הבקשה:", error);
+    }
+}
+
+async function CheckIfUserExist(SteamId) {
+    try {
+        const response = await fetch("https://icf-api-ten.vercel.app/Login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(SteamId)
+        });
+
+        const data = await response.json();
+        
+        if (data.success) {
+            sessionStorage.setItem("userData", JSON.stringify(data.results));
+            console.log(data.results);
+        } else {
+            alert("המשתמש לא קיים במערכת");
+            window.location.replace("index.html");
+        }
+    } catch (error) {
+        console.error("שגיאה בביצוע הבקשה:", error);
+    }
+}
+
+async function getSteamUser(SteamId) {
+    try {
+        const response = await fetch(`https://icf-api-ten.vercel.app/getSteamUser/${SteamId}`);
+        
+        const data = await response.json();
+        
+        console.log(data);
+        if (data.response.players.length > 0) {
+            sessionStorage.setItem("SteamAvatar", data.response.players[0].avatarfull);
+        }
+
+    } catch (error) {
+        console.error("API:", error);
     }
 }
