@@ -188,7 +188,11 @@ function UpdateCalender() {
                     DetailsBox.appendChild(Time)
 
                     // Hitpakdut
-                    for (let j = 0; j < 6; j++) {
+                    let CurrectHitpakdut = JSON.parse(EventsData[i].Hitpakdut)
+                    let HitpakdutKeys = Object.keys(CurrectHitpakdut)
+
+                    
+                    for (let j = 0; j < HitpakdutKeys.length; j++) {
                         let TeamLabel = document.createElement("p")
                         TeamLabel.classList.add('D_Contex')
                         TeamLabel.id = `TeamLable${EventsData[i].Id}${j}`
@@ -224,27 +228,42 @@ function UpdateCalender() {
                     YN_Box.appendChild(Y_Btn)
                     YN_Box.appendChild(N_Btn)
 
-                    let CurrectHitpakdut = JSON.parse(EventsData[i].Hitpakdut) 
 
                     let TotalActive = 0;
 
-                    for (let j = 0; j < Object.keys(CurrectHitpakdut).length; j++) {
-                        if (CurrectHitpakdut[TeamsKey[j]].length > TotalActive)
-                            TotalActive = CurrectHitpakdut[TeamsKey[j]].length
+                    for (let j = 0; j < HitpakdutKeys.length; j++) {
+                        let teamkey = HitpakdutKeys[j]
+                        if (CurrectHitpakdut[teamkey].length > TotalActive)
+                            TotalActive = CurrectHitpakdut[HitpakdutKeys[j]].length
                     }
 
-                    for (let j = 0; j < Object.keys(CurrectHitpakdut).length; j++) {
+                    console.log(HitpakdutKeys)
+
+                    for (let j = 0; j < HitpakdutKeys.length; j++) {
                         let Progress = document.querySelector(`#Progress${EventsData[i].Id}${j}`);
                         let TeamLabel = document.querySelector(`#TeamLable${EventsData[i].Id}${j}`);
 
-                        if (!(Object.keys(CurrectHitpakdut)[j] === "Coming" || Object.keys(CurrectHitpakdut)[j] === "NotComing"))
-                            TeamLabel.innerHTML = `<img src="img/${TeamsKey[j]}.png" class="TeamImg" alt="">` + Teams[j] + " - " + CurrectHitpakdut[TeamsKey[j]].length
-                        else
-                            TeamLabel.innerHTML =  Teams[j] + " - " + CurrectHitpakdut[TeamsKey[j]].length
+                        if (!(HitpakdutKeys[j] === "Coming" || HitpakdutKeys[j] === "NotComing")){
+                            if (HitpakdutKeys.length == 2)
+                                TeamLabel.innerHTML = `<img src="img/${HitpakdutKeys[j]}.png" class="TeamImg" alt="">` + "מגיע" + " - " + CurrectHitpakdut[HitpakdutKeys[j]].length
+                            else
+                                TeamLabel.innerHTML = `<img src="img/${HitpakdutKeys[j]}.png" class="TeamImg" alt="">` + Teams[j] + " - " + CurrectHitpakdut[HitpakdutKeys[j]].length
+
+                        }
+                        else {
+                            if (HitpakdutKeys[j] === "NotComing")
+                            {
+                                console.log("לא מגיע")
+                                TeamLabel.innerHTML = "לא מגיע - " + CurrectHitpakdut[HitpakdutKeys[j]].length
+                            }
+                            else {
+                                TeamLabel.innerHTML = "מגיע - " + CurrectHitpakdut[HitpakdutKeys[j]].length
+                            }
+                        }
 
 
-                        if (Progress && CurrectHitpakdut[TeamsKey[j]].length != 0) {
-                            Progress.value = 100.0 / TotalActive * CurrectHitpakdut[TeamsKey[j]].length;
+                        if (Progress && CurrectHitpakdut[HitpakdutKeys[j]].length != 0) {
+                            Progress.value = 100.0 / TotalActive * CurrectHitpakdut[HitpakdutKeys[j]].length;
                         } else {
                             Progress.value = 0;
                         }
@@ -336,10 +355,12 @@ async function UpdateHitpakdut(EventId, HitpakdutData) {
     }
 
     let TotalActive = 0;
+    let HitpakdutKeys = Object.keys(HitpakdutData)
+
 
     for (let i = 0; i < Object.keys(HitpakdutData).length; i++) {
-        if (HitpakdutData[TeamsKey[i]].length > TotalActive)
-        TotalActive = HitpakdutData[TeamsKey[i]].length
+        if (HitpakdutData[HitpakdutKeys[i]].length > TotalActive)
+        TotalActive = HitpakdutData[HitpakdutKeys[i]].length
     }
     
     if (TotalActive > 0) {
@@ -348,13 +369,22 @@ async function UpdateHitpakdut(EventId, HitpakdutData) {
             let TeamLabel = document.querySelector(`#TeamLable${EventId}${i}`);
 
             if (!(Object.keys(HitpakdutData)[i] === "Coming" || Object.keys(HitpakdutData)[i] === "NotComing"))
-                TeamLabel.innerHTML = `<img src="img/${TeamsKey[i]}.png" class="TeamImg" alt="">` + Teams[i] + " - " + HitpakdutData[TeamsKey[i]].length
-            else
-                TeamLabel.innerHTML = Teams[i] + " - " + HitpakdutData[TeamsKey[i]].length
+                if (HitpakdutKeys.length == 2)
+                    TeamLabel.innerHTML = `<img src="img/${HitpakdutKeys[i]}.png" class="TeamImg" alt="">` + "מגיע" + " - " + HitpakdutData[HitpakdutKeys[i]].length
+                else
+                TeamLabel.innerHTML = `<img src="img/${HitpakdutKeys[i]}.png" class="TeamImg" alt="">` + Teams[i] + " - " + HitpakdutData[HitpakdutKeys[i]].length
+
+            else {
+                if (HitpakdutKeys[i] === "NotComing")
+                    TeamLabel.innerHTML = "לא מגיע - " + HitpakdutData[HitpakdutKeys[i]].length
+                else
+                    TeamLabel.innerHTML = "מגיע - " + HitpakdutData[HitpakdutKeys[i]].length
+            }
+                
 
 
             if (Progress) {
-                Progress.value = 100.0 / TotalActive * HitpakdutData[TeamsKey[i]].length;
+                Progress.value = 100.0 / TotalActive * HitpakdutData[HitpakdutKeys[i]].length;
             } else {
                 console.warn(`לא נמצא #Progress${EventId}${i}`);
             }
