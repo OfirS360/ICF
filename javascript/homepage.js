@@ -17,6 +17,10 @@ if (!UserData) {
 
     var script = document.createElement('script');
     script.src = 'javascript/def_hp.js';
+    script.onload = function() {
+    console.log('הקובץ נטען והופעל בהצלחה!');
+    };
+
     document.head.appendChild(script);
 }
 
