@@ -206,28 +206,34 @@ function UpdateCalender() {
                         DetailsBox.appendChild(Progress)
                     }
 
-                    let YN_Box = document.createElement("span")
-                    YN_Box.classList.add("YN_Box")
-                    
-                    DetailsBox.appendChild(YN_Box)
-
-                    let Y_Btn = document.createElement("button")
-                    Y_Btn.classList.add("YN_Btn")
-                    Y_Btn.textContent = "מגיע"
-                    Y_Btn.addEventListener('click', function() {
-                        HitpakdutBtn(true, EventsData[i].Id)
-                    });                    
-
-                    let N_Btn = document.createElement("button")
-                    N_Btn.classList.add("YN_Btn")
-                    N_Btn.textContent = "לא מגיע"
-                    N_Btn.addEventListener('click', function() {
-                        HitpakdutBtn(false, EventsData[i].Id)
-                    });
-
-                    YN_Box.appendChild(Y_Btn)
-                    YN_Box.appendChild(N_Btn)
-
+                    if (today.getTime() < CurrectEventDate.getTime())
+                    {
+                        let FirstEventKey =  HitpakdutKeys[0]
+                        if (!(EventsData[i].EventType === "אימון צוותי" && FirstEventKey !== UserData2.Team))
+                        {
+                            let YN_Box = document.createElement("span")
+                            YN_Box.classList.add("YN_Box")
+                            
+                            DetailsBox.appendChild(YN_Box)
+        
+                            let Y_Btn = document.createElement("button")
+                            Y_Btn.classList.add("YN_Btn")
+                            Y_Btn.textContent = "מגיע"
+                            Y_Btn.addEventListener('click', function() {
+                                HitpakdutBtn(true, EventsData[i].Id)
+                            });                    
+        
+                            let N_Btn = document.createElement("button")
+                            N_Btn.classList.add("YN_Btn")
+                            N_Btn.textContent = "לא מגיע"
+                            N_Btn.addEventListener('click', function() {
+                                HitpakdutBtn(false, EventsData[i].Id)
+                            });
+        
+                            YN_Box.appendChild(Y_Btn)
+                            YN_Box.appendChild(N_Btn)
+                        }    
+                    }
 
                     let TotalActive = 0;
 
