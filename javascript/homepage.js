@@ -48,7 +48,7 @@ async function initializePage() {
 
     B_Disconnect.onclick = () => {
         sessionStorage.clear();
-        window.location.replace("index.html");
+        window.location.replace("https://icf.xitsraz.me/");
     };
 
     // המשך
