@@ -1,0 +1,108 @@
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="shortcut icon" type="x-icon" href="../img/ICF_Logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+    <script src="../javascript/Register.js" defer></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICF</title>
+</head>
+<body>
+    <div id="Header">
+        <div id="H_Right">
+            <img src="../img/ICF_Logo.png" alt="" id="TopImg">
+        </div>
+
+        <div id="H_Middle" dir="rtl">
+            <a href="index.html" class="H_Buttons HM_Buttons">ראשי</a>
+            <a href="about.html" class="H_Buttons HM_Buttons">אודות</a>
+            <a href="register.html" class="H_Buttons HM_Buttons">הצטרפות</a>
+            <a href="#" class="H_Buttons HM_Buttons">אירועים</a>
+            <a href="#" class="H_Buttons HM_Buttons">קישורים</a>
+            <a href="#" class="H_Buttons HM_Buttons">תרומות</a>
+        </div>
+
+        <div id="H_Left" dir="rtl">
+            <a href="login.html" class="H_Buttons">כניסה</a>
+            <p id="Divider">|</p>
+            <a href="register.html" class="H_Buttons">הרשמה</a>
+        </div>
+    </div>
+
+    <div id="Reg_Title">
+        <h1 class="MainTitle" id="Reg_MainTitle">הצטרפות לקלאן</h1>
+        <p class="SubBoxText" dir="rtl">שימו לב שכל מה שסומן בכוכבית הוא שדה חובה, כמו כן לאחר שליחת הטופס יקבעו עמכם ראיון אישי לסיום התהליך. <br> לאחר קבלתכם תקבלו משתמש שבו תוכלו לגשת לאיזור האישי שלכם </p>
+
+        <form action=""></form>
+        <label class="Reg_Ask" dir="rtl" for="full_name">שם פרטי ושם משפחה: <span class="ReqTxt">*</span></label>
+        <input class="TextInput" type="text" id="full_name" name="full_name" required dir="rtl">
+
+        <label class="Reg_Ask" dir="rtl" for="full_name">בן כמה אתה? <span class="ReqTxt">*</span></label>
+        <select class="TextInput" id="age" name="age" required dir="rtl">
+            <option value="" selected disabled>בחר גיל</option>
+            <script>
+                for (let i = 14; i <= 40; i++) {
+                    document.write(`<option value="${i}">${i}</option>`);
+                }
+            </script>
+        </select>
+
+        <label class="Reg_Ask" dir="rtl" for="arma_experience">האם יש לך ניסיון ב-Arma? <span class="ReqTxt">*</span></label>
+        <div class="RadioBox">
+            <input type="radio" class="Checkbox" id="Yes_arma_experience" name="Q1" value="1">
+            <label class="CheckboxTxt">כן</label>
+            <input type="radio" class="Checkbox" id="No_arma_experience" name="Q1" value="0">
+            <label class="CheckboxTxt">לא</label>
+        </div>
+
+        <label class="Reg_Ask" dir="rtl" for="arma_hours">מספר השעות ששיחקת ב-Arma: <span class="ReqTxt">*</span></label>
+        <input class="TextInput" type="number" id="arma_hours" name="arma_hours" min="0" dir="rtl" required>
+
+        <label class="Reg_Ask" dir="rtl" for="previous_clans">רשום את הקלאנים שבהם היית:</label>
+        <textarea class="TextInput" id="previous_clans" name="previous_clans" rows="3" dir="rtl"></textarea>
+
+        <label class="Reg_Ask" dir="rtl" for="clan_issues">עדכן על תקלות ובעיות אישיות עם קלאנים אחרים:</label>
+        <textarea class="TextInput" id="clan_issues" name="clan_issues" rows="3" dir="rtl"></textarea>
+
+        <label class="Reg_Ask" dir="rtl" for="join_reason" >מדוע אתה רוצה להצטרף לקלאן שלנו? <span class="ReqTxt">*</span></label>
+        <textarea class="TextInput" id="join_reason" name="join_reason" rows="3" required dir="rtl"></textarea>
+
+        <label class="Reg_Ask" dir="rtl" for="military_experience">האם יש לך ניסיון צבאי? <span class="ReqTxt">*</span></label>
+        <div class="RadioBox">
+            <input type="radio" class="Checkbox" id="Yes_military_experience" name="Q2" value="1">
+            <label class="CheckboxTxt" for="yes">כן</label>
+            <input type="radio" class="Checkbox" id="No_military_experience" name="Q2" value="0">
+            <label class="CheckboxTxt" for="no">לא</label>
+        </div>
+
+        <label class="Reg_Ask" dir="rtl" for="weekly_hours">כמה שעות בשבוע אתה יכול להשתתף בפעילויות הקלאן? <span class="ReqTxt">*</span></label>
+        <select class="TextInput" id="weekly_hours" name="weekly_hours" required dir="rtl">
+            <option value="" selected disabled>בחר מספר שעות</option>
+            <option value="1-3">1-3 שעות</option>
+            <option value="4-6">4-6 שעות</option>
+            <option value="7-10">7-10 שעות</option>
+            <option value="11+">11+ שעות</option>
+        </select>
+
+        <label class="Reg_Ask" dir="rtl" for="friday_availability">האם אתה מסוגל להתחייב להגיע בימי שישי בשעות 13:30-16:00 לפחות פעמים בחודש 2/4? <span class="ReqTxt">*</span></label>
+        <div class="RadioBox">
+            <input type="radio" class="Checkbox" id="Yes_friday_availability" name="Q3" value="1">
+            <label class="CheckboxTxt" for="yes">כן</label>
+            <input type="radio" class="Checkbox" id="No_friday_availability" name="Q3" value="0">
+            <label class="CheckboxTxt" for="no">לא</label>
+        </div>
+
+        <label class="Reg_Ask" dir="rtl" for="availability">האם אתה מסוגל להתחייב להתפקד למשימות שישי גם אם לא מגיע <span class="ReqTxt">*</span></label>
+        <div class="RadioBox">
+            <input type="radio" class="Checkbox" id="Yes_availability" name="Q4" value="1">
+            <label class="CheckboxTxt" for="yes">כן</label>
+            <input type="radio" class="Checkbox" id="No_availability" name="Q4" value="0">
+            <label class="CheckboxTxt" for="no">לא</label>
+        </div>
+        <input class="Button" id="submit" type="submit" value="שלח טופס">
+
+    </div>
+</body>
+</html>

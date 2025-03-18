@@ -251,9 +251,9 @@ function UpdateCalender() {
 
                         if (!(HitpakdutKeys[j] === "Coming" || HitpakdutKeys[j] === "NotComing")){
                             if (HitpakdutKeys.length == 2)
-                                TeamLabel.innerHTML = `<img src="img/${HitpakdutKeys[j]}.png" class="TeamImg" alt="">` + "מגיע" + " - " + CurrectHitpakdut[HitpakdutKeys[j]].length
+                                TeamLabel.innerHTML = `<img src="../img/${HitpakdutKeys[j]}.png" class="TeamImg" alt="">` + "מגיע" + " - " + CurrectHitpakdut[HitpakdutKeys[j]].length
                             else
-                                TeamLabel.innerHTML = `<img src="img/${HitpakdutKeys[j]}.png" class="TeamImg" alt="">` + Teams[j] + " - " + CurrectHitpakdut[HitpakdutKeys[j]].length
+                                TeamLabel.innerHTML = `<img src="../img/${HitpakdutKeys[j]}.png" class="TeamImg" alt="">` + Teams[j] + " - " + CurrectHitpakdut[HitpakdutKeys[j]].length
 
                         }
                         else {
@@ -376,9 +376,9 @@ async function UpdateHitpakdut(EventId, HitpakdutData) {
 
             if (!(Object.keys(HitpakdutData)[i] === "Coming" || Object.keys(HitpakdutData)[i] === "NotComing"))
                 if (HitpakdutKeys.length == 2)
-                    TeamLabel.innerHTML = `<img src="img/${HitpakdutKeys[i]}.png" class="TeamImg" alt="">` + "מגיע" + " - " + HitpakdutData[HitpakdutKeys[i]].length
+                    TeamLabel.innerHTML = `<img src="../img/${HitpakdutKeys[i]}.png" class="TeamImg" alt="">` + "מגיע" + " - " + HitpakdutData[HitpakdutKeys[i]].length
                 else
-                TeamLabel.innerHTML = `<img src="img/${HitpakdutKeys[i]}.png" class="TeamImg" alt="">` + Teams[i] + " - " + HitpakdutData[HitpakdutKeys[i]].length
+                TeamLabel.innerHTML = `<img src="../img/${HitpakdutKeys[i]}.png" class="TeamImg" alt="">` + Teams[i] + " - " + HitpakdutData[HitpakdutKeys[i]].length
 
             else {
                 if (HitpakdutKeys[i] === "NotComing")
