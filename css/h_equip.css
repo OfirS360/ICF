@@ -14,7 +14,7 @@
 
     opacity: 0.85;
 
-    height: 75px;
+    height: 90%;
 
     pointer-events: none;
 }
@@ -140,13 +140,19 @@
 }
 
 .InvMain {
+    display: flex;
+    flex-direction: column;
+
+    height: 460px;
+    width: 93%;
+
     background-color: #202833;
     border-radius: 10px;
 
     margin-top: 10px;
+    padding: 10px 10px;
 
-    height: 480px;
-    width: 100%;
+    transition: all 0.3s;
 }
 
 #e_left {
@@ -224,13 +230,19 @@
 }
 
 #Arsenal_Right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     width: 365px;
-    height: 555px;
+    height: 535px;
 
     background-color: #202833;
 
     border-radius: 10px;
     border-top-left-radius: 0;
+
+    padding: 10px 10px;
 }
 
 #Arsenal_Left {
@@ -266,4 +278,242 @@
     height: 35px;
 
     pointer-events: none;
+}
+
+.Item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    align-items: center;
+
+    width: 95%;
+    height: 105px;
+
+    border-radius: 10px;
+
+    margin-bottom: 10px;
+
+    padding: 10px 10px;
+
+    background-color: #2f3b4a;
+
+    cursor: grab;
+}
+
+.ItemImg {
+    height: 90px;
+
+    background-color: #232b36;
+    border-radius: 10px;
+
+    padding: 5px 5px;
+
+    align-self: center;
+
+    pointer-events: none;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#ItemLeft {
+    display: flex;
+    flex-direction: column;
+
+    font-family: "Heebo", system-ui;
+
+    margin-right: 15px;
+
+}
+
+.ItemTitle {
+    color: #f5f5f5;
+    font-weight: 700;
+
+    font-size: 18px;
+
+    margin-bottom: 0;
+    margin-top: 0;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ItemDescription {
+    color: #f5f5f5;
+    font-size: 12px;
+
+    margin-bottom: 0;
+    margin-top: 5px;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ItemWeight {
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ItemStored {
+    position: relative;
+    
+    display: flex;
+    flex-direction: row;
+
+    width: 92%;
+    height: 50px;
+
+    border-radius: 5px;
+
+    margin-bottom: 10px;
+    padding: 10px 10px;
+
+    background-color:   #2f3b4a;
+}
+
+.ItemStoredImg {
+    height: 40px;
+
+    background-color: #232b36;
+    border-radius: 5px;
+
+    padding: 5px 5px;
+
+    align-self: center;
+
+    pointer-events: none;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ItemStoredTitle {
+    color: #f5f5f5;
+    font-weight: 700;
+
+    font-size: 15px;
+
+    margin-bottom: 0;
+    margin-top: 0;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ItemStoredDescription {
+    font-family: "Heebo", system-ui;
+    color: #f5f5f5;
+    font-size: 12px;
+
+    margin-bottom: 0;
+    margin-top: 5px;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.IncDecBtn {
+    background-color: #202832;
+    color: #f5f5f5;
+    font-size: 18px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+
+    width: 20px;
+    height: 20px;
+
+    padding: 0 0;
+}
+
+#ItemBtns {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    display: flex;
+    gap: 5px;
+
+    bottom: 5px;
+    left: 5px;
+}
+
+#ItemStoredClone {
+    display: none;
+}
+
+
+@media screen and (max-width: 2060px) {
+    #e_right {
+        height: 480px;
+        width: 320px;
+    }
+
+    .Equip_Top {
+        height: 72px;
+        width: 72px;
+    }
+
+    .WeaponImg {
+        height: 100%;
+    }
+
+    .Equip_Buttom {
+        height: 58px;
+        width: 58px;
+    }
+
+    .ButtomImg {
+        height: 70%;
+    }
+
+    .EquipInv_Top {
+        width: 72px;
+        height: 72px;
+    }
+
+    .InvBox {
+
+        margin-right: 2px;
+        margin-left: 2px;
+    }
+
+    .InvMain {
+        height: 358px;
+        width: 90%;
+
+
+    }
+
+    #e_mid {
+        height: 460px;
+        width: 800px;
+    }
+
+    #e_left {
+        height: 480px;
+    }
+
+    #Arsenal_Right {
+        height: 415px;
+    }
+
 }

@@ -114,34 +114,49 @@
 
             <div id="e_mid">
                 <div class="InvBox">
-                    <div class="EquipInv_Top" id="backpack">
+                    <div class="EquipInv_Top">
                         <img class="Equip_Img" src="../img/Loadout/backpack.png" alt="">
                     </div>
 
-                    <div class="InvMain">
+                    <div class="InvMain" id="backpackBox">
 
                     </div>
 
                 </div>
 
-                <div class="InvBox" id="vest">
-                    <div class="EquipInv_Top" id="backpack">
+                <div class="InvBox">
+                    <div class="EquipInv_Top">
                         <img class="Equip_Img" src="../img/Loadout/vest.png" alt="">
                     </div>
 
-                    <div class="InvMain">
+                    <div class="InvMain" id="vestBox">
 
                     </div>
 
                 </div>
 
-                <div class="InvBox" id="uniform">
-                    <div class="EquipInv_Top" id="backpack">
+                <div class="InvBox">
+                    <div class="EquipInv_Top">
                         <img class="Equip_Img" src="../img/Loadout/uniform.png" alt="">
                     </div>
 
-                    <div class="InvMain">
+                    <div class="InvMain" id="uniformBox">
+                        <div class="ItemStored" id="ItemStoredClone" draggable="true" dir="rtl">
 
+                            <div id="ItemBtns">
+                                <button class="IncDecBtn IncBtn">+</button>
+                                <button class="IncDecBtn DecBtn">-</button>
+                            </div>
+
+                            <div id="ItemRight">
+                                <img class="ItemStoredImg" src="../img/ItemsTest/elasticbandage.png" alt="">
+                            </div>
+
+                            <div id="ItemLeft">
+                                <p class="ItemStoredTitle">תחבושת (אלסטית)</p>
+                                <p class="ItemStoredDescription">כמות - 1</p>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -157,7 +172,33 @@
 
                 <div id="ArsenalBox">
                     <div id="Arsenal_Right">
+                        <div class="Item" id="ItemArsenalClone" draggable="true" dir="rtl">
 
+                            <div id="ItemRight">
+                            <img class="ItemImg" src="../img/ItemsTest/elasticbandage.png" alt="">
+                            </div>
+
+                            <div id="ItemLeft">
+                                <p class="ItemTitle">תחבושת (אלסטית)</p>
+                                <p class="ItemDescription">תחבושת לפצעים גדולים</p>
+                                <p class="ItemDescription ItemWeight">משקל: 0.03kg</p>
+                            </div>
+                            
+                        </div>
+
+                        <div class="Item" id="ACE_tourniquet" draggable="true" dir="rtl">
+
+                            <div id="ItemRight">
+                            <img class="ItemImg" src="../img/ItemsTest/tourniquet.png" alt="">
+                            </div>
+
+                            <div id="ItemLeft">
+                                <p class="ItemTitle">חוסם עורקים (ח"ע)</p>
+                                <p class="ItemDescription">רצועה רפואית לעצירת דימום חמור על ידי לחץ חזק</p>
+                                <p class="ItemDescription ItemWeight">משקל: 0.03kg</p>
+                            </div>
+                            
+                        </div>
                     </div>
                     <div id="Arsenal_Left">
                         <button class="Arsenal_Buttons" id="Ars_Weapons"> <img class="Choose_Img" src="../img/Loadout/primary_white.png" alt=""> </button>
