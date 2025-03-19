@@ -206,7 +206,7 @@ function UpdateCalender() {
                         DetailsBox.appendChild(Progress)
                     }
 
-                    if (today.getTime() < CurrectEventDate.getTime())
+                    if (today.getTime() <= CurrectEventDate.getTime())
                     {
                         let FirstEventKey =  HitpakdutKeys[0]
                         if (!(EventsData[i].EventType === "אימון צוותי" && FirstEventKey !== UserData2.Team))

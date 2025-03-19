@@ -2,23 +2,21 @@ let ItemStoredCopy = document.getElementById("ItemStoredClone")
 initializePage()
 
 async function initializePage() {
-    // let Items = sessionStorage.getItem("Items")
-    // if (Items) {
-    //     try {
-    //         Items = JSON.parse(Items);
-    //     } catch (error) {
-    //         Items = [];
-    //     }
-    // } 
-    // else {
-    //     Items = [];
-    // }
+    let Items = sessionStorage.getItem("Items")
+    if (Items) {
+        try {
+            Items = JSON.parse(Items);
+        } catch (error) {
+            Items = [];
+        }
+    } 
+    else {
+        Items = [];
+    }
 
-    // await GetAllItems()
+    await GetAllItems()
 
-    // console.log(Items)
-
-    let Items = document.getElementsByClassName("Item")
+    console.log(Items)
 
     let ArsenalBox = document.getElementById("Arsenal_Right")
     let UniformBox = document.getElementById("uniformBox")
