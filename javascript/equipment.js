@@ -1,69 +1,74 @@
-let Items = sessionStorage.getItem("Items")
-if (Items) {
-    try {
-        Items = JSON.parse(Items);
-    } catch (error) {
-        Items = [];
-    }
-} 
-else {
-    Items = [];
-}
-
-GetAllItems()
-
-console.log(Items)
-
-let ArsenalBox = document.getElementById("Arsenal_Right")
-let UniformBox = document.getElementById("uniformBox")
 let ItemStoredCopy = document.getElementById("ItemStoredClone")
+initializePage()
 
-for(Item of Items) {
-    Item.addEventListener("dragstart", function(e) {
-        let Selected = e.target;
-        Selected.classList.add("dragging");
+async function initializePage() {
+    // let Items = sessionStorage.getItem("Items")
+    // if (Items) {
+    //     try {
+    //         Items = JSON.parse(Items);
+    //     } catch (error) {
+    //         Items = [];
+    //     }
+    // } 
+    // else {
+    //     Items = [];
+    // }
+
+    // await GetAllItems()
+
+    // console.log(Items)
+
+    let Items = document.getElementsByClassName("Item")
+
+    let ArsenalBox = document.getElementById("Arsenal_Right")
+    let UniformBox = document.getElementById("uniformBox")
+
+    for(Item of Items) {
+        Item.addEventListener("dragstart", function(e) {
+            let Selected = e.target;
+            Selected.classList.add("dragging");
+        })
+
+        Item.addEventListener("dragend", function(e) {
+            let Selected = e.target;
+            Selected.classList.remove("dragging");
+        })
+    }
+
+    // Uniform Box
+    UniformBox.addEventListener("dragenter", function() {
+        UniformBox.style.backgroundColor = "#262f3c";
+    });
+
+    UniformBox.addEventListener("dragleave", function() {
+        UniformBox.style.backgroundColor = "#202833";
+    });
+
+
+    UniformBox.addEventListener("dragover", function(e) {
+        e.preventDefault();
     })
 
-    Item.addEventListener("dragend", function(e) {
-        let Selected = e.target;
-        Selected.classList.remove("dragging");
+    UniformBox.addEventListener("drop", function(e) {
+        e.preventDefault();
+
+        UniformBox.style.backgroundColor = "#202833";
+
+        PlaceNewItem(UniformBox)
+    })
+
+    ArsenalBox.addEventListener("dragover", function(e) {
+        e.preventDefault();
+    })
+
+    ArsenalBox.addEventListener("drop", function(e) {
+        e.preventDefault();
+
+        let Selected = document.querySelector(".dragging")
+        if (!ArsenalBox.contains(Selected))
+            Selected.remove()
     })
 }
-
-// Uniform Box
-UniformBox.addEventListener("dragenter", function() {
-    UniformBox.style.backgroundColor = "#262f3c";
-});
-
-UniformBox.addEventListener("dragleave", function() {
-    UniformBox.style.backgroundColor = "#202833";
-});
-
-
-UniformBox.addEventListener("dragover", function(e) {
-    e.preventDefault();
-})
-
-UniformBox.addEventListener("drop", function(e) {
-    e.preventDefault();
-
-    UniformBox.style.backgroundColor = "#202833";
-
-    PlaceNewItem(UniformBox)
-})
-
-ArsenalBox.addEventListener("dragover", function(e) {
-    e.preventDefault();
-})
-
-ArsenalBox.addEventListener("drop", function(e) {
-    e.preventDefault();
-
-    let Selected = document.querySelector(".dragging")
-    if (!ArsenalBox.contains(Selected))
-        Selected.remove()
-})
-
 
 // Functions
 function PlaceNewItem(Box)
@@ -90,6 +95,7 @@ function PlaceNewItem(Box)
         Selected.classList.remove("dragging");
 
         AddingEventLisener(NewItem)
+        AddBtnsLiseners(NewItem)
     }
 
     else {
@@ -114,6 +120,17 @@ function AddingEventLisener(Item)
     })
 }
 
+function AddBtnsLiseners(Item)
+{
+    let Buttons = Item.children[0]
+    Buttons.children[0].addEventListener("click", function() {
+        IncreseItem(Item)
+    })
+    Buttons.children[1].addEventListener("click", function() {
+        DecreseItem(Item)
+    })
+}
+
 async function GetAllItems() {
     try {
         const response = await fetch(`https://icf-api-ten.vercel.app/GetAllItems`);
@@ -127,4 +144,25 @@ async function GetAllItems() {
     catch (error) {
         return
     }
+}
+
+function IncreseItem(Item)
+{
+    let AmountTxtElement = Item.children[2].children[1];
+    let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
+    amount++;
+    
+    AmountTxtElement.textContent = `כמות - ${amount}`;
+}
+
+function DecreseItem(Item)
+{
+    let AmountTxtElement = Item.children[2].children[1];
+    let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
+    amount--;
+    
+    if (!amount)
+        Item.remove();
+
+    AmountTxtElement.textContent = `כמות - ${amount}`;
 }

@@ -138,7 +138,7 @@ async function CheckIfUserExist(SteamId) {
             UserData = sessionStorage.getItem("userData")
         } else {
             alert("המשתמש לא קיים במערכת");
-            window.location.replace("index.html");
+            window.location.replace("https://icf.xitsraz.me/");
         }
     } catch (error) {
         console.error("שגיאה בביצוע הבקשה:", error);
