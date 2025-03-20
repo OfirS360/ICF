@@ -144,7 +144,7 @@ function PlaceNewItem(Box, AllowItems)
             {
                 let CheckIfExists = Box.querySelector(`#${Selected.id}`)
 
-                let MainItem = Box.parentElement.children[0].children[0]
+                let MainItem = Box.parentElement.children[0].children[1]
 
                 if (MainItem.dataset.currectweight + Item.Weight > MainItem.dataset.space)
                 {
