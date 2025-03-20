@@ -9,6 +9,10 @@ let VestBox = document.getElementById("vestBox")
 let UniformItem = document.getElementById("UnifromItem")
 let VestItem = document.getElementById("VestItem")
 
+let MainInvBoxes = ["uniformBox", "vestBox", "backpackBox"];
+let MainInvItems = ["UnifromItem", "VestItem", "BackpackItem"]
+let MainItemsType = ["Uniform", "Vest", "Backpack"]
+
 let IsShiftDown = false
 
 initializePage()
@@ -61,71 +65,7 @@ async function initializePage() {
         AddItemsToArsenal(Number(Ars_ItemsBtn.value))
     }
 
-    // Uniform Box
-    UniformBox.addEventListener("dragenter", function() {
-        UniformBox.style.backgroundColor = "#262f3c";
-    });
-
-    UniformBox.addEventListener("dragleave", function() {
-        UniformBox.style.backgroundColor = "#202833";
-    });
-
-
-    UniformBox.addEventListener("dragover", function(e) {
-        e.preventDefault();
-    })
-
-    UniformBox.addEventListener("drop", function(e) {
-        e.preventDefault();
-
-        UniformBox.style.backgroundColor = "#202833";
-
-        PlaceNewItem(UniformBox, ["Item", "Attachment", "Facewear", "Nvg"])
-    })
-
-    // Vest Box
-    VestBox.addEventListener("dragenter", function() {
-        VestBox.style.backgroundColor = "#262f3c";
-    });
-
-    VestBox.addEventListener("dragleave", function() {
-        VestBox.style.backgroundColor = "#202833";
-    });
-
-
-    VestBox.addEventListener("dragover", function(e) {
-        e.preventDefault();
-    })
-
-    VestBox.addEventListener("drop", function(e) {
-        e.preventDefault();
-
-        VestBox.style.backgroundColor = "#202833";
-
-        PlaceNewItem(VestBox, ["Item", "Attachment", "Facewear", "Nvg"])
-    })
-
-    // Uniform Item
-    UniformItem.addEventListener("dragover", function(e) {
-        e.preventDefault();
-    })
-
-    UniformItem.addEventListener("drop", function(e) {
-        e.preventDefault();
-
-        PlaceNewMainItem(UniformItem, "Uniform")
-    })
-
-    // VestItem
-    VestItem.addEventListener("dragover", function(e) {
-        e.preventDefault();
-    })
-
-    VestItem.addEventListener("drop", function(e) {
-        e.preventDefault();
-
-        PlaceNewMainItem(VestItem, "Vest")
-    })
+    AddingBIEventLisener(MainInvBoxes, MainInvItems, MainItemsType)
 
     // Arsenal
     Arsenal_Right.addEventListener("dragover", function(e) {
@@ -451,3 +391,43 @@ function RemoveItemsFromArsenal()
     });
 }
 
+function AddingBIEventLisener(MainInvBoxes, MainInvItems, MainItemsType) {
+    for (let i = 0; i < MainInvBoxes.length; i++)
+    {
+        let CurrectBox = document.getElementById(MainInvBoxes[i])
+        let CurrectItem = document.getElementById(MainInvItems[i])
+
+        // Box
+        CurrectBox.addEventListener("dragenter", function() {
+            CurrectBox.style.backgroundColor = "#262f3c";
+        });
+    
+        CurrectBox.addEventListener("dragleave", function() {
+            CurrectBox.style.backgroundColor = "#202833";
+        });
+    
+    
+        CurrectBox.addEventListener("dragover", function(e) {
+            e.preventDefault();
+        })
+    
+        CurrectBox.addEventListener("drop", function(e) {
+            e.preventDefault();
+    
+            CurrectBox.style.backgroundColor = "#202833";
+    
+            PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
+        })
+
+        // Item
+        CurrectItem.addEventListener("dragover", function(e) {
+            e.preventDefault();
+        })
+    
+        CurrectItem.addEventListener("drop", function(e) {
+            e.preventDefault();
+    
+            PlaceNewMainItem(CurrectItem, MainItemsType[i])
+        })
+    }
+}
