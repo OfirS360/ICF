@@ -7,9 +7,6 @@ let UniformItem = document.getElementById("UnifromItem")
 
 let IsShiftDown = false
 
-let UniformSpace = 0
-let UniformWieght = 0
-
 initializePage()
 
 async function initializePage() {
@@ -79,11 +76,10 @@ async function initializePage() {
 
         UniformBox.style.backgroundColor = "#202833";
 
-        let UpdatedValues = PlaceNewItem(UniformBox, ["Item", "Attachment", "Facewear", "Nvg"], UniformWieght, UniformSpace)
-        UniformWieght = UpdatedValues.updatedWeight;
-        UniformSpace = UpdatedValues.updatedSpace;
+        PlaceNewItem(UniformBox, ["Item", "Attachment", "Facewear", "Nvg"])
     })
 
+    // Uniform Item
     UniformItem.addEventListener("dragover", function(e) {
         e.preventDefault();
     })
@@ -91,9 +87,7 @@ async function initializePage() {
     UniformItem.addEventListener("drop", function(e) {
         e.preventDefault();
 
-        let UpdatedValues = PlaceNewMainItem(UniformItem, "Uniform", UniformWieght, UniformSpace)
-        UniformWieght = UpdatedValues.updatedWeight;
-        UniformSpace = UpdatedValues.updatedSpace;
+        PlaceNewMainItem(UniformItem, "Uniform")
     })
 
     // Arsenal
@@ -123,12 +117,12 @@ async function initializePage() {
 }
 
 // Functions
-function PlaceNewItem(Box, AllowItems, PlaceWeight, PlaceSpace)
+function PlaceNewItem(Box, AllowItems)
 {
     let Selected = document.querySelector(".dragging");
 
     if (Box.contains(Selected))
-        return { updatedWeight: PlaceWeight, updatedSpace: PlaceSpace }
+        return
 
     for (Item of Items)
     {
@@ -148,12 +142,14 @@ function PlaceNewItem(Box, AllowItems, PlaceWeight, PlaceSpace)
             {
                 let CheckIfExists = Box.querySelector(`#${Selected.id}`)
 
-                PlaceWeight += Item.Weight
-                if (PlaceSpace < PlaceWeight)
+                let MainItem = Box.parentElement.children[0].children[0]
+
+                if (MainItem.dataset.currectweight + Item.Weight > MainItem.dataset.space)
                 {
-                    PlaceWeight -= Item.Weight
-                    return { updatedWeight: PlaceWeight, updatedSpace: PlaceSpace }
+                    return
                 }
+
+                MainItem.dataset.currectweight += Item.Weight
 
                 if (!CheckIfExists) {
                     let ItemImg = Selected.children[0].children[0].src
@@ -184,14 +180,12 @@ function PlaceNewItem(Box, AllowItems, PlaceWeight, PlaceSpace)
                 
                     AmountTxtElement.textContent = `כמות - ${amount}`;
                 }
-
-                return { updatedWeight: PlaceWeight, updatedSpace: PlaceSpace };
             }
         }
     }
 }
 
-function PlaceNewMainItem(Box, AllowItem, PlaceWeight, PlaceSpace)
+function PlaceNewMainItem(Box, AllowItem)
 {
     let Selected = document.querySelector(".dragging");
 
@@ -199,12 +193,17 @@ function PlaceNewMainItem(Box, AllowItem, PlaceWeight, PlaceSpace)
         {
             if (Item.ItemId === Selected.id && Item.Type === AllowItem)
             {
-                PlaceWeight = 0
-                PlaceSpace = Item.Space
-                Box.children[0].id = Item.ItemId
-                Box.children[0].src = Selected.children[0].children[0].src
+                let MainItem = Box.children[0]
 
-                return { updatedWeight: PlaceWeight, updatedSpace: PlaceSpace };
+                MainItem.id = Item.ItemId
+                MainItem.src = Selected.children[0].children[0].src
+
+                MainItem.style.display = "block"
+
+                MainItem.dataset.currectweight = 0
+                MainItem.dataset.space = Item.Space
+
+                break
             }
         }
 }
@@ -252,10 +251,19 @@ function IncreseItem(Item)
 {
     let AmountTxtElement = Item.children[2].children[1];
     let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
+
+    let MainItem = Item.parentElement.parentElement.children[0].children[0]
+
     if (IsShiftDown) {
+        if (MainItem.dataset.currectweight + (Item.Weight * 5) > MainItem.dataset.space)
+            return
+
         amount+= 5;
     }
     else {
+        if (MainItem.dataset.currectweight + Item.Weight > MainItem.dataset.space)
+            return
+
         amount++;
     }
     
@@ -267,8 +275,20 @@ function DecreseItem(Item)
 {
     let AmountTxtElement = Item.children[2].children[1];
     let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
+
+    let ItemData;
+
+    for (CurrectItem of Items) {
+        if (CurrectItem.ItemId == Item.id)
+            ItemData = CurrectItem
+    }
+
+    let MainItem = Item.parentElement.parentElement.children[0].children[0]
+
     if (IsShiftDown) {
         amount-= 5;
+
+        MainItem.dataset.currectweight = MainItem.dataset.currectweight - (ItemData.Weight * 5);
     }
     else {
         amount--;
