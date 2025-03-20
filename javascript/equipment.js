@@ -198,6 +198,9 @@ function AddItemsToArsenal(Category)
             CloneArsItem.children[1].children[1].textContent = Item.Description
             CloneArsItem.children[1].children[2].textContent = `משקל: ${Item.Weight}kg`
 
+            CloneArsItem.id = Item.ItemId
+            CloneArsItem.style.display = "flex"
+
             CloneArsItem.addEventListener("dragstart", function(e) {
                 let Selected = e.target;
                 Selected.classList.add("dragging");

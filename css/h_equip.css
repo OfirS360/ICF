@@ -460,6 +460,10 @@
     display: none;
 }
 
+#ItemArsenalCopy {
+    display: none;
+}
+
 
 @media screen and (max-width: 2060px) {
     #e_right {
