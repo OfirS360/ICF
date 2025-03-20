@@ -1,6 +1,6 @@
 let ItemForm = document.getElementById("CreateEventForm")
 
-if (UserData2.Premission_Level < 1)
+if (!UserData2 || UserData2.Premission_Level < 1)
 {
     alert("אין לך גישות למקום הזה")
     window.location.href = "https://icf.xitsraz.me/User_Area/equipment"
