@@ -10,7 +10,7 @@ let UniformItem = document.getElementById("UnifromItem")
 let VestItem = document.getElementById("VestItem")
 
 let MainInvBoxes = ["uniformBox", "vestBox", "backpackBox"];
-let MainInvItems = ["UnifromItem", "VestItem", "BackpackItem"]
+let MainInvItems = ["UniformItem", "VestItem", "BackpackItem"]
 let MainItemsType = ["Uniform", "Vest", "Backpack"]
 
 let IsShiftDown = false
