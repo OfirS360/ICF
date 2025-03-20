@@ -6,7 +6,7 @@ let Arsenal_Right = document.getElementById("Arsenal_Right")
 let UniformBox = document.getElementById("uniformBox")
 let VestBox = document.getElementById("vestBox")
 
-let UniformItem = document.getElementById("UnifromItem")
+let UniformItem = document.getElementById("UniformItem")
 let VestItem = document.getElementById("VestItem")
 
 let MainInvBoxes = ["uniformBox", "vestBox", "backpackBox"];
