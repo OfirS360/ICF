@@ -113,6 +113,9 @@ function PlaceNewItem(Box, AllowItems, PlaceWeight, PlaceSpace)
 {
     let Selected = document.querySelector(".dragging");
 
+    if (Box.contains(Selected))
+        return
+
     for (Item of Items)
     {
         if (Item.ItemId === Selected.id)
