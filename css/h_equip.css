@@ -244,6 +244,8 @@
     border-top-left-radius: 0;
 
     padding: 10px 10px;
+
+    overflow-y: scroll;
 }
 
 #Arsenal_Left {
