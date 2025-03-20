@@ -259,7 +259,6 @@ function IncreseItem(Item)
     let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
 
     let MainItem = Item.parentElement.parentElement.children[0].children[1]
-    console.log(MainItem)
 
     let currectweight = MainItem.dataset.currectweight
     let space = MainItem.dataset.space
@@ -278,14 +277,14 @@ function IncreseItem(Item)
             return
 
         amount+= 5;
-        currectweight = Number(currectweight) + (ItemData.Weight * 5)
+        MainItem.dataset.currectweight = Number(currectweight) + (ItemData.Weight * 5)
     }
     else {
         if (Number(currectweight) + ItemData.Weight > Number(space))
             return
 
         amount++;
-        currectweight = Number(currectweight) + ItemData.Weight
+        MainItem.dataset.currectweight = Number(currectweight) + ItemData.Weight
     }
     
     
@@ -300,6 +299,8 @@ function DecreseItem(Item)
     let MainItem = Item.parentElement.parentElement.children[0].children[1]
     let currectweight = MainItem.dataset.currectweight
 
+    console.log(currectweight)
+
     let ItemData;
 
     for (CurrectItem of Items) {
@@ -309,17 +310,15 @@ function DecreseItem(Item)
         }
     }
 
-    console.log(ItemData)
-
     if (IsShiftDown) {
         amount-= 5;
 
-        currectweight = Number(currectweight) - (ItemData.Weight * 5);
+        MainItem.dataset.currectweight = Number(currectweight) - (ItemData.Weight * 5);
     }
     else {
         amount--;
 
-        currectweight = Number(currectweight) - ItemData.Weight
+        MainItem.dataset.currectweight = Number(currectweight) - ItemData.Weight
     }
     
     if (amount < 1)
