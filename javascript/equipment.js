@@ -420,7 +420,25 @@ function AddingBIEventLisener(MainInvBoxes, MainInvItems, MainItemsType) {
     
             CurrectBox.style.backgroundColor = "#202833";
     
+            let Selected = document.querySelector(".dragging");
+
+            if (UniformBox.contains(Selected) && CurrectBox !== UniformBox) {
+                DecreseItem(Selected)
+                PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
+            }
+
+            else if (VestBox.contains(Selected) && CurrectBox !== VestBox) {
+                DecreseItem(Selected)
+                PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
+            }
+
+            else if (backpackBox.contains(Selected) && CurrectBox !== backpackBox) {
+                DecreseItem(Selected)
+                PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
+            }
+            else {
             PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
+            }
         })
 
         // Item
