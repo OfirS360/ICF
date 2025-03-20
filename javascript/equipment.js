@@ -91,6 +91,8 @@ async function initializePage() {
 // Functions
 function PlaceNewItem(Box, AllowItems)
 {
+    let Selected = document.querySelector(".dragging");
+
     for (Item of Items)
     {
         if (Item.ItemId === Selected.id)
@@ -107,7 +109,6 @@ function PlaceNewItem(Box, AllowItems)
 
             if (flag)
             {
-                let Selected = document.querySelector(".dragging");
                 let CheckIfExists = Box.querySelector(`#${Selected.id}`)
 
                 if (!CheckIfExists) {
