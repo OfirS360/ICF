@@ -17,6 +17,7 @@
     height: 90%;
 
     pointer-events: none;
+    z-index: 0;
 }
 
 /* Right Side (Weapons / Main Items) */
@@ -464,6 +465,20 @@
     display: none;
 }
 
+.MainItemImg {
+    position: absolute;
+
+    display: none;
+    height: calc(100% - 10px);
+    width: calc(100% - 10px);
+
+    padding: 5px 5px;
+
+    border-radius: 5px;
+    
+    background-color: #1d232d;
+    z-index: 2;
+}
 
 @media screen and (max-width: 2060px) {
     #e_right {
