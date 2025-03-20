@@ -259,20 +259,24 @@ function IncreseItem(Item)
     let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
 
     let MainItem = Item.parentElement.parentElement.children[0].children[1]
+    console.log(MainItem)
+
+    let currectweight = MainItem.dataset.currectweight
+    let space = MainItem.dataset.space
 
     if (IsShiftDown) {
-        if (Number(MainItem.dataset.currectweight) + (Item.Weight * 5) > Number(MainItem.dataset.space))
+        if (Number(currectweight) + (Item.Weight * 5) > Number(space))
             return
 
         amount+= 5;
-        MainItem.dataset.currectweight = Number(MainItem.dataset.currectweight) + (Item.Weight * 5)
+        currectweight = Number(currectweight) + (Item.Weight * 5)
     }
     else {
-        if (Number(MainItem.dataset.currectweight) + Item.Weight > Number(MainItem.dataset.space))
+        if (Number(currectweight) + Item.Weight > Number(space))
             return
 
         amount++;
-        MainItem.dataset.currectweight = Number(MainItem.dataset.currectweight) + Item.Weight
+        currectweight = Number(currectweight) + Item.Weight
     }
     
     
@@ -284,24 +288,29 @@ function DecreseItem(Item)
     let AmountTxtElement = Item.children[2].children[1];
     let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
 
+    let currectweight = MainItem.dataset.currectweight
+
     let ItemData;
 
     for (CurrectItem of Items) {
-        if (CurrectItem.ItemId == Item.id)
+        if (CurrectItem.ItemId == Item.id) {
             ItemData = CurrectItem
+        }
     }
+
+    console.log(ItemData)
 
     let MainItem = Item.parentElement.parentElement.children[0].children[1]
 
     if (IsShiftDown) {
         amount-= 5;
 
-        MainItem.dataset.currectweight = Number(MainItem.dataset.currectweight) - (ItemData.Weight * 5);
+        currectweight = Number(currectweight) - (ItemData.Weight * 5);
     }
     else {
         amount--;
 
-        MainItem.dataset.currectweight = Number(MainItem.dataset.currectweight) - ItemData.Weight
+        currectweight = Number(currectweight) - ItemData.Weight
     }
     
     if (amount < 1)
