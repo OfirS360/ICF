@@ -114,7 +114,7 @@ function PlaceNewItem(Box, AllowItems, PlaceWeight, PlaceSpace)
     let Selected = document.querySelector(".dragging");
 
     if (Box.contains(Selected))
-        return
+        return { updatedWeight: PlaceWeight, updatedSpace: PlaceSpace }
 
     for (Item of Items)
     {
@@ -137,7 +137,8 @@ function PlaceNewItem(Box, AllowItems, PlaceWeight, PlaceSpace)
                 PlaceWeight += Item.Weight
                 if (PlaceSpace < PlaceWeight)
                 {
-                    return
+                    PlaceWeight -= Item.Weight
+                    return { updatedWeight: PlaceWeight, updatedSpace: PlaceSpace }
                 }
 
                 if (!CheckIfExists) {
