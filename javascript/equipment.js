@@ -195,9 +195,8 @@ function PlaceNewMainItem(Box, AllowItem)
         {
             if (Item.ItemId === Selected.id && Item.Type === AllowItem)
             {
-                let MainItem = Box.children[0]
-                MainItemC = MainItemClone.cloneNode(true);
-                
+                MainItemC = MainItemClone.cloneNode(false);
+
                 MainItemC.id = Item.ItemId
                 MainItemC.src = Selected.children[0].children[0].src
 
@@ -205,6 +204,8 @@ function PlaceNewMainItem(Box, AllowItem)
 
                 MainItemC.dataset.currectweight = 0
                 MainItemC.dataset.space = Item.Space
+
+                Box.appendChild(MainItemC)
 
                 AddingEventLisener(MainItemC)
 
