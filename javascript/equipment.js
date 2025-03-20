@@ -1,5 +1,7 @@
 let ItemStoredCopy = document.getElementById("ItemStoredClone")
 let ItemArsenalCopy = document.getElementById("ItemArsenalCopy")
+let MainItemClone = document.getElementById("MainItemClone")
+
 let Arsenal_Right = document.getElementById("Arsenal_Right")
 let UniformBox = document.getElementById("uniformBox")
 
@@ -194,14 +196,17 @@ function PlaceNewMainItem(Box, AllowItem)
             if (Item.ItemId === Selected.id && Item.Type === AllowItem)
             {
                 let MainItem = Box.children[0]
+                MainItemC = MainItemClone.cloneNode(true);
+                
+                MainItemC.id = Item.ItemId
+                MainItemC.src = Selected.children[0].children[0].src
 
-                MainItem.id = Item.ItemId
-                MainItem.src = Selected.children[0].children[0].src
+                MainItemC.style.display = "block"
 
-                MainItem.style.display = "block"
+                MainItemC.dataset.currectweight = 0
+                MainItemC.dataset.space = Item.Space
 
-                MainItem.dataset.currectweight = 0
-                MainItem.dataset.space = Item.Space
+                AddingEventLisener(MainItemC)
 
                 break
             }
