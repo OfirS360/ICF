@@ -1,5 +1,11 @@
 let ItemForm = document.getElementById("CreateEventForm")
 
+if (UserData2.Premission_Level < 1)
+{
+    alert("החפץ נוסף בהצלחה")
+    window.location.href = "https://icf.xitsraz.me/User_Area/equipment"
+}
+
 ItemForm.onsubmit = async (event) => {
     event.preventDefault();
 
