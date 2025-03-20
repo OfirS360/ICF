@@ -1,4 +1,5 @@
 let ItemStoredCopy = document.getElementById("ItemStoredClone")
+let ItemArsenalCopy = document.getElementById("ItemArsenalCopy")
 initializePage()
 
 async function initializePage() {
@@ -21,16 +22,35 @@ async function initializePage() {
     let ArsenalBox = document.getElementById("Arsenal_Right")
     let UniformBox = document.getElementById("uniformBox")
 
-    for(Item of Items) {
-        Item.addEventListener("dragstart", function(e) {
-            let Selected = e.target;
-            Selected.classList.add("dragging");
-        })
+    let Ars_WeaponsBtn = document.getElementById("Ars_Weapons")
+    let Ars_AttachmentsBtn = document.getElementById("Ars_Attachments")
+    let Ars_MainItemsBtn = document.getElementById("Ars_MainItems")
+    let Ars_ClothingBtn = document.getElementById("Ars_Clothing")
+    let Ars_ItemsBtn = document.getElementById("Ars_Items")
 
-        Item.addEventListener("dragend", function(e) {
-            let Selected = e.target;
-            Selected.classList.remove("dragging");
-        })
+    Ars_WeaponsBtn.onclick = () => {
+        RemoveItemsFromArsenal()
+        AddItemsToArsenal(Number(Ars_WeaponsBtn.value))
+    }
+
+    Ars_AttachmentsBtn.onclick = () => {
+        RemoveItemsFromArsenal()
+        AddItemsToArsenal(Number(Ars_AttachmentsBtn.value))
+    }
+
+    Ars_MainItemsBtn.onclick = () => {
+        RemoveItemsFromArsenal()
+        AddItemsToArsenal(Number(Ars_MainItemsBtn.value))
+    }
+
+    Ars_ClothingBtn.onclick = () => {
+        RemoveItemsFromArsenal()
+        AddItemsToArsenal(Number(Ars_ClothingBtn.value))
+    }
+
+    Ars_ItemsBtn.onclick = () => {
+        RemoveItemsFromArsenal()
+        AddItemsToArsenal(Number(Ars_ItemsBtn.value))
     }
 
     // Uniform Box
@@ -163,4 +183,37 @@ function DecreseItem(Item)
         Item.remove();
 
     AmountTxtElement.textContent = `כמות - ${amount}`;
+}
+
+function AddItemsToArsenal(Category)
+{
+    for (Item of Items) {
+        if (Item.Category === Category)
+        {
+            let CloneArsItem = ItemArsenalCopy.cloneNode(true)
+
+            CloneArsItem.children[0].children[0].src = `data:image/png;base64,${Item.Image}`;
+
+            CloneArsItem.children[1].children[0].textContent = Item.Title
+            CloneArsItem.children[1].children[1].textContent = Item.Description
+            CloneArsItem.children[1].children[2].textContent = `משקל: ${Item.Weight}kg`
+
+            CloneArsItem.addEventListener("dragstart", function(e) {
+                let Selected = e.target;
+                Selected.classList.add("dragging");
+            })
+    
+            CloneArsItem.addEventListener("dragend", function(e) {
+                let Selected = e.target;
+                Selected.classList.remove("dragging");
+            })
+
+            ArsenalBox.appendChild(CloneArsItem)
+        }
+    }
+}
+
+function RemoveItemsFromArsenal()
+{
+    ArsenalBox.innerHTML = "";
 }
