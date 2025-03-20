@@ -70,12 +70,14 @@ a img {
 }
 
 .content {
+    position: relative;
+
     display: flex;
     flex-direction: column;
 
     margin-left: 250px;
 
-    padding: 20px;
+    /* padding: 20px; */
     flex-grow: 1;
 }
 
@@ -168,6 +170,9 @@ a img {
     font-family: "Heebo", system-ui;
     font-weight: 500;
     border-radius: 75px;
+
+    margin-right: 20px;
+    margin-top: 20px;
 
     padding: 10px;
     padding-left: 30px;
@@ -579,4 +584,26 @@ progress::-webkit-progress-bar {
     border-radius: 20px;
     
     margin-left: 10px;
+}
+
+#LoadingContent {
+    position: absolute;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 75px;
+
+    width: 100%;
+    height: 100%;
+
+    font-family: "Heebo", system-ui;
+    font-weight: 900;
+
+    color: #09bfca;
+
+    background-color: #0e11197b;
+
+    z-index: 1000;
 }

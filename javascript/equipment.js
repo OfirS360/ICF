@@ -1,3 +1,5 @@
+let LoadingScreen = document.getElementById("LoadingContent")
+
 let ItemStoredCopy = document.getElementById("ItemStoredClone")
 let ItemArsenalCopy = document.getElementById("ItemArsenalCopy")
 let MainItemClone = document.getElementById("MainItemClone")
@@ -31,8 +33,9 @@ async function initializePage() {
     else {
         Items = [];
     }
-
+    LoadingScreen.style.display = "flex"
     await GetAllItems()
+    LoadingScreen.style.display = "none"
 
     console.log(Items)
 
@@ -437,7 +440,7 @@ function AddingBIEventLisener(MainInvBoxes, MainInvItems, MainItemsType) {
                 DecreseItem(Selected)
             }
             else {
-            PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
+                PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
             }
         })
 
