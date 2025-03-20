@@ -5,6 +5,9 @@ let UniformBox = document.getElementById("uniformBox")
 
 let UniformItem = document.getElementById("UnifromItem")
 
+let UniformSpace = 0
+let UniformWieght = 0
+
 initializePage()
 
 async function initializePage() {
@@ -74,7 +77,7 @@ async function initializePage() {
 
         UniformBox.style.backgroundColor = "#202833";
 
-        PlaceNewItem(UniformBox, ["Item", "Attachment", "Facewear", "Nvg"])
+        PlaceNewItem(UniformBox, ["Item", "Attachment", "Facewear", "Nvg"], UniformWieght, UniformSpace)
     })
 
     UniformItem.addEventListener("dragover", function(e) {
@@ -84,7 +87,7 @@ async function initializePage() {
     UniformItem.addEventListener("drop", function(e) {
         e.preventDefault();
 
-        PlaceNewMainItem(UniformItem, "Uniform")
+        PlaceNewMainItem(UniformItem, "Uniform", UniformWieght, UniformSpace)
     })
 
     // Arsenal
@@ -102,7 +105,7 @@ async function initializePage() {
 }
 
 // Functions
-function PlaceNewItem(Box, AllowItems)
+function PlaceNewItem(Box, AllowItems, PlaceWeight, PlaceSpace)
 {
     let Selected = document.querySelector(".dragging");
 
@@ -123,6 +126,13 @@ function PlaceNewItem(Box, AllowItems)
             if (flag)
             {
                 let CheckIfExists = Box.querySelector(`#${Selected.id}`)
+
+                PlaceWeight += Item.Weight
+                if (PlaceSpace < PlaceWeight)
+                {
+                    PlaceWeight -= Item.Weight
+                    return
+                }
 
                 if (!CheckIfExists) {
                     let ItemImg = Selected.children[0].children[0].src
@@ -158,7 +168,7 @@ function PlaceNewItem(Box, AllowItems)
     }
 }
 
-function PlaceNewMainItem(Box, AllowItem)
+function PlaceNewMainItem(Box, AllowItem, PlaceWeight, PlaceSpace)
 {
     let Selected = document.querySelector(".dragging");
 
@@ -166,9 +176,10 @@ function PlaceNewMainItem(Box, AllowItem)
         {
             if (Item.ItemId === Selected.id && Item.Type === AllowItem)
             {
+                PlaceWeight = 0
+                PlaceSpace = Item.Space
                 Box.children[0].id = Item.ItemId
                 Box.children[0].src = Selected.children[0].children[0].src
-                Box.children[0].value = Item.Weight
             }
         }
 }
