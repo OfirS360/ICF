@@ -156,8 +156,30 @@ async function initializePage() {
             MainItem.dataset.currectweight = Number(MainItem.dataset.currectweight) - (amount * ItemData.Weight)
         }
 
+        if (VestBox.contains(Selected)) {
+            let AmountTxtElement = Selected.children[2].children[1];
+            let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
+
+            let ItemData;
+
+            for (CurrectItem of Items) {
+                if (CurrectItem.ItemId == Selected.id) {
+                    ItemData = CurrectItem
+                    break
+                }
+            }
+
+            let MainItem = Selected.parentElement.parentElement.children[0].children[1]
+
+            MainItem.dataset.currectweight = Number(MainItem.dataset.currectweight) - (amount * ItemData.Weight)
+        }
+
         if (UniformItem.contains(Selected)) {
             UniformBox.innerHTML = ""
+        }
+
+        if (VestItem.contains(Selected)) {
+            VestBox.innerHTML = ""
         }
 
         if (!Arsenal_Right.contains(Selected))
