@@ -17,6 +17,8 @@ ItemForm.onsubmit = async (event) => {
         reader.onload = function(e) {
             let base64String = e.target.result;
 
+            let imageData = base64String.split(",")[1];
+
             let FormItemData = {
                 Title: document.getElementById("Title").value,
                 Description: document.getElementById("Description").value,
@@ -28,7 +30,7 @@ ItemForm.onsubmit = async (event) => {
                 Category: document.getElementById("Category").value,
                 Pakal: document.getElementById("Pakal").value,
                 Type: document.getElementById("Type").value,
-                Image: base64String,
+                Image: imageData,
             };
 
             fetch("https://icf-api-ten.vercel.app/EventFormSend", {
@@ -36,7 +38,7 @@ ItemForm.onsubmit = async (event) => {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(FormEventData)
+                body: JSON.stringify(FormItemData)
             })
             .then(response => response.json())
             .then(data => {
