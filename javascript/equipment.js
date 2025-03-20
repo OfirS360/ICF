@@ -77,7 +77,9 @@ async function initializePage() {
 
         UniformBox.style.backgroundColor = "#202833";
 
-        PlaceNewItem(UniformBox, ["Item", "Attachment", "Facewear", "Nvg"], UniformWieght, UniformSpace)
+        let UpdatedValues = PlaceNewItem(UniformBox, ["Item", "Attachment", "Facewear", "Nvg"], UniformWieght, UniformSpace)
+        UniformWieght = UpdatedValues.updatedWeight;
+        UniformSpace = UpdatedValues.updatedSpace;
     })
 
     UniformItem.addEventListener("dragover", function(e) {
@@ -87,7 +89,9 @@ async function initializePage() {
     UniformItem.addEventListener("drop", function(e) {
         e.preventDefault();
 
-        PlaceNewMainItem(UniformItem, "Uniform", UniformWieght, UniformSpace)
+        let UpdatedValues = PlaceNewMainItem(UniformItem, "Uniform", UniformWieght, UniformSpace)
+        UniformWieght = UpdatedValues.updatedWeight;
+        UniformSpace = UpdatedValues.updatedSpace;
     })
 
     // Arsenal
@@ -130,7 +134,6 @@ function PlaceNewItem(Box, AllowItems, PlaceWeight, PlaceSpace)
                 PlaceWeight += Item.Weight
                 if (PlaceSpace < PlaceWeight)
                 {
-                    PlaceWeight -= Item.Weight
                     return
                 }
 
@@ -163,6 +166,8 @@ function PlaceNewItem(Box, AllowItems, PlaceWeight, PlaceSpace)
                 
                     AmountTxtElement.textContent = `כמות - ${amount}`;
                 }
+
+                return { updatedWeight: PlaceWeight, updatedSpace: PlaceSpace };
             }
         }
     }
@@ -180,6 +185,8 @@ function PlaceNewMainItem(Box, AllowItem, PlaceWeight, PlaceSpace)
                 PlaceSpace = Item.Space
                 Box.children[0].id = Item.ItemId
                 Box.children[0].src = Selected.children[0].children[0].src
+
+                return { updatedWeight: PlaceWeight, updatedSpace: PlaceSpace };
             }
         }
 }
