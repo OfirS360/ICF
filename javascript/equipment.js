@@ -84,7 +84,7 @@ async function initializePage() {
     UniformItem.addEventListener("drop", function(e) {
         e.preventDefault();
 
-        PlaceNewMainItem(UniformBox, "Uniform")
+        PlaceNewMainItem(UniformItem, "Uniform")
     })
 
     // Arsenal
@@ -166,6 +166,7 @@ function PlaceNewMainItem(Box, AllowItem)
         {
             if (Item.ItemId === Selected.id && Item.Type === AllowItem)
             {
+                Box.children[0].id = Item.ItemId
                 Box.children[0].src = Selected.children[0].children[0].src
                 Box.children[0].value = Item.Weight
             }
