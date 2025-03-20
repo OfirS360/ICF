@@ -5,9 +5,11 @@ let MainItemClone = document.getElementById("MainItemClone")
 let Arsenal_Right = document.getElementById("Arsenal_Right")
 let UniformBox = document.getElementById("uniformBox")
 let VestBox = document.getElementById("vestBox")
+let backpackBox = document.getElementById("backpackBox")
 
 let UniformItem = document.getElementById("UniformItem")
 let VestItem = document.getElementById("VestItem")
+let BackpackItem = document.getElementById("BackpackItem")
 
 let MainInvBoxes = ["uniformBox", "vestBox", "backpackBox"];
 let MainInvItems = ["UniformItem", "VestItem", "BackpackItem"]
@@ -120,6 +122,10 @@ async function initializePage() {
 
         if (VestItem.contains(Selected)) {
             VestBox.innerHTML = ""
+        }
+
+        if (BackpackItem.contains(Selected)) {
+            backpackBox.innerHTML = ""
         }
 
         if (!Arsenal_Right.contains(Selected))
