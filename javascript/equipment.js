@@ -121,6 +121,10 @@ async function initializePage() {
             MainItem.dataset.currectweight = Number(MainItem.dataset.currectweight) - (amount * ItemData.Weight)
         }
 
+        if (UniformItem.contains(Selected)) {
+            UniformBox.innerHTML = ""
+        }
+
         if (!Arsenal_Right.contains(Selected))
             Selected.remove()
     })
