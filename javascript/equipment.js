@@ -5,6 +5,8 @@ let UniformBox = document.getElementById("uniformBox")
 
 let UniformItem = document.getElementById("UnifromItem")
 
+let IsShiftDown = false
+
 let UniformSpace = 0
 let UniformWieght = 0
 
@@ -106,6 +108,18 @@ async function initializePage() {
         if (!Arsenal_Right.contains(Selected))
             Selected.remove()
     })
+
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Shift") {
+            IsShiftDown = true;
+        }
+    });
+    
+    document.addEventListener("keyup", function(event) {
+        if (event.key === "Shift") {
+            IsShiftDown = false;
+        }
+    });
 }
 
 // Functions
@@ -238,7 +252,13 @@ function IncreseItem(Item)
 {
     let AmountTxtElement = Item.children[2].children[1];
     let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
-    amount++;
+    if (IsShiftDown) {
+        amount+= 5;
+    }
+    else {
+        amount++;
+    }
+    
     
     AmountTxtElement.textContent = `כמות - ${amount}`;
 }
@@ -247,9 +267,14 @@ function DecreseItem(Item)
 {
     let AmountTxtElement = Item.children[2].children[1];
     let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
-    amount--;
+    if (IsShiftDown) {
+        amount-= 5;
+    }
+    else {
+        amount--;
+    }
     
-    if (!amount)
+    if (amount < 1)
         Item.remove();
 
     AmountTxtElement.textContent = `כמות - ${amount}`;
