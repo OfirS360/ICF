@@ -19,13 +19,26 @@ ItemForm.onsubmit = async (event) => {
 
             let imageData = base64String.split(",")[1];
 
+            let LimitValue = null
+            let SpaceValue = null
+
+            if (document.getElementById("Limit").value !== "")
+            {
+                LimitValue = document.getElementById("Limit").value
+            }
+
+            if (document.getElementById("Space").value !== "")
+            {
+                SpaceValue = document.getElementById("Space").value
+            }
+
             let FormItemData = {
                 Title: document.getElementById("Title").value,
                 Description: document.getElementById("Description").value,
                 ItemId: document.getElementById("ItemId").value,
                 Weight: document.getElementById("Weight").value,
-                Space: document.getElementById("Space").value,
-                Limit: document.getElementById("Limit").value,
+                Space: SpaceValue,
+                Limit: LimitValue,
                 Team: document.getElementById("Team").value,
                 Category: document.getElementById("Category").value,
                 Pakal: document.getElementById("Pakal").value,
