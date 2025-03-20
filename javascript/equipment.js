@@ -258,7 +258,7 @@ function IncreseItem(Item)
     let AmountTxtElement = Item.children[2].children[1];
     let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
 
-    let MainItem = Item.parentElement.parentElement.children[0].children[0]
+    let MainItem = Item.parentElement.parentElement.children[0].children[1]
 
     if (IsShiftDown) {
         if (Number(MainItem.dataset.currectweight) + (Item.Weight * 5) > Number(MainItem.dataset.space))
@@ -291,7 +291,7 @@ function DecreseItem(Item)
             ItemData = CurrectItem
     }
 
-    let MainItem = Item.parentElement.parentElement.children[0].children[0]
+    let MainItem = Item.parentElement.parentElement.children[0].children[1]
 
     if (IsShiftDown) {
         amount-= 5;
