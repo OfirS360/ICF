@@ -72,7 +72,7 @@ async function initializePage() {
 
         UniformBox.style.backgroundColor = "#202833";
 
-        PlaceNewItem(UniformBox)
+        PlaceNewItem(UniformBox, ["Item", "attachment", "facewear", "nvg"])
     })
 
     Arsenal_Right.addEventListener("dragover", function(e) {
@@ -89,39 +89,58 @@ async function initializePage() {
 }
 
 // Functions
-function PlaceNewItem(Box)
+function PlaceNewItem(Box, AllowItems)
 {
-    let Selected = document.querySelector(".dragging");
-    let CheckIfExists = Box.querySelector(`#${Selected.id}`)
+    for (Item of Items)
+    {
+        if (Item.ItemId === Selected.id)
+        {
+            let flag = false
+            for (let i = 0; i < AllowItems.length; i++)
+            {
+                if (Item.Type === AllowItems[i])
+                {
+                    flag = true
+                    break
+                }
+            }
 
-    if (!CheckIfExists) {
-        let ItemImg = Selected.children[0].children[0].src
-        let ItemTitle = Selected.children[1].children[0].textContent
+            if (flag)
+            {
+                let Selected = document.querySelector(".dragging");
+                let CheckIfExists = Box.querySelector(`#${Selected.id}`)
 
-        let NewItem = ItemStoredCopy.cloneNode(true);
-        NewItem.id = Selected.id
+                if (!CheckIfExists) {
+                    let ItemImg = Selected.children[0].children[0].src
+                    let ItemTitle = Selected.children[1].children[0].textContent
 
-        let NewItemImg = NewItem.children[1].children[0]
-        NewItemImg.src = ItemImg
+                    let NewItem = ItemStoredCopy.cloneNode(true);
+                    NewItem.id = Selected.id
 
-        let NewItemTitle = NewItem.children[2].children[0]
-        NewItemTitle.textContent = ItemTitle
+                    let NewItemImg = NewItem.children[1].children[0]
+                    NewItemImg.src = ItemImg
 
-        NewItem.style.display = "flex"
-        Box.appendChild(NewItem)
+                    let NewItemTitle = NewItem.children[2].children[0]
+                    NewItemTitle.textContent = ItemTitle
 
-        Selected.classList.remove("dragging");
+                    NewItem.style.display = "flex"
+                    Box.appendChild(NewItem)
 
-        AddingEventLisener(NewItem)
-        AddBtnsLiseners(NewItem)
-    }
+                    Selected.classList.remove("dragging");
 
-    else {
-        let AmountTxtElement = CheckIfExists.children[2].children[1];
-        let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
-        amount++;
-    
-        AmountTxtElement.textContent = `כמות - ${amount}`;
+                    AddingEventLisener(NewItem)
+                    AddBtnsLiseners(NewItem)
+                }
+
+                else {
+                    let AmountTxtElement = CheckIfExists.children[2].children[1];
+                    let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
+                    amount++;
+                
+                    AmountTxtElement.textContent = `כמות - ${amount}`;
+                }
+            }
+        }
     }
 }
 
