@@ -1,5 +1,8 @@
 let ItemStoredCopy = document.getElementById("ItemStoredClone")
 let ItemArsenalCopy = document.getElementById("ItemArsenalCopy")
+let Arsenal_Right = document.getElementById("Arsenal_Right")
+let UniformBox = document.getElementById("uniformBox")
+
 initializePage()
 
 async function initializePage() {
@@ -18,9 +21,6 @@ async function initializePage() {
     await GetAllItems()
 
     console.log(Items)
-
-    let ArsenalBox = document.getElementById("Arsenal_Right")
-    let UniformBox = document.getElementById("uniformBox")
 
     let Ars_WeaponsBtn = document.getElementById("Ars_Weapons")
     let Ars_AttachmentsBtn = document.getElementById("Ars_Attachments")
@@ -75,15 +75,15 @@ async function initializePage() {
         PlaceNewItem(UniformBox)
     })
 
-    ArsenalBox.addEventListener("dragover", function(e) {
+    Arsenal_Right.addEventListener("dragover", function(e) {
         e.preventDefault();
     })
 
-    ArsenalBox.addEventListener("drop", function(e) {
+    Arsenal_Right.addEventListener("drop", function(e) {
         e.preventDefault();
 
         let Selected = document.querySelector(".dragging")
-        if (!ArsenalBox.contains(Selected))
+        if (!Arsenal_Right.contains(Selected))
             Selected.remove()
     })
 }
@@ -211,12 +211,20 @@ function AddItemsToArsenal(Category)
                 Selected.classList.remove("dragging");
             })
 
-            ArsenalBox.appendChild(CloneArsItem)
+            Arsenal_Right.appendChild(CloneArsItem)
         }
     }
 }
 
 function RemoveItemsFromArsenal()
 {
-    ArsenalBox.innerHTML = "";
+    let ArsenalItemsBox = document.getElementById("Arsenal_Right");
+
+    let ItemsInArsenal = ArsenalItemsBox.querySelectorAll(".Item");
+    ItemsInArsenal.forEach(Item => {
+        if (!Item.classList.contains("Arsenal_Buttons") && Item.id !== "ItemArsenalCopy") {
+            Item.remove();
+        }
+    });
 }
+
