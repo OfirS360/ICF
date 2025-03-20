@@ -181,11 +181,12 @@ function PlaceNewItem(Box, AllowItems)
                 MainItem.dataset.currectweight = Number(MainItem.dataset.currectweight) + Item.Weight
 
                 if (!CheckIfExists) {
+
                     let NewItem = ItemStoredCopy.cloneNode(true);
                     NewItem.id = Selected.id
 
                     let NewItemImg = NewItem.children[1].children[0]
-                    NewItemImg.src = Item.Image
+                    NewItemImg.src = `data:image/png;base64,${Item.Image}`
 
                     let NewItemTitle = NewItem.children[2].children[0]
                     NewItemTitle.textContent = Item.Title
