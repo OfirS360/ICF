@@ -33,7 +33,7 @@ ItemForm.onsubmit = async (event) => {
                 Image: imageData,
             };
 
-            fetch("https://icf-api-ten.vercel.app/EventFormSend", {
+            fetch("https://icf-api-ten.vercel.app/ItemFormSend", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
