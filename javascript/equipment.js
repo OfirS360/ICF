@@ -146,12 +146,12 @@ function PlaceNewItem(Box, AllowItems)
 
                 let MainItem = Box.parentElement.children[0].children[1]
 
-                if (MainItem.dataset.currectweight + Item.Weight > MainItem.dataset.space)
+                if (Number(MainItem.dataset.currectweight) + Item.Weight > Number(MainItem.dataset.space))
                 {
                     return
                 }
 
-                MainItem.dataset.currectweight += Item.Weight
+                MainItem.dataset.currectweight = Number(MainItem.dataset.currectweight) + Item.Weight
 
                 if (!CheckIfExists) {
                     let ItemImg = Selected.children[0].children[0].src
@@ -261,16 +261,18 @@ function IncreseItem(Item)
     let MainItem = Item.parentElement.parentElement.children[0].children[0]
 
     if (IsShiftDown) {
-        if (MainItem.dataset.currectweight + (Item.Weight * 5) > MainItem.dataset.space)
+        if (Number(MainItem.dataset.currectweight) + (Item.Weight * 5) > Number(MainItem.dataset.space))
             return
 
         amount+= 5;
+        MainItem.dataset.currectweight = Number(MainItem.dataset.currectweight) + (Item.Weight * 5)
     }
     else {
-        if (MainItem.dataset.currectweight + Item.Weight > MainItem.dataset.space)
+        if (Number(MainItem.dataset.currectweight) + Item.Weight > Number(MainItem.dataset.space))
             return
 
         amount++;
+        MainItem.dataset.currectweight = Number(MainItem.dataset.currectweight) + Item.Weight
     }
     
     
@@ -294,10 +296,12 @@ function DecreseItem(Item)
     if (IsShiftDown) {
         amount-= 5;
 
-        MainItem.dataset.currectweight = MainItem.dataset.currectweight - (ItemData.Weight * 5);
+        MainItem.dataset.currectweight = Number(MainItem.dataset.currectweight) - (ItemData.Weight * 5);
     }
     else {
         amount--;
+
+        MainItem.dataset.currectweight = Number(MainItem.dataset.currectweight) - ItemData.Weight
     }
     
     if (amount < 1)
