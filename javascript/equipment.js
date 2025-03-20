@@ -3,6 +3,8 @@ let ItemArsenalCopy = document.getElementById("ItemArsenalCopy")
 let Arsenal_Right = document.getElementById("Arsenal_Right")
 let UniformBox = document.getElementById("uniformBox")
 
+let UniformItem = document.getElementById("UnifromItem")
+
 initializePage()
 
 async function initializePage() {
@@ -72,9 +74,20 @@ async function initializePage() {
 
         UniformBox.style.backgroundColor = "#202833";
 
-        PlaceNewItem(UniformBox, ["Item", "attachment", "facewear", "nvg"])
+        PlaceNewItem(UniformBox, ["Item", "Attachment", "Facewear", "Nvg"])
     })
 
+    UniformItem.addEventListener("dragover", function(e) {
+        e.preventDefault();
+    })
+
+    UniformItem.addEventListener("drop", function(e) {
+        e.preventDefault();
+
+        PlaceNewMainItem(UniformBox, "Uniform")
+    })
+
+    // Arsenal
     Arsenal_Right.addEventListener("dragover", function(e) {
         e.preventDefault();
     })
@@ -143,6 +156,20 @@ function PlaceNewItem(Box, AllowItems)
             }
         }
     }
+}
+
+function PlaceNewMainItem(Box, AllowItem)
+{
+    let Selected = document.querySelector(".dragging");
+
+    for (Item of Items)
+        {
+            if (Item.ItemId === Selected.id && Item.Type === AllowItem)
+            {
+                Box.children[0].src = Selected.children[0].children[0].src
+                Box.children[0].value = Item.Weight
+            }
+        }
 }
 
 function AddingEventLisener(Item)
