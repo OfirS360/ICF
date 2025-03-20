@@ -4,8 +4,10 @@ let MainItemClone = document.getElementById("MainItemClone")
 
 let Arsenal_Right = document.getElementById("Arsenal_Right")
 let UniformBox = document.getElementById("uniformBox")
+let VestBox = document.getElementById("vestBox")
 
 let UniformItem = document.getElementById("UnifromItem")
+let VestItem = document.getElementById("VestItem")
 
 let IsShiftDown = false
 
@@ -81,6 +83,28 @@ async function initializePage() {
         PlaceNewItem(UniformBox, ["Item", "Attachment", "Facewear", "Nvg"])
     })
 
+    // Vest Box
+    VestBox.addEventListener("dragenter", function() {
+        VestBox.style.backgroundColor = "#262f3c";
+    });
+
+    VestBox.addEventListener("dragleave", function() {
+        VestBox.style.backgroundColor = "#202833";
+    });
+
+
+    VestBox.addEventListener("dragover", function(e) {
+        e.preventDefault();
+    })
+
+    VestBox.addEventListener("drop", function(e) {
+        e.preventDefault();
+
+        VestBox.style.backgroundColor = "#202833";
+
+        PlaceNewItem(VestBox, ["Item", "Attachment", "Facewear", "Nvg"])
+    })
+
     // Uniform Item
     UniformItem.addEventListener("dragover", function(e) {
         e.preventDefault();
@@ -90,6 +114,17 @@ async function initializePage() {
         e.preventDefault();
 
         PlaceNewMainItem(UniformItem, "Uniform")
+    })
+
+    // VestItem
+    VestItem.addEventListener("dragover", function(e) {
+        e.preventDefault();
+    })
+
+    VestItem.addEventListener("drop", function(e) {
+        e.preventDefault();
+
+        PlaceNewMainItem(VestItem, "Vest")
     })
 
     // Arsenal
