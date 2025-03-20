@@ -422,19 +422,19 @@ function AddingBIEventLisener(MainInvBoxes, MainInvItems, MainItemsType) {
     
             let Selected = document.querySelector(".dragging");
 
-            if (UniformBox.contains(Selected) && CurrectBox !== UniformBox) {
-                DecreseItem(Selected)
+            if (UniformBox.contains(Selected) && CurrectBox !== UniformBox) {    
                 PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
+                DecreseItem(Selected)
             }
 
             else if (VestBox.contains(Selected) && CurrectBox !== VestBox) {
-                DecreseItem(Selected)
                 PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
+                DecreseItem(Selected)
             }
 
             else if (backpackBox.contains(Selected) && CurrectBox !== backpackBox) {
-                DecreseItem(Selected)
                 PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
+                DecreseItem(Selected)
             }
             else {
             PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
