@@ -503,6 +503,11 @@ function PlaceNewWeaponItem(Box, AllowItem) {
             {
                 let AttachmentBox = AttachmentBoxClone.cloneNode(true);
                 AttachmentBox.style.display = "block"
+
+                if (Item.Type === "Handgun") {
+                    AttachmentBox.children[3].remove()
+                }
+
                 MainItemC.appendChild(AttachmentBox)
             }
 
