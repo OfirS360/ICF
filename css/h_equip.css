@@ -482,6 +482,31 @@
     z-index: 2;
 }
 
+.WeaponItem {
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+
+    border-radius: 10px;
+
+    background-color: #1d232d;
+    z-index: 2;
+}
+
+.WeaponItemImg {
+    height: 275%;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 @media screen and (max-width: 2060px) {
     #e_right {
         height: 480px;

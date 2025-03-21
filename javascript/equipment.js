@@ -3,6 +3,7 @@ let LoadingScreen = document.getElementById("LoadingContent")
 let ItemStoredCopy = document.getElementById("ItemStoredClone")
 let ItemArsenalCopy = document.getElementById("ItemArsenalCopy")
 let MainItemClone = document.getElementById("MainItemClone")
+let WeaponItemClone = document.getElementById("WeaponItemClone")
 
 let Arsenal_Right = document.getElementById("Arsenal_Right")
 let UniformBox = document.getElementById("uniformBox")
@@ -13,9 +14,14 @@ let UniformItem = document.getElementById("UniformItem")
 let VestItem = document.getElementById("VestItem")
 let BackpackItem = document.getElementById("BackpackItem")
 
+let PrimaryItem = document.getElementById("main_weapon")
+
 let MainInvBoxes = ["uniformBox", "vestBox", "backpackBox"];
 let MainInvItems = ["UniformItem", "VestItem", "BackpackItem"]
 let MainItemsType = ["Uniform", "Vest", "Backpack"]
+
+let WeaponsItems = ["main_weapon"];
+let WeaponsType = ["Primary"];
 
 let IsShiftDown = false
 
@@ -455,4 +461,44 @@ function AddingBIEventLisener(MainInvBoxes, MainInvItems, MainItemsType) {
             PlaceNewMainItem(CurrectItem, MainItemsType[i])
         })
     }
+}
+
+function AddingWeaponsEventLisener(WeaponsItems) {
+    for (let i = 0; i < WeaponsItems.length; i++)
+    {
+        let CurrectBox = document.getElementById(WeaponsItems[i])
+
+        CurrectBox.addEventListener("dragover", function(e) {
+            e.preventDefault();
+        })
+    
+        CurrectBox.addEventListener("drop", function(e) {
+            e.preventDefault();
+    
+            PlaceNewWeaponItem(CurrectBox, WeaponsType[i])
+        })
+    }
+}
+
+function PlaceNewWeaponItem(Box, AllowItem) {
+    let Selected = document.querySelector(".dragging");
+
+    for (Item of Items)
+    {
+        if (Item.ItemId === Selected.id && Item.Type === AllowItem)
+        {
+            MainItemC = WeaponItemClone.cloneNode(true);
+
+            MainItemC.id = Item.ItemId
+            MainItemC.src = Selected.children[0].children[0].src
+
+            MainItemC.style.display = "flex"
+
+            Box.appendChild(MainItemC)
+
+            AddingEventLisener(MainItemC)
+
+            break
+        }
+     }
 }
