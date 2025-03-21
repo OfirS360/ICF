@@ -491,7 +491,7 @@ function PlaceNewWeaponItem(Box, AllowItem) {
             MainItemC = WeaponItemClone.cloneNode(true);
 
             MainItemC.id = Item.ItemId
-            MainItemC.src = Selected.children[0].children[0].src
+            MainItemC.children[0].src = `data:image/png;base64,${Item.Image}`
 
             MainItemC.style.display = "flex"
 
