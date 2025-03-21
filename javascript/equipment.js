@@ -20,8 +20,8 @@ let MainInvBoxes = ["uniformBox", "vestBox", "backpackBox"];
 let MainInvItems = ["UniformItem", "VestItem", "BackpackItem"]
 let MainItemsType = ["Uniform", "Vest", "Backpack"]
 
-let WeaponsItems = ["main_weapon"];
-let WeaponsType = ["Primary"];
+let WeaponsItems = ["main_weapon", "launcher", "pistol"];
+let WeaponsType = ["Primary", "Secondary", "Handgun"];
 
 let IsShiftDown = false
 
