@@ -77,6 +77,7 @@ async function initializePage() {
     }
 
     AddingBIEventLisener(MainInvBoxes, MainInvItems, MainItemsType)
+    AddingWeaponsEventLisener(WeaponsItems)
 
     // Arsenal
     Arsenal_Right.addEventListener("dragover", function(e) {
