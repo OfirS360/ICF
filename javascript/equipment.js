@@ -493,6 +493,10 @@ function PlaceNewWeaponItem(Box, AllowItem) {
             MainItemC.id = Item.ItemId
             MainItemC.children[0].src = `data:image/png;base64,${Item.Image}`
 
+            if (Item.Type === "Handgun") {
+                MainItemC.children[0].style.height = "150%"
+            }
+
             MainItemC.style.display = "flex"
 
             Box.appendChild(MainItemC)
