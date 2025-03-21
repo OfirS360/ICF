@@ -495,11 +495,14 @@
     border-radius: 10px;
 
     background-color: #1d232d;
+
+    overflow: hidden;
     z-index: 2;
 }
 
 .WeaponItemImg {
-    height: 275%;
+    height: 100%;
+    scale: 2.75;
 
     -webkit-user-select: none;
     -moz-user-select: none;

@@ -1,572 +1,609 @@
-#equipmentBox {
+body
+{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    background-color: #0b0c10;
 
-    margin-top: 100px;
+    margin: 0;
+    padding: 0;
 }
 
-.Equip_Img {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-
-    opacity: 0.85;
-
-    height: 90%;
-
-    pointer-events: none;
-    z-index: 0;
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+    scrollbar-width: none;
 }
 
-/* Right Side (Weapons / Main Items) */
-#e_right {
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+
     display: flex;
     flex-direction: column;
 
-    width: 400px;
-    height: 600px;
+    width: 250px;
+    height: 100vh;
 
-    background-color: #151a21;
+    background: #202833;
+    color: white;
+    font-family: "Heebo", system-ui;
 
-    border-radius: 10px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    padding-top: 20px;
 
-    padding-left: 10px;
-    padding-right: 5px;
+    transition: 0.3s;
 }
 
-#Top_Right {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+.sidebar a {
+    display: block;
+    
+    text-decoration: none;
+    text-align: right;
+    white-space: nowrap;
+    color: white;
 
-    margin-top: 10px;
-    margin-bottom: 10px;
+    padding: 15px;
+
+    transition: 0.3s;
 }
 
-.Equip_Top {
-    display: inline-block;
-    position: relative;
-
-    background-color: #202833;
-    border-radius: 5px;
-
-    width: 90px;
-    height: 90px;
-}
-
-.WeaponBox {
+#Disconnect {
+    display: inline;
     align-self: center;
+
+    border-radius: 50px;
+
+    width: min-content;
+
+    margin-top: auto;
+    margin-bottom: 40px;
+}
+
+a img {
+    vertical-align: middle;
+    margin-left: 8px;
+    color: #09bfca;
+}
+
+.sidebar a:hover {
+    background: #323f52;
+}
+
+.content {
     position: relative;
 
-    background-color: #202833;
-
-    height: 125px;
-    width: 96%;
-
-    border-radius: 10px;
-
-    margin-bottom: 10px;
-}
-
-.WeaponImg {
-    height: 115px;
-}
-
-#Buttom_Right {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    flex-direction: column;
 
-    margin-bottom: 10px;
+    margin-left: 250px;
+
+    /* padding: 20px; */
+    flex-grow: 1;
 }
 
-.Equip_Buttom {
-    display: inline-block;
-    position: relative;
-
-    background-color: #202833;
-    border-radius: 5px;
-
-    width: 73px;
-    height: 73px;
-}
-
-.ButtomImg {
-    height: 50px;
-}
-
-#e_mid {
+#Header {
     display: flex;
-    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
 
-    background-color: #151a21;
-
-    border-radius: 10px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 5px;
+    margin-bottom: 20px;
 }
 
-.InvBox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    height: 580px;
-    width: 300px;
-
-    margin-right: 5px;
-    margin-left: 5px;
-}
-
-.EquipInv_Top {
-    display: inline-block;
-    position: relative;
-
-    background-color: #202833;
-    border-radius: 5px;
-
-    width: 90px;
-    height: 90px;
-
-    align-self: center;
-}
-
-.InvMain {
-    display: flex;
-    flex-direction: column;
-
-    height: 460px;
-    width: 93%;
-
-    background-color: #202833;
-    border-radius: 10px;
-
-    margin-top: 10px;
-    padding: 10px 10px;
-
-    transition: all 0.3s;
-}
-
-#e_left {
-    display: flex;
-    flex-direction: column;
-
-    width: 400px;
-    height: 600px;
-
+#Headertxt {
     margin-right: 20px;
+
+    font-size: 20px;
+    font-weight: 900;
+    color: #09bfca;
+    white-space: nowrap;
 }
 
-#LeftTopButtons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+#sidebarimg {
+    height: 75px;
 }
 
-.leftButtons {
-    border: none;
-    border-radius: 5px;
+#CurrectPage {
+    border-right: 5px solid #09bfca;
+    box-shadow: -5px 0 5px rgba(0, 0, 0, 0.5);
+}
 
-    color: #f5f5f5;
-
+.Title1 {
+    color: #09bfca;
     font-family: "Heebo", system-ui;
-    font-weight: 800;
-    text-align: center;
+    font-weight: 900;
+    font-size: 50px;
+}
+
+.TextInput {
+    font-family: "Heebo", system-ui;
+    color: #f5f5f5;
+    text-align: right;
+    background-color: #202833;
     font-size: 15px;
+    border: none;
+    border-radius: 20px;
 
-    height: 35px;
-    width: 70px;
+    padding: 10px 15px;
+    margin-bottom: 30px;
 
-    margin-right: 5px;
-    margin-left: 5px;
-
-    transition: all 0.3s;
-}
-
-#SaveLoadout {
-    background-color: #22B14C;
-    
-}
-
-#SaveLoadout:hover {
-    box-shadow: 0 0 20px -5px #22B14C;
-}
-
-#ImportLoadout {
-    background-color: #454EDE;
-}
-
-#ImportLoadout:hover {
-    box-shadow: 0 0 20px -5px #454EDE;
-}
-
-#ChooseLoadout {
-    width: 90px;
-
-    font-size: 15px;
-    background-color: #E3D700;
-}
-
-#ChooseLoadout:hover {
-    box-shadow: 0 0 20px -5px #E3D700;
-}
-
-#ArsenalBox {
-    display: flex;
-    flex-direction: row;
-
-    height: 555px;
     width: 100%;
 
-    margin-top: 10px;
+    resize: none;
+
+    transition: background-color 0.3s;
 }
 
-#Arsenal_Right {
+.TextInput:focus {
+    outline: none;
+    
+    background-color: #293342;
+}
+
+.Reg_Ask {
+    font-family: "Heebo", system-ui;
+    color: #f5f5f5;
+    text-align: center;
+    font-size: 20px;
+
     display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    width: 365px;
-    height: 535px;
-
-    background-color: #202833;
-
-    border-radius: 10px;
-    border-top-left-radius: 0;
-
-    padding: 10px 10px;
-
-    overflow-y: scroll;
-}
-
-#Arsenal_Left {
-    display: flex;
-    flex-direction: column;
-}
-
-.Arsenal_Buttons {
-    position: relative;
-
-    background-color: #181e26;
-
-    border: none;
-
-    height: 35px;
-    width: 35px;
-
-    margin-bottom: 3px;
-
-    transition: all 0.3s;
-}
-
-.Arsenal_Buttons:hover {
-    background-color: #232b36;
-}
-
-.Choose_Img {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-
-    height: 35px;
-
-    pointer-events: none;
-}
-
-.Item {
-    display: flex;
-    flex-direction: row;
     justify-content: flex-start;
 
-    align-items: center;
-
-    width: 95%;
-    height: 105px;
-
-    border-radius: 10px;
-
     margin-bottom: 10px;
-
-    padding: 10px 10px;
-
-    background-color: #2f3b4a;
-
-    cursor: grab;
 }
 
-.ItemImg {
-    height: 90px;
+/* Profile Page */
+#avatar {
+    height: 60px;
+    border-radius: 100px;
+    margin-left: 10px;
+}
 
-    background-color: #232b36;
-    border-radius: 10px;
+#TopProfile {
+    position: relative;
 
-    padding: 5px 5px;
+    display: flex;
+    align-items: center;
+    width: min-content;
+    height: min-content;
+
+    background-color: #202833;
+    font-family: "Heebo", system-ui;
+    font-weight: 500;
+    border-radius: 75px;
+
+    margin-right: 20px;
+    margin-top: 20px;
+
+    padding: 10px;
+    padding-left: 30px;
+}
+
+#Text_Right {
+    display: flex;
+    flex-direction: column;
+}
+
+#RankImg {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 45px;
+    transform: rotate(-20deg) translateX(-50%) translateY(-50%);
 
     align-self: center;
-
-    pointer-events: none;
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    height: min-content;
 }
 
-#ItemLeft {
+.TopTest {
+    font-size: 15px;
+    color: #f5f5f5;
+    text-align: center;
+
+    white-space: nowrap;
+
+    margin: 0;
+}
+
+#Role {
+    font-weight: 200;
+}
+
+#ProfileDataBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.ProfileBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    margin-top: 50px;
+
+    width: 28%;
+    height: 700px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#ProfileDataBoxMiddle {
+    border-right: 2px solid #09bfca;
+    border-left: 2px solid #09bfca;
+
+    width: 35%;
+}
+
+.ProfileTitle {
+    align-self: center;
+    text-align: center;
+
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.CloseEventBox {
     display: flex;
     flex-direction: column;
 
-    font-family: "Heebo", system-ui;
-
-    margin-right: 15px;
-
-}
-
-.ItemTitle {
-    color: #f5f5f5;
-    font-weight: 700;
-
-    font-size: 18px;
-
-    margin-bottom: 0;
-    margin-top: 0;
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.ItemDescription {
-    color: #f5f5f5;
-    font-size: 12px;
-
-    margin-bottom: 0;
-    margin-top: 5px;
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.ItemWeight {
-    margin-top: 20px;
-    margin-bottom: 10px;
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.ItemStored {
-    position: relative;
-    
-    display: flex;
-    flex-direction: row;
-
-    width: 92%;
-    height: 50px;
-
-    border-radius: 5px;
-
-    margin-bottom: 10px;
-    padding: 10px 10px;
-
-    background-color:   #2f3b4a;
-}
-
-.ItemStoredImg {
-    height: 40px;
-
-    background-color: #232b36;
-    border-radius: 5px;
-
-    padding: 5px 5px;
-
     align-self: center;
+    width: 85%;
+    height: 150px;
 
-    pointer-events: none;
+    padding: 15px;
+    margin-bottom: 15px;
 
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    border-radius: 20px;
+
+    background-color: #202732;
 }
 
-.ItemStoredTitle {
-    color: #f5f5f5;
-    font-weight: 700;
-
-    font-size: 15px;
-
-    margin-bottom: 0;
-    margin-top: 0;
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.ItemStoredDescription {
+.CE_Contex {
     font-family: "Heebo", system-ui;
     color: #f5f5f5;
-    font-size: 12px;
 
-    margin-bottom: 0;
-    margin-top: 5px;
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    margin: 0;
+    margin-bottom: 5px;
 }
 
-.IncDecBtn {
-    background-color: #202832;
-    color: #f5f5f5;
-    font-size: 18px;
-    text-align: center;
-    border: none;
-    border-radius: 5px;
+.CE_Title {
+    align-self: center;
+    color: #09bfca;
+    font-size: 25px;
 
-    width: 20px;
-    height: 20px;
-
-    padding: 0 0;
+    font-weight: 700;
 }
 
-#ItemBtns {
-    position: absolute;
-    bottom: 5px;
-    left: 10px;
+/* Events Page */
+#EventsBox {
     display: flex;
-    gap: 5px;
+    justify-content: center;
+    align-items: flex-start;
 
-    bottom: 5px;
-    left: 5px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    padding-bottom: 80px;
+
+    height: auto;
 }
 
-#ItemStoredClone {
-    display: none;
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 100px);
+    grid-template-rows: 50px;
+    grid-auto-rows: 100px;
+    gap: 2px;
+    background-color: #151a22;
+
+    padding: 2px;
 }
 
-#ItemArsenalCopy {
-    display: none;
+.c_header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #202732;
+    color: #09bfca;
+    font-size: 20px;
+    text-align: center;
+    font-family: "Heebo", system-ui;
+    font-weight: 800;
 }
 
-.MainItemImg {
-    position: absolute;
+.c_contact {
+    position: relative;
+    background-color: #293342;
+    color: #f5f5f5;
 
-    display: none;
-    height: calc(100% - 10px);
-    width: calc(100% - 10px);
+    font-family: "Heebo", system-ui;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 5px;
 
-    padding: 5px 5px;
-
-    border-radius: 5px;
+    overflow-y: scroll;
+    overflow-x: hidden;
     
-    background-color: #1d232d;
-    z-index: 2;
+    transition: background-color 0.3s;
 }
 
-.WeaponItem {
-    position: absolute;
+.c_btn:hover {
+    background-color: #323f52;
+}
 
+.c_dark {
+    color: #ababab8f;
+}
+
+.currect_div {
+    color: #09bfca;
+
+    border-bottom: 2px solid #09bfca;
+}
+
+#Details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 400px;
+    height: 100%;
+    max-height: 715px;
+
+    background-color: #151a22;
+    border-radius: 10px;
+    font-family: "Heebo", system-ui;
+    color: #f5f5f5;
+
+    margin-right: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.D_Title {
+    align-self: center;
+    text-align: center;
+
+    color: #09bfca;
+}
+
+.D_Contex {
+    display: flex;
+    align-items: center;
+    
+    margin-bottom: 2px;
+}
+
+.DS_Title {
+    width: 100%;
+    border-block-start:2px solid;
+
+    padding-top: 20px;
+}
+
+.C_Title {
+    color: #09bfca;
+    font-family: "Heebo", system-ui;
+    font-weight: 900;
+
+    margin: 0;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#Cal_header {
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
-    height: 100%;
+.Cal_Btn {
+    background-color: #202833;
+    color: #09bfca;
+    font-size: 15px;
+
+    border: none;
+    border-radius: 5px;
+    padding: 0;
+
+    height: 30px;
+    width: 40px;
+}
+
+.Event {
+    position: relative;
+    left: 50%;
+    transform: translateX(-45%);
+    
     width: 100%;
+    height: fit-content;
+    color: #f5f5f5;
 
-    border-radius: 10px;
+    font-size: 10px;
+    background-color: #202732;
+    
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 4px;
 
-    background-color: #1d232d;
-
-    overflow: hidden;
-    z-index: 2;
+    margin: 0 auto;
+    margin-bottom: 2px;
 }
 
-.WeaponItemImg {
-    height: 100%;
-    scale: 2.75;
+.PlusBtn {
+    position: fixed;
+    bottom: 5%;
+    align-self: center;
 
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    background-color: #202833;
+    color: #09bfca;
+    font-size: 35px;
+
+    border: none;
+    border-radius: 50px;
+
+    width: 75px;
+    height: 75px;
+
+    transition: background-color 0.3s;
 }
 
-#WeaponItemClone {
+.PlusBtn:hover {
+    background-color: #2b3544;
+}
+
+/* Create Form Page */
+#CreateEventForm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    align-self: center;
+
+    width: 500px;
+}
+
+#CE_Title {
+    color: #09bfca;
+    font-family: "Heebo", system-ui;
+
+    align-self: center;
+}
+
+.Reg_Ask {
+    font-family: "Heebo", system-ui;
+    color: #f5f5f5;
+    text-align: center;
+    font-size: 20px;
+
+    display: flex;
+    justify-content: flex-start;
+
+    margin-bottom: 10px;
+}
+
+.ReqTxt {
+    color: #09bfca;
+    margin-right: 5px;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
     display: none;
 }
 
-@media screen and (max-width: 2060px) {
-    #e_right {
-        height: 480px;
-        width: 320px;
-    }
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
 
-    .Equip_Top {
-        height: 72px;
-        width: 72px;
-    }
+.Button {
+    align-self: center;
 
-    .WeaponImg {
-        height: 100%;
-    }
+    font-family: "Heebo", system-ui;
+    font-weight: 700;
+    background-color: #202833;
+    color: #0ff0fc;
+    font-size: 20px;
+    border-radius: 50px;
+    border: none;
+    outline: none;
 
-    .Equip_Buttom {
-        height: 58px;
-        width: 58px;
-    }
+    width: 125px;
+    height: 75px;
 
-    .ButtomImg {
-        height: 70%;
-    }
+    margin-bottom: 100px;
+    margin-top: 50px;
 
-    .EquipInv_Top {
-        width: 72px;
-        height: 72px;
-    }
+    transition: background-color, 0.3s;
+}
 
-    .InvBox {
+.Space {
+    margin-bottom: 25px;
+}
 
-        margin-right: 2px;
-        margin-left: 2px;
-    }
+.YN_Box {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
 
-    .InvMain {
-        height: 358px;
-        width: 90%;
+    width: 100%;
+}
 
+.YN_Btn {
+    border: none;
 
-    }
+    font-family: "Heebo", system-ui;
+    font-weight: 600;
+    font-size: 14px;
+    background-color: #202732;
+    color: #09bfca;
 
-    #e_mid {
-        height: 460px;
-        width: 800px;
-    }
+    border-radius: 50px;
 
-    #e_left {
-        height: 480px;
-    }
+    height: 50px;
+    width: 85px;
 
-    #Arsenal_Right {
-        height: 415px;
-    }
+    margin-top: 15px;
 
+    transition: background-color 0.3s;
+}
+
+.YN_Btn:hover {
+    background-color: #2b3544;
+}
+
+.ProgressBar {
+    
+    border-radius: 20px;
+
+    width: 75%;
+    min-height: 15px;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #323f52;
+    border-radius: 10px; 
+}
+  
+  progress::-webkit-progress-value {
+    background-color: #09bfca;
+    border-radius: 10px;
+}
+  
+  progress::-moz-progress-bar {
+    background-color: #09bfca;
+    border-radius: 10px;
+}
+
+.TeamImg {
+    height: 25px;
+    border-radius: 20px;
+    
+    margin-left: 10px;
+}
+
+#LoadingContent {
+    position: absolute;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 75px;
+
+    width: 100%;
+    height: 100%;
+
+    font-family: "Heebo", system-ui;
+    font-weight: 900;
+
+    color: #09bfca;
+
+    background-color: #0e11197b;
+
+    z-index: 1000;
 }
