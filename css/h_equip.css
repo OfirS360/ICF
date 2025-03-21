@@ -534,7 +534,7 @@
 }
 
 .AttachmentsImg {
-    height: 45px;
+    height: 35px;
 
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -596,5 +596,14 @@
     #Arsenal_Right {
         height: 415px;
     }
+
+    .AttachmentsImg {
+    height: 30px;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
 }
