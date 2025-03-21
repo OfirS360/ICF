@@ -4,6 +4,7 @@ let ItemStoredCopy = document.getElementById("ItemStoredClone")
 let ItemArsenalCopy = document.getElementById("ItemArsenalCopy")
 let MainItemClone = document.getElementById("MainItemClone")
 let WeaponItemClone = document.getElementById("WeaponItemClone")
+let AttachmentBoxClone = document.getElementById("AttachmentsBoxClone")
 
 let Arsenal_Right = document.getElementById("Arsenal_Right")
 let UniformBox = document.getElementById("uniformBox")
@@ -496,6 +497,13 @@ function PlaceNewWeaponItem(Box, AllowItem) {
 
             if (Item.Type === "Handgun") {
                 MainItemC.children[0].style.scale = "1.5"
+            }
+
+            if (Item.Type === "Primary" || Item.Type === "Handgun")
+            {
+                let AttachmentBox = AttachmentBoxClone.cloneNode(true);
+                AttachmentBox.style.display = "block"
+                MainItemC.appendChild(AttachmentBox)
             }
 
             MainItemC.style.display = "flex"
