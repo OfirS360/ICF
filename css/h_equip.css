@@ -507,6 +507,10 @@
     user-select: none;
 }
 
+#WeaponItemClone {
+    display: none;
+}
+
 @media screen and (max-width: 2060px) {
     #e_right {
         height: 480px;
