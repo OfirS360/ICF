@@ -476,7 +476,8 @@ function AddingWeaponsEventLisener(WeaponsItems) {
         CurrectBox.addEventListener("drop", function(e) {
             e.preventDefault();
     
-            PlaceNewWeaponItem(CurrectBox, WeaponsType[i])
+            if (CurrectBox.childElementCount === 1)
+                PlaceNewWeaponItem(CurrectBox, WeaponsType[i])
         })
     }
 }
@@ -494,7 +495,7 @@ function PlaceNewWeaponItem(Box, AllowItem) {
             MainItemC.children[0].src = `data:image/png;base64,${Item.Image}`
 
             if (Item.Type === "Handgun") {
-                MainItemC.children[0].style.height = "150%"
+                MainItemC.children[0].style.scale = "1.5"
             }
 
             MainItemC.style.display = "flex"
