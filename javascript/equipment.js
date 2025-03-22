@@ -511,9 +511,7 @@ function PlaceNewWeaponItem(Box, AllowItem) {
 
                 MainItemC.appendChild(AttachmentBox)
 
-                for (let i = 0; i < AttachmentBox.childElementCount; i++) {
-                    AddingAttachmentsLisener(AttachmentBox.children[i])
-                }
+                AddingAttachmentsLisener(AttachmentBox.children[i])
             }
 
             MainItemC.style.display = "flex"
@@ -549,7 +547,7 @@ function AddingAttachmentsLisener(AttachmentBox) {
             
             console.log(ItemData)
 
-            if (ItemData.Type === "Attachment" && ItemData.AtchType === AttachmentBox.children[i].dataset.type && AttachmentBox.children[i].childElementCount == 1) {
+            if (ItemData.Type === "Attachment" && ItemData.AtchType === AttachmentBox.children[i].dataset.type && AttachmentBox.children[i].childElementCount < 2) {
                 console.log("Valid")
                 AttachmentItem = AttachmentItemClone.cloneNode(true)
                 AttachmentItem.src = `data:image/png;base64,${Item.Image}`
