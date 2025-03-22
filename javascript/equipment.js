@@ -503,16 +503,26 @@ function PlaceNewWeaponItem(Box, AllowItem) {
             let AttachmentBox = AttachmentBoxClone.cloneNode(true);
             AttachmentBox.style.display = "flex"
 
-            AttachmentBox.id = Item.Type
+            AttachmentBox.id = Item.WeaponType
 
             if(Item.Type === "Secondary") {
                 AttachmentBox.children[2].remove()
                 AttachmentBox.children[2].remove()
                 AttachmentBox.children[2].remove()
+
+                if (Item.WeaponType === "Rocket") {
+                    AttachmentBox.children[1].remove()
+                }
             }
 
             if (Item.Type === "Handgun") {
                 AttachmentBox.children[3].remove()
+
+                if (Item.WeaponType === "Matol") {
+                    AttachmentBox.children[1].remove()
+                    AttachmentBox.children[1].remove()
+                    AttachmentBox.children[1].remove()
+                }
             }
 
             MainItemC.appendChild(AttachmentBox)
