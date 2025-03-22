@@ -547,7 +547,7 @@ function AddingAttachmentsLisener(AttachmentBox) {
                 }
             }
 
-            if (ItemData.Type === "Attachment" && ItemData.AtchType === Selected.dataset.type && AttachmentBox.children[i].childElementCount == 1) {
+            if (ItemData.Type === "Attachment" && ItemData.AtchType === AttachmentBox.children[i].dataset.type && AttachmentBox.children[i].childElementCount == 1) {
                 AttachmentItem = AttachmentItemClone.cloneNode(true)
                 AttachmentItem.src = `data:image/png;base64,${Item.Image}`
 
