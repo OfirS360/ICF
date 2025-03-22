@@ -550,10 +550,18 @@ function AddingAttachmentsLisener(AttachmentBox) {
                 AttachmentItem.src = `data:image/png;base64,${Item.Image}`
                 AttachmentItem.id = ItemData.ItemId
 
-                AddingEventLisener(AttachmentItem)
+                AddButtonAtchLisener(AttachmentItem)
 
                 AttachmentBox.children[i].appendChild(AttachmentItem)
             }
         })
     }
+}
+
+function AddButtonAtchLisener(Item) {
+    Item.addEventListener("click", function(e) {
+        if (IsShiftDown) {
+            Item.remove()
+        }
+    })
 }
