@@ -630,3 +630,28 @@
     }
 
 }
+
+/* Create Item */
+#AtchType {
+    display: none;
+}
+
+#AtchLbl {
+    display: none;
+}
+
+#CaliberType {
+    display: none;
+}
+
+#CaliberLbl {
+    display: none;
+}
+
+#WeaponType {
+    display: none;
+}
+
+#WeaponTypeLbl {
+    display: none;
+}

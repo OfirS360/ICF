@@ -1,10 +1,69 @@
 let ItemForm = document.getElementById("CreateEventForm")
 
-if (!UserData2 || UserData2.Premission_Level < 1)
-{
-    alert("אין לך גישות למקום הזה")
-    window.location.href = "https://icf.xitsraz.me/User_Area/equipment"
-}
+// if (!UserData2 || UserData2.Premission_Level < 1)
+// {
+//     alert("אין לך גישות למקום הזה")
+//     window.location.href = "https://icf.xitsraz.me/User_Area/equipment"
+// }
+
+let TypeQ = document.getElementById("Type")
+
+let AtchLbl = document.getElementById("AtchLbl")
+let AtchType = document.getElementById("AtchType")
+
+let CaliberLbl = document.getElementById("CaliberLbl")
+let CaliberType = document.getElementById("CaliberType")
+
+let WeaponTypeLbl = document.getElementById("WeaponTypeLbl")
+let WeaponType = document.getElementById("WeaponType")
+
+TypeQ.addEventListener("change", function() {
+    AtchLbl.style.display = "none"
+    AtchType.style.display = "none"
+    AtchType.value = ""
+    AtchType.removeAttribute("required");
+
+    CaliberLbl.style.display = "none"
+    CaliberType.style.display = "none"
+    CaliberType.value = ""
+    CaliberType.removeAttribute("required");
+
+    WeaponTypeLbl.style.display = "none"
+    WeaponType.style.display = "none"
+    WeaponType.value = ""
+    WeaponType.removeAttribute("required");
+
+
+    if (TypeQ.value === "Attachment") {
+        AtchLbl.style.display = "block"
+        AtchType.style.display = "block"
+        
+        AtchType.setAttribute("required", "");
+    }
+
+    if (TypeQ.value === "Primary") {
+        WeaponTypeLbl.style.display = "block"
+        WeaponType.style.display = "block"
+        
+        AtchType.setAttribute("required", "");
+    }
+})
+
+AtchType.addEventListener("change", function() {
+    if  (AtchType.value === "magazine") {
+        CaliberLbl.style.display = "block"
+        CaliberType.style.display = "block"
+
+        CaliberType.setAttribute("required", "");
+    }
+
+    else {
+        CaliberLbl.style.display = "none"
+        CaliberType.style.display = "none"
+        CaliberType.value = ""
+        CaliberType.removeAttribute("required");
+    }
+})
 
 ItemForm.onsubmit = async (event) => {
     event.preventDefault();
@@ -44,6 +103,9 @@ ItemForm.onsubmit = async (event) => {
                 Pakal: document.getElementById("Pakal").value,
                 Type: document.getElementById("Type").value,
                 Image: imageData,
+                AtchType: AtchType.value,
+                WeaponType: WeaponType.value,
+                Caliber: CaliberType.value
             };
 
             fetch("https://icf-api-ten.vercel.app/ItemFormSend", {
