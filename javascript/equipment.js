@@ -527,7 +527,7 @@ function PlaceNewWeaponItem(Box, AllowItem) {
 
             MainItemC.appendChild(AttachmentBox)
 
-            AddingAttachmentsLisener(AttachmentBox)
+            AddingAttachmentsLisener(AttachmentBox, Item)
 
             MainItemC.style.display = "flex"
 
@@ -540,7 +540,7 @@ function PlaceNewWeaponItem(Box, AllowItem) {
      }
 }
 
-function AddingAttachmentsLisener(AttachmentBox) {
+function AddingAttachmentsLisener(AttachmentBox, WeaponItem) {
     for (let i = 0; i < AttachmentBox.childElementCount; i++) {
         AttachmentBox.children[i].addEventListener("dragover", function(e) {
             e.preventDefault();
@@ -561,6 +561,9 @@ function AddingAttachmentsLisener(AttachmentBox) {
             }
             
             if (ItemData.Type === "Attachment" && ItemData.AtchType === AttachmentBox.children[i].dataset.type && AttachmentBox.children[i].childElementCount < 2 && ItemData.WeaponType === AttachmentBox.id) {
+                if (ItemData.AtchType === "magazine" && ItemData.Caliber !== Item.Caliber)
+                    return
+                
                 AttachmentItem = AttachmentItemClone.cloneNode(true)
                 AttachmentItem.src = `data:image/png;base64,${Item.Image}`
                 AttachmentItem.id = ItemData.ItemId
