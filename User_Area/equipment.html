@@ -14,6 +14,7 @@
     <title>ICF - אזור אישי</title>
 </head>
 <body>
+    <!-- Clone Item -->
     <img src="" id="MainItemClone" data-currectweight="" data-space="" class="MainItemImg" draggable="true">
 
     <div class="ItemStored" id="ItemStoredClone" draggable="true" dir="rtl">
@@ -37,13 +38,30 @@
     </div>
 
     <div class="Attachments_Box" id="AttachmentsBoxClone">
-        <img class="AttachmentsImg" src="../img/Loadout/magazine.png" draggable="false">
-        <img class="AttachmentsImg" src="../img/Loadout/top.png" draggable="false">
-        <img class="AttachmentsImg" src="../img/Loadout/side.png" draggable="false">
-        <img class="AttachmentsImg" src="../img/Loadout/bipod.png" draggable="false">
-        <img class="AttachmentsImg" src="../img/Loadout/muzzle.png" draggable="false">
+        <div class="AttachmentSlot">
+            <img class="AttachmentsImg" data-type="magazine" src="../img/Loadout/magazine.png" draggable="false">
+        </div>
+    
+        <div class="AttachmentSlot">
+            <img class="AttachmentsImg" data-type="top" src="../img/Loadout/top.png" draggable="false">
+        </div>
+    
+        <div class="AttachmentSlot">
+            <img class="AttachmentsImg" data-type="side" src="../img/Loadout/side.png" draggable="false">
+        </div>
+    
+        <div class="AttachmentSlot">
+            <img class="AttachmentsImg" data-type="bipod" src="../img/Loadout/bipod.png" draggable="false">
+        </div>
+    
+        <div class="AttachmentSlot">
+            <img class="AttachmentsImg" data-type="muzzle" src="../img/Loadout/muzzle.png" draggable="false">
+        </div>
     </div>
 
+    <img src="" id="AttachmentItemClone" class="AttachmentItem" draggable="true">
+
+    <!-- Start -->
     <nav class="sidebar" id="sidebar">
         <div id="Header">
             <img src="../img/ICF_Logo.png" alt="" id="sidebarimg">

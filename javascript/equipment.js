@@ -5,6 +5,7 @@ let ItemArsenalCopy = document.getElementById("ItemArsenalCopy")
 let MainItemClone = document.getElementById("MainItemClone")
 let WeaponItemClone = document.getElementById("WeaponItemClone")
 let AttachmentBoxClone = document.getElementById("AttachmentsBoxClone")
+let AttachmentItemClone = document.getElementById("AttachmentItemClone")
 
 let Arsenal_Right = document.getElementById("Arsenal_Right")
 let UniformBox = document.getElementById("uniformBox")
@@ -511,7 +512,7 @@ function PlaceNewWeaponItem(Box, AllowItem) {
                 MainItemC.appendChild(AttachmentBox)
 
                 for (let i = 0; i < AttachmentBox.childElementCount; i++) {
-                    AddingBIEventLisener(AttachmentBox.children[i])
+                    AddingAttachmentsLisener(AttachmentBox.children[i])
                 }
             }
 
@@ -524,4 +525,35 @@ function PlaceNewWeaponItem(Box, AllowItem) {
             break
         }
      }
+}
+
+function AddingAttachmentsLisener(AttachmentBox) {
+    for (let i = 0; i < AttachmentBox.childElementCount; i++) {
+        AttachmentBox.children[i].addEventListener("dragover", function(e) {
+            e.preventDefault();
+        })
+
+        AttachmentBox.children[i].addEventListener("drop", function(e) {
+            e.preventDefault();
+
+            let Selected = document.querySelector(".dragging");
+
+            let ItemData;
+
+            for (Item of Items) {
+                if (Item.ItemId === Selected.id) {
+                    ItemData = Item
+                    break
+                }
+            }
+
+            if (ItemData.Type === "Attachment" && ItemData.AtchType === Selected.dataset.type && AttachmentBox.children[i].childElementCount == 1) {
+                AttachmentItem = AttachmentItemClone.cloneNode(true)
+                AttachmentItem.src = `data:image/png;base64,${Item.Image}`
+
+
+                AttachmentBox.children[i].appendChild(AttachmentItem)
+            }
+        })
+    }
 }
