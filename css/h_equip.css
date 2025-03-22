@@ -535,11 +535,6 @@
 
 .AttachmentsImg {
     height: 35px;
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
 @media screen and (max-width: 2060px) {
@@ -599,11 +594,6 @@
 
     .AttachmentsImg {
     height: 30px;
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
+    }
 
 }

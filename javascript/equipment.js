@@ -509,6 +509,10 @@ function PlaceNewWeaponItem(Box, AllowItem) {
                 }
 
                 MainItemC.appendChild(AttachmentBox)
+
+                for (let i = 0; i < AttachmentBox.childElementCount; i++) {
+                    AddingBIEventLisener(AttachmentBox.children[i])
+                }
             }
 
             MainItemC.style.display = "flex"
