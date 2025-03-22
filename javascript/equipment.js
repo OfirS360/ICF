@@ -505,12 +505,13 @@ function PlaceNewWeaponItem(Box, AllowItem) {
 
             AttachmentBox.id = Item.Type
 
-            if (Item.Type === "Handgun") {
-                AttachmentBox.children[3].remove()
-            }
-
             if(Item.Type === "Secondary") {
                 AttachmentBox.children[2].remove()
+                AttachmentBox.children[2].remove()
+                AttachmentBox.children[2].remove()
+            }
+
+            if (Item.Type === "Handgun") {
                 AttachmentBox.children[3].remove()
             }
 
