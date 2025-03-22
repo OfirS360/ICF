@@ -512,7 +512,6 @@ function PlaceNewWeaponItem(Box, AllowItem) {
             if(Item.Type === "Secondary") {
                 AttachmentBox.children[2].remove()
                 AttachmentBox.children[3].remove()
-                AttachmentBox.children[4].remove()
             }
 
             MainItemC.appendChild(AttachmentBox)
