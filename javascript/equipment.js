@@ -500,19 +500,24 @@ function PlaceNewWeaponItem(Box, AllowItem) {
                 MainItemC.children[0].style.scale = "1.5"
             }
 
-            if (Item.Type === "Primary" || Item.Type === "Handgun")
-            {
-                let AttachmentBox = AttachmentBoxClone.cloneNode(true);
-                AttachmentBox.style.display = "flex"
+            let AttachmentBox = AttachmentBoxClone.cloneNode(true);
+            AttachmentBox.style.display = "flex"
 
-                if (Item.Type === "Handgun") {
-                    AttachmentBox.children[3].remove()
-                }
+            AttachmentBox.id = Item.Type
 
-                MainItemC.appendChild(AttachmentBox)
-
-                AddingAttachmentsLisener(AttachmentBox)
+            if (Item.Type === "Handgun") {
+                AttachmentBox.children[3].remove()
             }
+
+            if(Item.Type === "Secondary") {
+                AttachmentBox.children[2].remove()
+                AttachmentBox.children[3].remove()
+                AttachmentBox.children[4].remove()
+            }
+
+            MainItemC.appendChild(AttachmentBox)
+
+            AddingAttachmentsLisener(AttachmentBox)
 
             MainItemC.style.display = "flex"
 
@@ -545,7 +550,7 @@ function AddingAttachmentsLisener(AttachmentBox) {
                 }
             }
             
-            if (ItemData.Type === "Attachment" && ItemData.AtchType === AttachmentBox.children[i].dataset.type && AttachmentBox.children[i].childElementCount < 2) {
+            if (ItemData.Type === "Attachment" && ItemData.AtchType === AttachmentBox.children[i].dataset.type && AttachmentBox.children[i].childElementCount < 2 && ItemData.WeaponType === AttachmentBox.id) {
                 AttachmentItem = AttachmentItemClone.cloneNode(true)
                 AttachmentItem.src = `data:image/png;base64,${Item.Image}`
                 AttachmentItem.id = ItemData.ItemId
