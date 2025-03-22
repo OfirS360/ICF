@@ -546,6 +546,8 @@ function AddingAttachmentsLisener(AttachmentBox) {
                     break
                 }
             }
+            
+            console.log(ItemData)
 
             if (ItemData.Type === "Attachment" && ItemData.AtchType === AttachmentBox.children[i].dataset.type && AttachmentBox.children[i].childElementCount == 1) {
                 AttachmentItem = AttachmentItemClone.cloneNode(true)
