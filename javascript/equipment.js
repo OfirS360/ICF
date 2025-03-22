@@ -511,7 +511,7 @@ function PlaceNewWeaponItem(Box, AllowItem) {
 
                 MainItemC.appendChild(AttachmentBox)
 
-                AddingAttachmentsLisener(AttachmentBox.children[i])
+                AddingAttachmentsLisener(AttachmentBox)
             }
 
             MainItemC.style.display = "flex"
