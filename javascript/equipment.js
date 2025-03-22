@@ -550,8 +550,10 @@ function AddingAttachmentsLisener(AttachmentBox) {
             console.log(ItemData)
 
             if (ItemData.Type === "Attachment" && ItemData.AtchType === AttachmentBox.children[i].dataset.type && AttachmentBox.children[i].childElementCount == 1) {
+                console.log("Valid")
                 AttachmentItem = AttachmentItemClone.cloneNode(true)
                 AttachmentItem.src = `data:image/png;base64,${Item.Image}`
+                AttachmentItem.id = ItemData.ItemId
 
 
                 AttachmentBox.children[i].appendChild(AttachmentItem)
