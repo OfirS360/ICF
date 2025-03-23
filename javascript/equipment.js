@@ -269,7 +269,7 @@ function AddHoverLiseners(ItemData, Item) {
     Item.addEventListener("mouseenter", function() {
         let ItemPos = Item.getBoundingClientRect();
 
-        DetailBox.style.left = (ItemPos.left + Item.offsetWidth) + "px"
+        DetailBox.style.left = (ItemPos.left + Item.offsetWidth + 10) + "px"
         DetailBox.style.top = ItemPos.top + "px"
 
         DetailTitle.textContent = ItemData.Title

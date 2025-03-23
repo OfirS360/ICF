@@ -414,6 +414,8 @@
     margin-bottom: 0;
     margin-top: 0;
 
+    text-overflow: ellipsis;
+
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -583,12 +585,14 @@
     color: #f5f5f5;
 
     padding: 10px 10px;
+    
+    border-radius: 10px;
 
     z-index: 500;
 }
 
 .DetailTitle {
-    font-size: 22px;
+    font-size: 20px;
 
     margin-top: 0;
     margin-bottom: 5px;
@@ -599,7 +603,7 @@
 }
 
 .DetailDescription {
-    margin-top: 5px;
+    margin-top: 3px;    
     margin-bottom: 10px;
 }
 
