@@ -98,26 +98,8 @@ async function initializePage() {
 
         let Selected = document.querySelector(".dragging")
 
-        if (UniformBox.contains(Selected))
+        if (UniformBox.contains(Selected) || VestBox.contains(Selected) || backpackBox.contains(Selected))
         {
-            let AmountTxtElement = Selected.children[2].children[1];
-            let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
-
-            let ItemData;
-
-            for (CurrectItem of Items) {
-                if (CurrectItem.ItemId == Selected.id) {
-                    ItemData = CurrectItem
-                    break
-                }
-            }
-
-            let MainItem = Selected.parentElement.parentElement.children[0].children[1]
-
-            MainItem.dataset.currectweight = Number(MainItem.dataset.currectweight) - (amount * ItemData.Weight)
-        }
-
-        if (VestBox.contains(Selected)) {
             let AmountTxtElement = Selected.children[2].children[1];
             let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
 
@@ -287,7 +269,7 @@ function AddHoverLiseners(ItemData, Item) {
     Item.addEventListener("mouseenter", function() {
         let ItemPos = Item.getBoundingClientRect();
 
-        DetailBox.style.left = ItemPos.left + "px"
+        DetailBox.style.left = (ItemPos.left + Item.offsetWidth) + "px"
         DetailBox.style.top = ItemPos.top + "px"
 
         DetailTitle.textContent = ItemData.Title
