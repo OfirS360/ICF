@@ -1,5 +1,12 @@
 let LoadingScreen = document.getElementById("LoadingContent")
 
+let DetailBox = document.getElementById("DetailBox")
+let DetailTitle = document.getElementById("DetailTitle")
+let DetailProgress = document.getElementById("DetailProgress")
+let DetailDes = document.getElementById("DetailDes")
+let DetailWeight = document.getElementById("DetailWeight")
+let DetailSpace = document.getElementById("DetailSpace")
+
 let ItemStoredCopy = document.getElementById("ItemStoredClone")
 let ItemArsenalCopy = document.getElementById("ItemArsenalCopy")
 let MainItemClone = document.getElementById("MainItemClone")
@@ -245,6 +252,7 @@ function PlaceNewMainItem(Box, AllowItem)
                 Box.appendChild(MainItemC)
 
                 AddingEventLisener(MainItemC)
+                AddHoverLiseners(Item, MainItemC)
 
                 break
             }
@@ -273,6 +281,29 @@ function AddBtnsLiseners(Item)
     Buttons.children[1].addEventListener("click", function() {
         DecreseItem(Item)
     })
+}
+
+function AddHoverLiseners(ItemData, Item) {
+    Item.addEventListener("mouseenter", function() {
+        let ItemPos = Item.getBoundingClientRect();
+
+        DetailBox.style.left = ItemPos.left + "px"
+        DetailBox.style.top = ItemPos.top + "px"
+
+        DetailTitle.textContent = ItemData.Title
+        DetailDes.textContent = "תיאור: " + ItemData.Description
+        DetailWeight.textContent = "משקל: " + ItemData.Weight + "kg"
+        DetailSpace.textContent = "מקום: " + ItemData.Space + "kg"
+        
+        DetailProgress.max = Item.dataset.space
+        DetailProgress.value = Item.dataset.currectweight
+
+        DetailBox.style.display = "flex";
+    })
+
+    Item.addEventListener("mouseleave", function() {
+        DetailBox.style.display = "none";
+    });
 }
 
 async function GetAllItems() {
