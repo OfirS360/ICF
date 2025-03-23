@@ -414,6 +414,8 @@
     margin-bottom: 0;
     margin-top: 0;
 
+    overflow: hidden;
+    white-space: nowrap;
     text-overflow: ellipsis;
 
     -webkit-user-select: none;
