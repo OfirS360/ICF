@@ -52,6 +52,8 @@ async function initializePage() {
     await GetAllItems()
     LoadingScreen.style.display = "none"
 
+    Items.sort((a, b) => a.Type.localeCompare(b.Type))
+
     console.log(Items)
 
     let Ars_WeaponsBtn = document.getElementById("Ars_Weapons")
