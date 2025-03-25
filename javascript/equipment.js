@@ -64,7 +64,9 @@ async function initializePage() {
     let Ars_ClothingBtn = document.getElementById("Ars_Clothing")
     let Ars_ItemsBtn = document.getElementById("Ars_Items")
 
-    SaveLoadoutBtn.addEventListener("click", SaveLoadout())
+    SaveLoadoutBtn.onclick = () => {
+        SaveLoadout()
+    }
 
     Ars_WeaponsBtn.onclick = () => {
         RemoveItemsFromArsenal()
