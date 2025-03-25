@@ -660,7 +660,28 @@ function SaveLoadout() {
         ];
         LoadoutSkeleton[i][5] = AttachmentBox.children[3]?.children[1]?.id || "";
     }
-    
 
-    console.log(LoadoutSkeleton)
+    let LoadoutForm = {
+        SteamId: UserData2.SteamId,
+        Loadout: LoadoutSkeleton
+    }
+
+    console.log(LoadoutForm)
+    
+    fetch("https://icf-api-ten.vercel.app/SaveLoadout", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(LoadoutForm)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Success:", data);
+        console.log("Form submitted successfully!");
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        console.log("Error submitting the form.");
+    });
 }
