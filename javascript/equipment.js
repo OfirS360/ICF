@@ -612,7 +612,7 @@ function AddButtonAtchLisener(Item) {
     })
 }
 
-function SaveLoadout() {
+function SaveLoadout() {    
     let LoadoutSkeleton = [
         ["Primary", "Muzzel", "Side", "Top", ["Mag", 31],
           ["MatolRound", 1], ""
@@ -671,7 +671,7 @@ function SaveLoadout() {
             let AmountTxtElement = CurrectMainBox.children[j].children[2].children[1];
             let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
 
-            let ItemToPush = [CurrectMainBox.children[j].id, amount]
+            let ItemToPush = [CurrectMainBox.children[j].id, amount, 31]
 
             LoadoutSkeleton[3 + i][1].push(ItemToPush)
         }
