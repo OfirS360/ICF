@@ -668,7 +668,7 @@ function SaveLoadout() {
         LoadoutSkeleton[3 + i][0] = CurrectMainItem.children[1]?.id || "";
 
         for (let j = 0; j < CurrectMainBox.childElementCount; j++) {
-            let AmountTxtElement = CurrectMainBox.children[i].children[2].children[1];
+            let AmountTxtElement = CurrectMainBox.children[j].children[2].children[1];
             let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
 
             let ItemToPush = [CurrectMainBox.children[j].id, amount]
