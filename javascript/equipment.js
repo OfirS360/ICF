@@ -202,6 +202,10 @@ function PlaceNewItem(Box, AllowItems)
                     let NewItemTitle = NewItem.children[2].children[0]
                     NewItemTitle.textContent = Item.Title
 
+                    if (Item.AtchType === "magazine") {
+                        NewItem.dataset.space = Item.Space
+                    }
+
                     NewItem.style.display = "flex"
                     Box.appendChild(NewItem)
 
@@ -671,7 +675,11 @@ function SaveLoadout() {
             let AmountTxtElement = CurrectMainBox.children[j].children[2].children[1];
             let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
 
-            let ItemToPush = [CurrectMainBox.children[j].id, amount, 31]
+            let ItemToPush = [CurrectMainBox.children[j].id, amount]
+
+            if (CurrectMainBox.children[j].dataset.space) {
+                ItemToPush.push(Number(CurrectMainBox.children[j].dataset.space))
+            }
 
             LoadoutSkeleton[3 + i][1].push(ItemToPush)
         }
