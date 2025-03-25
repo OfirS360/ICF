@@ -626,13 +626,13 @@ function SaveLoadout() {
           [], ""
         ],
 
-        ["Uniform", ["Items"]],
+        ["Uniform", []],
 
-        ["Vest", ["Items"]],
+        ["Vest", []],
 
-        ["Backpack", ["Items"]],
+        ["Backpack", []],
 
-        "Helmet", "Facewear", ["Binocular", "", "", "", ["Laserbatteries", 1],
+        "Helmet", "Facewear", ["Binocul", "", "", "", ["Laserbatteries", 1],
           [], ""
         ],
 
@@ -660,6 +660,34 @@ function SaveLoadout() {
         ];
         LoadoutSkeleton[i][5] = AttachmentBox.children[3]?.children[1]?.id || "";
     }
+
+    for (let i = 0; i < 3; i++) {
+        let CurrectMainItem = document.getElementById(MainInvItems[i])
+        let CurrectMainBox = document.getElementById(MainInvBoxes[i])
+
+        LoadoutSkeleton[3 + i][0] = CurrectMainItem.children[1]?.id || "";
+
+        for (let i = 0; i < CurrectMainBox.childElementCount; i++) {
+            let AmountTxtElement = CurrectMainBox.children[i].children[2].children[1];
+            let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
+
+            let ItemToPush = [CurrectMainBox.children[i].id, amount]
+
+            LoadoutSkeleton[3 + i][1].push(ItemToPush)
+        }
+    }
+
+    let Helmet = document.getElementById("Helmet")
+    HelmetId = Helmet.children[1]?.id
+    LoadoutSkeleton[6] = HelmetId
+
+    let Facewear = document.getElementById("Glasses")
+    FacewearId = Facewear.children[1]?.id
+    LoadoutSkeleton[7] = FacewearId
+
+    let Binocular = document.getElementById("Binocular")
+    BinocularId = Binocular.children[1]?.id
+    LoadoutSkeleton[8][0] = BinocularId
 
     let LoadoutForm = {
         SteamId: UserData2.SteamId,
