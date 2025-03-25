@@ -26,8 +26,8 @@ let BackpackItem = document.getElementById("BackpackItem")
 let PrimaryItem = document.getElementById("main_weapon")
 
 let MainInvBoxes = ["uniformBox", "vestBox", "backpackBox"];
-let MainInvItems = ["UniformItem", "VestItem", "BackpackItem", "Binocular", "Nvg", "Glasses", "Helmet"]
-let MainItemsType = ["Uniform", "Vest", "Backpack", "Binocular", "Nvg", "Facewear", "Helmet"]
+let MainInvItems = ["UniformItem", "VestItem", "BackpackItem", "Binocular", "Nvg", "Glasses", "Helmet", "Map", "Gps", "Radio", "Compass", "Watch"]
+let MainItemsType = ["Uniform", "Vest", "Backpack", "Binocular", "Nvg", "Facewear", "Helmet", "Map", "Gps", "Radio", "Compass", "Watch"]
 
 let WeaponsItems = ["main_weapon", "launcher", "pistol"];
 let WeaponsType = ["Primary", "Secondary", "Handgun"];
@@ -223,7 +223,7 @@ function PlaceNewMainItem(Box, AllowItem)
 
     for (Item of Items)
         {
-            if (Item.ItemId === Selected.id && Item.Type === AllowItem)
+            if (Item.ItemId === Selected.id && Item.Type === AllowItem && Box.childElementCount == 1)
             {
                 MainItemC = MainItemClone.cloneNode(false);
 
