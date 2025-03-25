@@ -638,23 +638,27 @@ function SaveLoadout() {
     ]
 
     for (let i = 0; i < MainInvItems.length; i++) {
-        let CurrectWeapon = document.getElementById(WeaponsItems[i])
-        let WeaponItem = CurrectWeapon.children[1]
-
-        if (WeaponItem.children[1]) {
-            let AttachmentBox = WeaponItem.children[1]
-        }
-
-        LoadoutSkeleton[i][0] = WeaponItem.id
+        let CurrectWeapon = document.getElementById(WeaponsItems[i]);
+        if (!CurrectWeapon) continue;
         
-
-        LoadoutSkeleton[i][1] = AttachmentBox.children[4].children[1].id
-        LoadoutSkeleton[i][2] = AttachmentBox.children[2].children[1].id
-        LoadoutSkeleton[i][3] = AttachmentBox.children[1].children[1].id
-        LoadoutSkeleton[i][4][0] = AttachmentBox.children[0].children[1].id
-        LoadoutSkeleton[i][4][1] = 31
-        LoadoutSkeleton[i][5] = AttachmentBox.children[3].children[1].id
+        let WeaponItem = CurrectWeapon.children[1];
+        if (!WeaponItem) continue;
+        
+        let AttachmentBox = WeaponItem.children[1];
+        if (!AttachmentBox) continue;
+    
+        LoadoutSkeleton[i][0] = WeaponItem.id || "";
+        
+        LoadoutSkeleton[i][1] = AttachmentBox.children[4]?.children[1]?.id || "";
+        LoadoutSkeleton[i][2] = AttachmentBox.children[2]?.children[1]?.id || "";
+        LoadoutSkeleton[i][3] = AttachmentBox.children[1]?.children[1]?.id || "";
+        LoadoutSkeleton[i][4] = [
+            AttachmentBox.children[0]?.children[1]?.id || "",
+            31
+        ];
+        LoadoutSkeleton[i][5] = AttachmentBox.children[3]?.children[1]?.id || "";
     }
+    
 
     console.log(LoadoutSkeleton)
 }
