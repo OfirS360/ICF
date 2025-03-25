@@ -663,7 +663,7 @@ function SaveLoadout() {
 
     let LoadoutForm = {
         SteamId: UserData2.SteamId,
-        Loadout: LoadoutSkeleton
+        Loadout: JSON.stringify(LoadoutSkeleton)
     }
 
     console.log(LoadoutForm)
