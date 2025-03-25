@@ -1,5 +1,7 @@
 let LoadingScreen = document.getElementById("LoadingContent")
 
+let SaveLoadoutBtn = document.getElementById("SaveLoadout")
+
 let DetailBox = document.getElementById("DetailBox")
 let DetailTitle = document.getElementById("DetailTitle")
 let DetailProgress = document.getElementById("DetailProgress")
@@ -61,6 +63,8 @@ async function initializePage() {
     let Ars_MainItemsBtn = document.getElementById("Ars_MainItems")
     let Ars_ClothingBtn = document.getElementById("Ars_Clothing")
     let Ars_ItemsBtn = document.getElementById("Ars_Items")
+
+    SaveLoadoutBtn.onclick = SaveLoadout();
 
     Ars_WeaponsBtn.onclick = () => {
         RemoveItemsFromArsenal()
@@ -604,4 +608,51 @@ function AddButtonAtchLisener(Item) {
             Item.remove()
         }
     })
+}
+
+function SaveLoadout() {
+    let LoadoutSkeleton = [
+        ["Primary", "Muzzel", "Side", "Top", ["Mag", 31],
+          ["MatolRound", 1], ""
+        ],
+
+        ["Rocket", "", "", "Top", ["Mag", 1],
+          [], ""
+        ],
+
+        ["Handgun", "Muzzel", "Side", "Top", ["Mag", 15],
+          [], ""
+        ],
+
+        ["Uniform", ["Items"]],
+
+        ["Vest", ["Items"]],
+
+        ["Backpack", ["Items"]],
+
+        "Helmet", "Facewear", ["Binocular", "", "", "", ["Laserbatteries", 1],
+          [], ""
+        ],
+
+        ["ItemMap", "ItemGPS", "", "ItemCompass", "ItemWatch", ""]
+    ]
+
+    for (let i = 0; i < MainInvItems.length; i++) {
+        let CurrectWeapon = document.getElementById(WeaponsItems[i])
+        let WeaponItem = CurrectWeapon.children[1]
+        let AttachmentBox = WeaponItem.children[1]
+
+
+        LoadoutSkeleton[i][0] = WeaponItem.id
+        
+
+        LoadoutSkeleton[i][1] = AttachmentBox.children[4].children[1].id
+        LoadoutSkeleton[i][2] = AttachmentBox.children[2].children[1].id
+        LoadoutSkeleton[i][3] = AttachmentBox.children[1].children[1].id
+        LoadoutSkeleton[i][4][0] = AttachmentBox.children[0].children[1].id
+        LoadoutSkeleton[i][4][1] = 31
+        LoadoutSkeleton[i][5] = AttachmentBox.children[3].children[1].id
+    }
+
+    console.log(LoadoutSkeleton)
 }
