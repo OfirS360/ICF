@@ -64,7 +64,7 @@ async function initializePage() {
     let Ars_ClothingBtn = document.getElementById("Ars_Clothing")
     let Ars_ItemsBtn = document.getElementById("Ars_Items")
 
-    SaveLoadoutBtn.onclick = SaveLoadout();
+    SaveLoadoutBtn.addEventListener("click", SaveLoadout())
 
     Ars_WeaponsBtn.onclick = () => {
         RemoveItemsFromArsenal()
@@ -647,7 +647,7 @@ function SaveLoadout() {
 
         LoadoutSkeleton[i][0] = WeaponItem.id
         
-        
+
         LoadoutSkeleton[i][1] = AttachmentBox.children[4].children[1].id
         LoadoutSkeleton[i][2] = AttachmentBox.children[2].children[1].id
         LoadoutSkeleton[i][3] = AttachmentBox.children[1].children[1].id
