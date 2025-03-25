@@ -640,12 +640,14 @@ function SaveLoadout() {
     for (let i = 0; i < MainInvItems.length; i++) {
         let CurrectWeapon = document.getElementById(WeaponsItems[i])
         let WeaponItem = CurrectWeapon.children[1]
-        let AttachmentBox = WeaponItem.children[1]
 
+        if (WeaponItem.children[1]) {
+            let AttachmentBox = WeaponItem.children[1]
+        }
 
         LoadoutSkeleton[i][0] = WeaponItem.id
         
-
+        
         LoadoutSkeleton[i][1] = AttachmentBox.children[4].children[1].id
         LoadoutSkeleton[i][2] = AttachmentBox.children[2].children[1].id
         LoadoutSkeleton[i][3] = AttachmentBox.children[1].children[1].id
