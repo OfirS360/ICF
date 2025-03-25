@@ -26,8 +26,8 @@ let BackpackItem = document.getElementById("BackpackItem")
 let PrimaryItem = document.getElementById("main_weapon")
 
 let MainInvBoxes = ["uniformBox", "vestBox", "backpackBox"];
-let MainInvItems = ["UniformItem", "VestItem", "BackpackItem"]
-let MainItemsType = ["Uniform", "Vest", "Backpack"]
+let MainInvItems = ["UniformItem", "VestItem", "BackpackItem", "Binocular", "Nvg", "Glasses", "Helmet"]
+let MainItemsType = ["Uniform", "Vest", "Backpack", "Binocular", "Nvg", "Facewear", "Helmet"]
 
 let WeaponsItems = ["main_weapon", "launcher", "pistol"];
 let WeaponsType = ["Primary", "Secondary", "Handgun"];
@@ -99,6 +99,8 @@ async function initializePage() {
         e.preventDefault();
 
         let Selected = document.querySelector(".dragging")
+
+        DetailBox.style.display = "none";
 
         if (UniformBox.contains(Selected) || VestBox.contains(Selected) || backpackBox.contains(Selected))
         {
@@ -236,7 +238,9 @@ function PlaceNewMainItem(Box, AllowItem)
                 Box.appendChild(MainItemC)
 
                 AddingEventLisener(MainItemC)
-                AddHoverLiseners(Item, MainItemC)
+
+                if (Item.Type === "Uniform" || Item.Type === "Vest" || Item.Type === "Backpack")
+                    AddHoverLiseners(Item, MainItemC)
 
                 break
             }
@@ -423,50 +427,53 @@ function RemoveItemsFromArsenal()
 }
 
 function AddingBIEventLisener(MainInvBoxes, MainInvItems, MainItemsType) {
-    for (let i = 0; i < MainInvBoxes.length; i++)
+    for (let i = 0; i < MainInvItems.length; i++)
     {
-        let CurrectBox = document.getElementById(MainInvBoxes[i])
+        if (i < 3) {
+            let CurrectBox = document.getElementById(MainInvBoxes[i])
+            // Box
+
+            CurrectBox.addEventListener("dragenter", function() {
+                CurrectBox.style.backgroundColor = "#262f3c";
+            });
+        
+            CurrectBox.addEventListener("dragleave", function() {
+                CurrectBox.style.backgroundColor = "#202833";
+            });
+        
+        
+            CurrectBox.addEventListener("dragover", function(e) {
+                e.preventDefault();
+            })
+        
+            CurrectBox.addEventListener("drop", function(e) {
+                e.preventDefault();
+        
+                CurrectBox.style.backgroundColor = "#202833";
+        
+                let Selected = document.querySelector(".dragging");
+
+                if (UniformBox.contains(Selected) && CurrectBox !== UniformBox) {    
+                    PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
+                    DecreseItem(Selected)
+                }
+
+                else if (VestBox.contains(Selected) && CurrectBox !== VestBox) {
+                    PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
+                    DecreseItem(Selected)
+                }
+
+                else if (backpackBox.contains(Selected) && CurrectBox !== backpackBox) {
+                    PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
+                    DecreseItem(Selected)
+                }
+                else {
+                    PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
+                }
+            })
+        }
+
         let CurrectItem = document.getElementById(MainInvItems[i])
-
-        // Box
-        CurrectBox.addEventListener("dragenter", function() {
-            CurrectBox.style.backgroundColor = "#262f3c";
-        });
-    
-        CurrectBox.addEventListener("dragleave", function() {
-            CurrectBox.style.backgroundColor = "#202833";
-        });
-    
-    
-        CurrectBox.addEventListener("dragover", function(e) {
-            e.preventDefault();
-        })
-    
-        CurrectBox.addEventListener("drop", function(e) {
-            e.preventDefault();
-    
-            CurrectBox.style.backgroundColor = "#202833";
-    
-            let Selected = document.querySelector(".dragging");
-
-            if (UniformBox.contains(Selected) && CurrectBox !== UniformBox) {    
-                PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
-                DecreseItem(Selected)
-            }
-
-            else if (VestBox.contains(Selected) && CurrectBox !== VestBox) {
-                PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
-                DecreseItem(Selected)
-            }
-
-            else if (backpackBox.contains(Selected) && CurrectBox !== backpackBox) {
-                PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
-                DecreseItem(Selected)
-            }
-            else {
-                PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
-            }
-        })
 
         // Item
         CurrectItem.addEventListener("dragover", function(e) {
