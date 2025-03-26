@@ -857,15 +857,32 @@ function LoadLoadout(LoadoutSkeleton) {
         }
     }
 
-    if (LoadoutSkeleton[6] !== "") {
-        let CurrectItem = document.getElementById(MainInvItems[6])
+    // קסדה
+    let CurrectItem = document.getElementById(MainInvItems[6])
 
-        let Selected = {
-            id: LoadoutSkeleton[6]
-        }
-        
-        PlaceNewMainItem(CurrectItem, MainItemsType[6], Selected)
+    let Selected = {
+        id: LoadoutSkeleton[6]
     }
+
+    PlaceNewMainItem(CurrectItem, MainItemsType[6], Selected)
+
+    // לבוש פנים
+    CurrectItem = document.getElementById(MainInvItems[5])
+
+    Selected = {
+        id: LoadoutSkeleton[7]
+    }
+
+    PlaceNewMainItem(CurrectItem, MainItemsType[5], Selected)
+
+    // משקפת
+    CurrectItem = document.getElementById(MainInvItems[3])
+
+    Selected = {
+        id: LoadoutSkeleton[8][0]
+    }
+
+    PlaceNewMainItem(CurrectItem, MainItemsType[3], Selected)
 }
 
 /**
