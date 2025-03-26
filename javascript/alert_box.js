@@ -12,13 +12,12 @@ function PopAlert(Title, IsGoodNum, Description) {
         IsRunning = true
 
         AlertBox.style.opacity = 1;
-        AlertTitle.textContent = `${Title} <img id="AlertImg" src="../img/${Pics[IsGoodNum]}.png">`
+        AlertTitle.innerHTML = `${Title} <img id="AlertImg" src="../img/${Pics[IsGoodNum]}.png">`;
         AlertDescription.textContent = Description
 
         setTimeout(() => {
+            AlertBox.style.opacity = 0;
+            IsRunning = false
         }, 5000);
-
-        AlertBox.style.opacity = 0;
-        IsRunning = false
     }
 }
