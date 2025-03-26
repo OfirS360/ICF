@@ -223,7 +223,7 @@ function PlaceNewItem(Box, AllowItems, Selected = null, IsLoading = false, Amoun
                     if (!IsLoading)
                         Selected.classList.remove("dragging");
                     else {
-                        NewItem.children[2].children[1] = `כמות - ${Amount}`
+                        NewItem.children[2].children[1].textContent = `כמות - ${Amount}`
                     }
 
                     AddingEventLisener(NewItem)
