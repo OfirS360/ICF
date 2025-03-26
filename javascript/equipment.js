@@ -57,7 +57,7 @@ async function initializePage() {
     LoadingScreen.style.display = "none"
     await GetAllItems()
     await GetPlayerLoadout()
-    LoadingScreen.style.display = "none"
+    LoadingScreen.style.display = "flex"
 
     Items.sort((a, b) => a.Type.localeCompare(b.Type))
 
