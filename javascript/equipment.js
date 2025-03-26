@@ -825,6 +825,9 @@ function LoadLoadout(LoadoutSkeleton) {
         PlaceNewWeaponItem(CurrectBox, AllowItem, Selected)
 
         let AttachmentBox = document.querySelector(`#${LoadoutSkeleton[i][0]} .Attachments_Box`)
+        if (!AttachmentBox)
+            continue
+        
         for (let j = 0; j < AttachmentBox.childElementCount; j++) { 
 
             for(let z = 1; z < AtchTypes.length; z++) {
