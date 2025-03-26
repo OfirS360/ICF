@@ -34,6 +34,8 @@ let MainItemsType = ["Uniform", "Vest", "Backpack", "Binocular", "Nvg", "Facewea
 let WeaponsItems = ["main_weapon", "launcher", "pistol"];
 let WeaponsType = ["Primary", "Secondary", "Handgun"];
 
+let AtchTypes = ["", "muzzle", "side", "top", "magazine", "bipod"]
+
 let IsShiftDown = false
 
 initializePage()
@@ -343,6 +345,34 @@ function PlaceNewWeaponItem(Box, AllowItem, Selected = null) {
      }
 }
 
+function PlaceAttachment(Box, WeaponType, Selected = null) {
+
+    if (!Selected)
+        Selected = document.querySelector(".dragging");
+
+    let ItemData;
+
+    for (Item of Items) {
+        if (Item.ItemId === Selected.id) {
+            ItemData = Item
+            break
+        }
+    }
+            
+    if (ItemData.Type === "Attachment" && ItemData.AtchType === Box.dataset.type && Box.childElementCount < 2 && ItemData.WeaponType === WeaponType) {
+        if (ItemData.AtchType === "magazine" && ItemData.Caliber !== Item.Caliber)
+            return
+                
+        AttachmentItem = AttachmentItemClone.cloneNode(true)
+        AttachmentItem.src = `data:image/png;base64,${Item.Image}`
+        AttachmentItem.id = ItemData.ItemId
+
+        AddButtonAtchLisener(AttachmentItem)
+
+        Box.appendChild(AttachmentItem)
+    }
+}
+
 // הוספת האזנות
 /**
  * מוספיה לחפץ האזנות של גרירה
@@ -509,29 +539,7 @@ function AddingAttachmentsLisener(AttachmentBox) {
         AttachmentBox.children[i].addEventListener("drop", function(e) {
             e.preventDefault();
 
-            let Selected = document.querySelector(".dragging");
-
-            let ItemData;
-
-            for (Item of Items) {
-                if (Item.ItemId === Selected.id) {
-                    ItemData = Item
-                    break
-                }
-            }
-            
-            if (ItemData.Type === "Attachment" && ItemData.AtchType === AttachmentBox.children[i].dataset.type && AttachmentBox.children[i].childElementCount < 2 && ItemData.WeaponType === AttachmentBox.id) {
-                if (ItemData.AtchType === "magazine" && ItemData.Caliber !== Item.Caliber)
-                    return
-                
-                AttachmentItem = AttachmentItemClone.cloneNode(true)
-                AttachmentItem.src = `data:image/png;base64,${Item.Image}`
-                AttachmentItem.id = ItemData.ItemId
-
-                AddButtonAtchLisener(AttachmentItem)
-
-                AttachmentBox.children[i].appendChild(AttachmentItem)
-            }
+            PlaceAttachment(AttachmentBox.children[i], AttachmentBox.id)
         })
     }
 }
@@ -803,8 +811,32 @@ function LoadLoadout(LoadoutSkeleton) {
         }
 
         PlaceNewWeaponItem(CurrectBox, AllowItem, Selected)
+
+        let AttachmentBox = document.querySelector(`#${LoadoutSkeleton[i][0]} .Attachments_Box`)
+        for (let j = 0; j < AttachmentBox.childElementCount; j++) { 
+
+            for(let z = 1; z < AtchTypes.length; z++) {
+
+                if (AtchTypes[z] === AttachmentBox.children[j].dataset.type) {
+                    if (z == 4) {
+                        Selected = {
+                            id: LoadoutSkeleton[i][z][0]
+                        }
+                    }
+                    else {
+                        Selected = {
+                            id: LoadoutSkeleton[i][z]
+                        }
+                    }
+                    
+                    PlaceAttachment(AttachmentBox.children[j], AttachmentBox.id, Selected)
+                    break
+                }
+            }
+        }
     }
 
+    // תיקים
     for (let i = 0; i < 3; i++) {
         let CurrectItem = document.getElementById(MainInvItems[i])
         let AllowItem = MainItemsType[i]
