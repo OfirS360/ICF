@@ -833,6 +833,7 @@ function LoadLoadout(LoadoutSkeleton) {
                         }
                     }
                     
+                    console.log(Selected)
                     PlaceAttachment(AttachmentBox.children[j], AttachmentBox.id, Selected)
                     break
                 }
