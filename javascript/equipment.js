@@ -78,7 +78,8 @@ async function initializePage() {
             let ImportedLoadout = await navigator.clipboard.readText();
             console.log(ImportedLoadout)
             ImportedLoadout = JSON.parse(ImportedLoadout);
-    
+            
+            ClearLoadout()
             LoadLoadout(ImportedLoadout)
         } catch (error) {
             console.error("Unvalid Import");
@@ -899,6 +900,16 @@ function LoadLoadout(LoadoutSkeleton) {
     }
 
     PlaceNewMainItem(CurrectItem, MainItemsType[3], Selected)
+}
+
+function ClearLoadout() {
+    ItemsToDelete = document.querySelectorAll(".MainItemImg, .ItemStored, .WeaponItem, .Attachments_Box, .AttachmentItem")
+
+    ItemsToDelete.forEach(Item => {
+        if (Item.id !== "MainItemClone" && Item.id !== "ItemStoredClone" && Item.id !== "WeaponItemClone" && Item.id !== "AttachmentsBoxClone" && Item.id !== "AttachmentItemClone") {
+            Item.remove()
+        }
+    })
 }
 
 /**
