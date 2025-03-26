@@ -166,13 +166,13 @@ async function initializePage() {
  * @param {*} Box התיק שאליו צריך לשייך את החפץ
  * @param {*} AllowItems מערך של סוגי חפצים שניתן להכניס אותם לתיק
  */
-function PlaceNewItem(Box, AllowItems, Selected = null)
+function PlaceNewItem(Box, AllowItems, Selected = null, IsLoading = false)
 {
     if (!Selected) {
         Selected = document.querySelector(".dragging");
     }
 
-    if (Box.contains(Selected))
+    if (IsLoading && Box.contains(Selected))
         return
 
     for (Item of Items)
@@ -817,7 +817,7 @@ function LoadLoadout(LoadoutSkeleton) {
                 id: LoadoutSkeleton[3 + i][1][j][0]
             }
 
-            PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"], Selected)
+            PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"], Selected, true)
         }
     }
 }
