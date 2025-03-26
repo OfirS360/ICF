@@ -358,7 +358,11 @@ function PlaceAttachment(Box, WeaponType, Selected = null) {
             break
         }
     }
-            
+    
+    console.log(Item)
+    console.log(Item)
+    console.log(Selected)
+
     if (ItemData.Type === "Attachment" && ItemData.AtchType === Box.dataset.type && Box.childElementCount < 2 && ItemData.WeaponType === WeaponType) {
         if (ItemData.AtchType === "magazine" && ItemData.Caliber !== Item.Caliber)
             return
