@@ -811,7 +811,7 @@ function LoadLoadout(LoadoutSkeleton) {
 
         PlaceNewMainItem(CurrectItem, AllowItem, Selected)
 
-        let CurrectBox = MainInvBoxes[i]
+        let CurrectBox = document.getElementById(MainInvBoxes[i])
         for (let j = 0; j < LoadoutSkeleton[3 + i][1].length; j++) {
             Selected = {
                 id: LoadoutSkeleton[3 + i][1][j][0]
