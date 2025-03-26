@@ -793,7 +793,7 @@ function LoadLoadout(LoadoutSkeleton) {
         let AllowItem = WeaponsType[i]
 
         let Selected = {
-            id: LoadoutSkeleton[i][i]
+            id: LoadoutSkeleton[i][0]
         }
 
         PlaceNewWeaponItem(CurrectBox, AllowItem, Selected)
