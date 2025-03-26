@@ -172,7 +172,7 @@ function PlaceNewItem(Box, AllowItems, Selected = null, IsLoading = false)
         Selected = document.querySelector(".dragging");
     }
 
-    if (IsLoading && Box.contains(Selected))
+    if (!IsLoading && Box.contains(Selected))
         return
 
     for (Item of Items)
