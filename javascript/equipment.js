@@ -166,9 +166,11 @@ async function initializePage() {
  * @param {*} Box התיק שאליו צריך לשייך את החפץ
  * @param {*} AllowItems מערך של סוגי חפצים שניתן להכניס אותם לתיק
  */
-function PlaceNewItem(Box, AllowItems)
+function PlaceNewItem(Box, AllowItems, Selected = null)
 {
-    let Selected = document.querySelector(".dragging");
+    if (!Selected) {
+        Selected = document.querySelector(".dragging");
+    }
 
     if (Box.contains(Selected))
         return
@@ -808,6 +810,15 @@ function LoadLoadout(LoadoutSkeleton) {
         }
 
         PlaceNewMainItem(CurrectItem, AllowItem, Selected)
+
+        let CurrectBox = MainInvBoxes[i]
+        for (let j = 0; j < LoadoutSkeleton[3 + i][1].length; j++) {
+            Selected = {
+                id: LoadoutSkeleton[3 + i][1][j][0]
+            }
+
+            PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"], Selected)
+        }
     }
 }
 
