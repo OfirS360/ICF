@@ -1,6 +1,7 @@
 let LoadingScreen = document.getElementById("LoadingContent")
 
 let SaveLoadoutBtn = document.getElementById("SaveLoadout")
+let ImportLoadoutBtn = document.getElementById("ImportLoadout")
 
 let DetailBox = document.getElementById("DetailBox")
 let DetailTitle = document.getElementById("DetailTitle")
@@ -70,6 +71,17 @@ async function initializePage() {
 
     SaveLoadoutBtn.onclick = () => {
         SaveLoadout()
+    }
+
+    ImportLoadoutBtn.onclick = async () => {
+        try {
+            let ImportedLoadout = await navigator.clipboard.readText();
+            ImportedLoadout = JSON.parse(ImportedLoadout);
+    
+            LoadLoadout(ImportedLoadout)
+        } catch (error) {
+            console.error("Unvalid Import");
+        }
     }
 
     Ars_WeaponsBtn.onclick = () => {
