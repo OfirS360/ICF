@@ -360,7 +360,7 @@ function PlaceAttachment(Box, WeaponType, Selected = null) {
     }
     
     console.log(Item)
-    console.log(Item)
+    console.log(Items)
     console.log(Selected)
 
     if (ItemData.Type === "Attachment" && ItemData.AtchType === Box.dataset.type && Box.childElementCount < 2 && ItemData.WeaponType === WeaponType) {
