@@ -76,6 +76,7 @@ async function initializePage() {
     ImportLoadoutBtn.onclick = async () => {
         try {
             let ImportedLoadout = await navigator.clipboard.readText();
+            console.log(ImportedLoadout)
             ImportedLoadout = JSON.parse(ImportedLoadout);
     
             LoadLoadout(ImportedLoadout)
@@ -827,7 +828,7 @@ function LoadLoadout(LoadoutSkeleton) {
         let AttachmentBox = document.querySelector(`#${LoadoutSkeleton[i][0]} .Attachments_Box`)
         if (!AttachmentBox)
             continue
-        
+
         for (let j = 0; j < AttachmentBox.childElementCount; j++) { 
 
             for(let z = 1; z < AtchTypes.length; z++) {
