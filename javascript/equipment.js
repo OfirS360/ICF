@@ -214,6 +214,9 @@ function PlaceNewItem(Box, AllowItems, Selected = null, IsLoading = false, Amoun
 
                 let MainItem = Box.parentElement.children[0].children[1]
 
+                if (!MainItem)
+                    return
+
                 if (Number(MainItem.dataset.currectweight) + Item.Weight > Number(MainItem.dataset.space))
                 {
                     return
