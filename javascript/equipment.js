@@ -826,6 +826,7 @@ async function GetPlayerLoadout() {
     const data = await response.json();
 
     if (data.results) {
+        console.log(data.results)
         LoadLoadout(data.results)
     }
 }
