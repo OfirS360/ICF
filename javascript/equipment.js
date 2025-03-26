@@ -54,7 +54,7 @@ async function initializePage() {
     else {
         Items = [];
     }
-    LoadingScreen.style.display = "flex"
+    LoadingScreen.style.display = "none"
     await GetAllItems()
     await GetPlayerLoadout()
     LoadingScreen.style.display = "none"
@@ -83,6 +83,7 @@ async function initializePage() {
 
             ClearLoadout()
             LoadLoadout(ImportedLoadout)
+            PopAlert("הפקל נטען!", 1, "עכשיו תוכל לערוך לפי רצונך, רק אל תשכח לשמור.")
         } catch (error) {
             console.error("Unvalid Import");
             console.error(error)
@@ -215,10 +216,11 @@ function PlaceNewItem(Box, AllowItems, Selected = null, IsLoading = false, Amoun
                 let MainItem = Box.parentElement.children[0].children[1]
 
                 if (!MainItem)
-                    return
+                    return  
 
                 if (Number(MainItem.dataset.currectweight) + Item.Weight > Number(MainItem.dataset.space))
                 {
+                    PopAlert("אין מקום", 0, "הגעת לניצול המקסימלי של התיק")
                     return
                 }
 
@@ -602,15 +604,21 @@ function IncreseItem(Item)
     }
 
     if (IsShiftDown) {
-        if (Number(currectweight) + (ItemData.Weight * 5) > Number(space))
+        if (Number(currectweight) + (ItemData.Weight * 5) > Number(space)) {
+            PopAlert("אין מקום", 0, "הגעת לניצול המקסימלי של התיק")
             return
+        }
+            
 
         amount+= 5;
         MainItem.dataset.currectweight = Number(currectweight) + (ItemData.Weight * 5)
     }
     else {
-        if (Number(currectweight) + ItemData.Weight > Number(space))
+        if (Number(currectweight) + ItemData.Weight > Number(space)) { 
+            PopAlert("אין מקום", 0, "הגעת לניצול המקסימלי של התיק")
             return
+        }
+            
 
         amount++;
         MainItem.dataset.currectweight = Number(currectweight) + ItemData.Weight
@@ -810,8 +818,7 @@ function SaveLoadout() {
     })
     .then(response => response.json())
     .then(data => {
-        console.log("Success:", data);
-        console.log("Form submitted successfully!");
+        PopAlert("הפקל נשמר בהצלחה!", 1, "עכשיו תוכל להתחבר לשרת עם הפקל ששמרת.")
     })
     .catch(error => {
         console.error("Error:", error);

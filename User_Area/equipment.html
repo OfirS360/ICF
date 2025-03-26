@@ -1,6 +1,7 @@
 <html lang="en">
 <head>
     <script src="../javascript/def_hp.js" defer></script>
+    <script src="../javascript/alert_box.js" defer></script>
     <script src="../javascript/equipment.js" defer></script>
     <link rel="stylesheet" href="../css/h_styles.css">
     <link rel="stylesheet" href="../css/h_equip.css">
@@ -62,7 +63,7 @@
     <img src="" id="AttachmentItemClone" class="AttachmentItem" draggable="true">
 
     <!-- Detail Box -->
-     <div id="DetailBox" dir="rtl">
+    <div id="DetailBox" dir="rtl">
         <h1 class="DetailTitle" id="DetailTitle">שם החפץ</h1>
         <p class="DetailDescription" id="DetailDes">תיאור: </p>
         <p class="DetailDescription" id="DetailWeight">משקל: </p>
@@ -70,7 +71,7 @@
 
         <p class="DetailDescription">מקום שנוצל:</p>
         <progress id="DetailProgress" class="ProgressBar" max="" value=""></progress>
-     </div>
+    </div>
     
     <!-- Start -->
     <nav class="sidebar" id="sidebar">
@@ -108,6 +109,15 @@
     <div class="content" id="content" dir="rtl">
 
         <div id="LoadingContent">טוען מידע...</div>
+
+        <!-- Alert Box -->
+        <div id="AlertBox" dir="rtl">
+            <h1 id="AlertTitle">
+                כותרת התראה
+                <img id="AlertImg" src="../img/v_mark.png">
+            </h1>
+            <p id="AlertDescription">תיאור התראה</p>
+        </div>
 
         <div id="TopProfile">
             <img src="" alt="" id="avatar">
