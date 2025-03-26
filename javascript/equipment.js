@@ -85,6 +85,7 @@ async function initializePage() {
             LoadLoadout(ImportedLoadout)
         } catch (error) {
             console.error("Unvalid Import");
+            console.error(error)
         }
     }
 
