@@ -166,7 +166,7 @@ async function initializePage() {
  * @param {*} Box התיק שאליו צריך לשייך את החפץ
  * @param {*} AllowItems מערך של סוגי חפצים שניתן להכניס אותם לתיק
  */
-function PlaceNewItem(Box, AllowItems, Selected = null, IsLoading = false)
+function PlaceNewItem(Box, AllowItems, Selected = null, IsLoading = false, Amount)
 {
     if (!Selected) {
         Selected = document.querySelector(".dragging");
@@ -220,7 +220,11 @@ function PlaceNewItem(Box, AllowItems, Selected = null, IsLoading = false)
                     NewItem.style.display = "flex"
                     Box.appendChild(NewItem)
 
-                    Selected.classList.remove("dragging");
+                    if (!IsLoading)
+                        Selected.classList.remove("dragging");
+                    else {
+                        NewItem.children[2].children[1] = `כמות - ${Amount}`
+                    }
 
                     AddingEventLisener(NewItem)
                     AddBtnsLiseners(NewItem)
@@ -817,7 +821,7 @@ function LoadLoadout(LoadoutSkeleton) {
                 id: LoadoutSkeleton[3 + i][1][j][0]
             }
 
-            PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"], Selected, true)
+            PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"], Selected, true, LoadoutSkeleton[3 + i][1][j][1])
         }
     }
 }
