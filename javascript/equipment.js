@@ -804,7 +804,7 @@ function LoadLoadout(LoadoutSkeleton) {
         let AllowItem = MainItemsType[i]
 
         let Selected = {
-            id: LoadLoadout[3 + i][0]
+            id: LoadoutSkeleton[3 + i][0]
         }
 
         PlaceNewMainItem(CurrectItem, AllowItem, Selected)
