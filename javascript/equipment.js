@@ -38,6 +38,7 @@ let IsShiftDown = false
 
 initializePage()
 
+// אתחול הדף
 async function initializePage() {
     let Items = sessionStorage.getItem("Items")
     if (Items) {
@@ -156,7 +157,14 @@ async function initializePage() {
     });
 }
 
-// Functions
+// פונקציות
+
+// הוספת חפצים
+/**
+ * הפונקציה שמה את החפץ בתיק שהמשתמש גרר אותו
+ * @param {*} Box התיק שאליו צריך לשייך את החפץ
+ * @param {*} AllowItems מערך של סוגי חפצים שניתן להכניס אותם לתיק
+ */
 function PlaceNewItem(Box, AllowItems)
 {
     let Selected = document.querySelector(".dragging");
@@ -227,9 +235,16 @@ function PlaceNewItem(Box, AllowItems)
     }
 }
 
-function PlaceNewMainItem(Box, AllowItem)
+/**
+ * הפונקציה שמה חפץ ראשי בתוך המקום המתאים לו
+ * @param {*} Box המקום בו המשתמש גרר את החפץ
+ * @param {*} AllowItem החפץ שמותר להכניס
+ */
+function PlaceNewMainItem(Box, AllowItem, Selected = null)
 {
-    let Selected = document.querySelector(".dragging");
+    if (!Selected) {
+        Selected = document.querySelector(".dragging");
+    }
 
     for (Item of Items)
         {
@@ -238,7 +253,7 @@ function PlaceNewMainItem(Box, AllowItem)
                 MainItemC = MainItemClone.cloneNode(false);
 
                 MainItemC.id = Item.ItemId
-                MainItemC.src = Selected.children[0].children[0].src
+                MainItemC.src = `data:image/png;base64,${Item.Image}`
 
                 MainItemC.style.display = "block"
 
@@ -257,267 +272,16 @@ function PlaceNewMainItem(Box, AllowItem)
         }
 }
 
-function AddingEventLisener(Item)
-{
-    Item.addEventListener("dragstart", function(e) {
-        let Selected = e.target;
-        Selected.classList.add("dragging");
-    })
+/**
+ * מוסיפה  את הנשק המאים ברגע שהוא נגרר, ומוסיפה גם אופציה לתוספים
+ * @param {*} Box הסלוט שאליו החפץ נכנס
+ * @param {*} AllowItem סוג נשק מתאים שאפשר להכניס אותו לסלוט
+ */
+function PlaceNewWeaponItem(Box, AllowItem, Selected = null) {
 
-    Item.addEventListener("dragend", function(e) {
-        let Selected = e.target;
-        Selected.classList.remove("dragging");
-    })
-}
-
-function AddBtnsLiseners(Item)
-{
-    let Buttons = Item.children[0]
-    Buttons.children[0].addEventListener("click", function() {
-        IncreseItem(Item)
-    })
-    Buttons.children[1].addEventListener("click", function() {
-        DecreseItem(Item)
-    })
-}
-
-function AddHoverLiseners(ItemData, Item) {
-    Item.addEventListener("mouseenter", function() {
-        let ItemPos = Item.getBoundingClientRect();
-
-        DetailBox.style.left = (ItemPos.left + Item.offsetWidth + 10) + "px"
-        DetailBox.style.top = ItemPos.top + "px"
-
-        DetailTitle.textContent = ItemData.Title
-        DetailDes.textContent = "תיאור: " + ItemData.Description
-        DetailWeight.textContent = "משקל: " + ItemData.Weight + "kg"
-        DetailSpace.textContent = "מקום: " + ItemData.Space + "kg"
-        
-        DetailProgress.max = Item.dataset.space
-        DetailProgress.value = Item.dataset.currectweight
-
-        DetailBox.style.display = "flex";
-    })
-
-    Item.addEventListener("mouseleave", function() {
-        DetailBox.style.display = "none";
-    });
-}
-
-async function GetAllItems() {
-    try {
-        const response = await fetch(`https://icf-api-ten.vercel.app/GetAllItems`);
-        const data = await response.json();
-
-        if (data.results) {
-            sessionStorage.setItem("Items", JSON.stringify(data.results))
-            Items = data.results
-        }
+    if (!Selected) {
+        Selected = document.querySelector(".dragging");
     }
-    catch (error) {
-        return
-    }
-}
-
-function IncreseItem(Item)
-{
-    let AmountTxtElement = Item.children[2].children[1];
-    let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
-
-    let MainItem = Item.parentElement.parentElement.children[0].children[1]
-
-    let currectweight = MainItem.dataset.currectweight
-    let space = MainItem.dataset.space
-
-    let ItemData;
-
-    for (CurrectItem of Items) {
-        if (CurrectItem.ItemId == Item.id) {
-            ItemData = CurrectItem
-            break
-        }
-    }
-
-    if (IsShiftDown) {
-        if (Number(currectweight) + (ItemData.Weight * 5) > Number(space))
-            return
-
-        amount+= 5;
-        MainItem.dataset.currectweight = Number(currectweight) + (ItemData.Weight * 5)
-    }
-    else {
-        if (Number(currectweight) + ItemData.Weight > Number(space))
-            return
-
-        amount++;
-        MainItem.dataset.currectweight = Number(currectweight) + ItemData.Weight
-    }
-    
-    
-    AmountTxtElement.textContent = `כמות - ${amount}`;
-}
-
-function DecreseItem(Item)
-{
-    let AmountTxtElement = Item.children[2].children[1];
-    let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
-
-    let MainItem = Item.parentElement.parentElement.children[0].children[1]
-    let currectweight = MainItem.dataset.currectweight
-
-    console.log(currectweight)
-
-    let ItemData;
-
-    for (CurrectItem of Items) {
-        if (CurrectItem.ItemId == Item.id) {
-            ItemData = CurrectItem
-            break
-        }
-    }
-
-    if (IsShiftDown) {
-        amount-= 5;
-
-        MainItem.dataset.currectweight = Number(currectweight) - (ItemData.Weight * 5);
-    }
-    else {
-        amount--;
-
-        MainItem.dataset.currectweight = Number(currectweight) - ItemData.Weight
-    }
-    
-    if (amount < 1)
-        Item.remove();
-
-    AmountTxtElement.textContent = `כמות - ${amount}`;
-}
-
-function AddItemsToArsenal(Category)
-{
-    for (Item of Items) {
-        if (Item.Category === Category)
-        {
-            let CloneArsItem = ItemArsenalCopy.cloneNode(true)
-
-            CloneArsItem.children[0].children[0].src = `data:image/png;base64,${Item.Image}`;
-
-            CloneArsItem.children[1].children[0].textContent = Item.Title
-            CloneArsItem.children[1].children[1].textContent = Item.Description
-            CloneArsItem.children[1].children[2].textContent = `משקל: ${Item.Weight}kg`
-
-            CloneArsItem.id = Item.ItemId
-            CloneArsItem.style.display = "flex"
-
-            CloneArsItem.addEventListener("dragstart", function(e) {
-                let Selected = e.target;
-                Selected.classList.add("dragging");
-            })
-    
-            CloneArsItem.addEventListener("dragend", function(e) {
-                let Selected = e.target;
-                Selected.classList.remove("dragging");
-            })
-
-            Arsenal_Right.appendChild(CloneArsItem)
-        }
-    }
-}
-
-function RemoveItemsFromArsenal()
-{
-    let ArsenalItemsBox = document.getElementById("Arsenal_Right");
-
-    let ItemsInArsenal = ArsenalItemsBox.querySelectorAll(".Item");
-    ItemsInArsenal.forEach(Item => {
-        if (!Item.classList.contains("Arsenal_Buttons") && Item.id !== "ItemArsenalCopy") {
-            Item.remove();
-        }
-    });
-}
-
-function AddingBIEventLisener(MainInvBoxes, MainInvItems, MainItemsType) {
-    for (let i = 0; i < MainInvItems.length; i++)
-    {
-        if (i < 3) {
-            let CurrectBox = document.getElementById(MainInvBoxes[i])
-            // Box
-
-            CurrectBox.addEventListener("dragenter", function() {
-                CurrectBox.style.backgroundColor = "#262f3c";
-            });
-        
-            CurrectBox.addEventListener("dragleave", function() {
-                CurrectBox.style.backgroundColor = "#202833";
-            });
-        
-        
-            CurrectBox.addEventListener("dragover", function(e) {
-                e.preventDefault();
-            })
-        
-            CurrectBox.addEventListener("drop", function(e) {
-                e.preventDefault();
-        
-                CurrectBox.style.backgroundColor = "#202833";
-        
-                let Selected = document.querySelector(".dragging");
-
-                if (UniformBox.contains(Selected) && CurrectBox !== UniformBox) {    
-                    PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
-                    DecreseItem(Selected)
-                }
-
-                else if (VestBox.contains(Selected) && CurrectBox !== VestBox) {
-                    PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
-                    DecreseItem(Selected)
-                }
-
-                else if (backpackBox.contains(Selected) && CurrectBox !== backpackBox) {
-                    PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
-                    DecreseItem(Selected)
-                }
-                else {
-                    PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
-                }
-            })
-        }
-
-        let CurrectItem = document.getElementById(MainInvItems[i])
-
-        // Item
-        CurrectItem.addEventListener("dragover", function(e) {
-            e.preventDefault();
-        })
-    
-        CurrectItem.addEventListener("drop", function(e) {
-            e.preventDefault();
-    
-            PlaceNewMainItem(CurrectItem, MainItemsType[i])
-        })
-    }
-}
-
-function AddingWeaponsEventLisener(WeaponsItems) {
-    for (let i = 0; i < WeaponsItems.length; i++)
-    {
-        let CurrectBox = document.getElementById(WeaponsItems[i])
-
-        CurrectBox.addEventListener("dragover", function(e) {
-            e.preventDefault();
-        })
-    
-        CurrectBox.addEventListener("drop", function(e) {
-            e.preventDefault();
-    
-            if (CurrectBox.childElementCount === 1)
-                PlaceNewWeaponItem(CurrectBox, WeaponsType[i])
-        })
-    }
-}
-
-function PlaceNewWeaponItem(Box, AllowItem) {
-    let Selected = document.querySelector(".dragging");
 
     for (Item of Items)
     {
@@ -572,7 +336,164 @@ function PlaceNewWeaponItem(Box, AllowItem) {
      }
 }
 
-function AddingAttachmentsLisener(AttachmentBox, WeaponItem) {
+// הוספת האזנות
+/**
+ * מוספיה לחפץ האזנות של גרירה
+ * @param {*} Item החפץ שאליו מוסיפים את הגרירה
+ */
+function AddingEventLisener(Item)
+{
+    Item.addEventListener("dragstart", function(e) {
+        let Selected = e.target;
+        Selected.classList.add("dragging");
+    })
+
+    Item.addEventListener("dragend", function(e) {
+        let Selected = e.target;
+        Selected.classList.remove("dragging");
+    })
+}
+
+/**
+ * לחפץ הנמצא בתיק, מוסיפים לו האזנות של כפתורי פלוס ומינוס כדי להגדיל את הכמות
+ * @param {*} Item החפץ שאליו צריך להוסיף את האזנות
+ */
+function AddBtnsLiseners(Item)
+{
+    let Buttons = Item.children[0]
+    Buttons.children[0].addEventListener("click", function() {
+        IncreseItem(Item)
+    })
+    Buttons.children[1].addEventListener("click", function() {
+        DecreseItem(Item)
+    })
+}
+
+/**
+ * הפונקציה מציגה מידע על תיקים שונים
+ * @param {*} ItemData חפץ המקור מהנתונים
+ * @param {*} Item האלמנט של החפץ
+ */
+function AddHoverLiseners(ItemData, Item) {
+    Item.addEventListener("mouseenter", function() {
+        let ItemPos = Item.getBoundingClientRect();
+
+        DetailBox.style.left = (ItemPos.left + Item.offsetWidth + 10) + "px"
+        DetailBox.style.top = ItemPos.top + "px"
+
+        DetailTitle.textContent = ItemData.Title
+        DetailDes.textContent = "תיאור: " + ItemData.Description
+        DetailWeight.textContent = "משקל: " + ItemData.Weight + "kg"
+        DetailSpace.textContent = "מקום: " + ItemData.Space + "kg"
+        
+        DetailProgress.max = Item.dataset.space
+        DetailProgress.value = Item.dataset.currectweight
+
+        DetailBox.style.display = "flex";
+    })
+
+    Item.addEventListener("mouseleave", function() {
+        DetailBox.style.display = "none";
+    });
+}
+
+/**
+ * מוסיפה האזנות ופעולות לכל הסלוטים של החפצים, אם החפץ הוא תיק כלשהו אז זה יאפשר גם לשים דברים בתוכו
+ * @param {*} MainInvBoxes מערך של האלמנטים של התיקים
+ * @param {*} MainInvItems מערך של האלמנטים של החפצים
+ * @param {*} MainItemsType מערך של סוגי החפצים שרשאים לאותו חפץ
+ */
+function AddingBIEventLisener(MainInvBoxes, MainInvItems, MainItemsType) {
+    for (let i = 0; i < MainInvItems.length; i++)
+    {
+        if (i < 3) {
+            let CurrectBox = document.getElementById(MainInvBoxes[i])
+            // Box
+
+            // Animation
+            CurrectBox.addEventListener("dragenter", function() {
+                CurrectBox.style.backgroundColor = "#262f3c";
+            });
+        
+            CurrectBox.addEventListener("dragleave", function() {
+                CurrectBox.style.backgroundColor = "#202833";
+            });
+
+            // Main
+            CurrectBox.addEventListener("dragover", function(e) {
+                e.preventDefault();
+            })
+        
+            CurrectBox.addEventListener("drop", function(e) {
+                e.preventDefault();
+        
+                CurrectBox.style.backgroundColor = "#202833";
+        
+                let Selected = document.querySelector(".dragging");
+
+                // אם הועבר מתיק אחר
+                if (UniformBox.contains(Selected) && CurrectBox !== UniformBox) {    
+                    PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
+                    DecreseItem(Selected)
+                }
+
+                else if (VestBox.contains(Selected) && CurrectBox !== VestBox) {
+                    PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
+                    DecreseItem(Selected)
+                }
+
+                else if (backpackBox.contains(Selected) && CurrectBox !== backpackBox) {
+                    PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
+                    DecreseItem(Selected)
+                }
+                else {
+                    PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"])
+                }
+            })
+        }
+
+        let CurrectItem = document.getElementById(MainInvItems[i])
+
+        // Item
+        CurrectItem.addEventListener("dragover", function(e) {
+            e.preventDefault();
+        })
+    
+        CurrectItem.addEventListener("drop", function(e) {
+            e.preventDefault();
+    
+            PlaceNewMainItem(CurrectItem, MainItemsType[i])
+        })
+    }
+}
+
+/**
+ * מוסיפה האזנות לסלוטים של הנשקים
+ * @param {*} WeaponsItems מערך של האלמנטים של הנשקים
+ */
+function AddingWeaponsEventLisener(WeaponsItems) {
+    for (let i = 0; i < WeaponsItems.length; i++)
+    {
+        let CurrectBox = document.getElementById(WeaponsItems[i])
+
+        CurrectBox.addEventListener("dragover", function(e) {
+            e.preventDefault();
+        })
+    
+        CurrectBox.addEventListener("drop", function(e) {
+            e.preventDefault();
+    
+            if (CurrectBox.childElementCount === 1)
+                PlaceNewWeaponItem(CurrectBox, WeaponsType[i])
+        })
+    }
+}
+
+/**
+ * מוסיפה האזנות לאלמנט התוספים, ומוסיפה פעולה ברגע שנגרר תוסף לסלוט מתאים
+ * @param {*} AttachmentBox האלמנט של התוספים
+ */
+function AddingAttachmentsLisener(AttachmentBox) {
     for (let i = 0; i < AttachmentBox.childElementCount; i++) {
         AttachmentBox.children[i].addEventListener("dragover", function(e) {
             e.preventDefault();
@@ -608,6 +529,10 @@ function AddingAttachmentsLisener(AttachmentBox, WeaponItem) {
     }
 }
 
+/**
+ * מוסיפה האזנה לחפץ תוסף, שאם שיפט לחוץ והחפץ נלחץ אז זה מוחק אותו
+ * @param {*} Item החפץ מסוג תוסף
+ */
 function AddButtonAtchLisener(Item) {
     Item.addEventListener("click", function(e) {
         if (IsShiftDown) {
@@ -616,6 +541,143 @@ function AddButtonAtchLisener(Item) {
     })
 }
 
+
+// פעולות הוספה והחסרה של חפצים בתיק
+/**
+ * הפונקציה מוסיפה כמות לחפץ, במידה ושיפט נלחץ, מוסיפה 5
+ * @param {*} Item החפץ שאליו הכמות נוספת
+ */
+function IncreseItem(Item)
+{
+    let AmountTxtElement = Item.children[2].children[1];
+    let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
+
+    let MainItem = Item.parentElement.parentElement.children[0].children[1]
+
+    let currectweight = MainItem.dataset.currectweight
+    let space = MainItem.dataset.space
+
+    let ItemData;
+
+    for (CurrectItem of Items) {
+        if (CurrectItem.ItemId == Item.id) {
+            ItemData = CurrectItem
+            break
+        }
+    }
+
+    if (IsShiftDown) {
+        if (Number(currectweight) + (ItemData.Weight * 5) > Number(space))
+            return
+
+        amount+= 5;
+        MainItem.dataset.currectweight = Number(currectweight) + (ItemData.Weight * 5)
+    }
+    else {
+        if (Number(currectweight) + ItemData.Weight > Number(space))
+            return
+
+        amount++;
+        MainItem.dataset.currectweight = Number(currectweight) + ItemData.Weight
+    }
+    
+    
+    AmountTxtElement.textContent = `כמות - ${amount}`;
+}
+
+/**
+ * הפונקציה מחסירה כמות לחפץ, במידה ושיפט נלחץ, מחסירה 5
+ * @param {*} Item החפץ שאליו הכמות נוספת
+ */
+function DecreseItem(Item)
+{
+    let AmountTxtElement = Item.children[2].children[1];
+    let amount = parseInt(AmountTxtElement.textContent.split(" - ")[1]);
+
+    let MainItem = Item.parentElement.parentElement.children[0].children[1]
+    let currectweight = MainItem.dataset.currectweight
+
+    console.log(currectweight)
+
+    let ItemData;
+
+    for (CurrectItem of Items) {
+        if (CurrectItem.ItemId == Item.id) {
+            ItemData = CurrectItem
+            break
+        }
+    }
+
+    if (IsShiftDown) {
+        amount-= 5;
+
+        MainItem.dataset.currectweight = Number(currectweight) - (ItemData.Weight * 5);
+    }
+    else {
+        amount--;
+
+        MainItem.dataset.currectweight = Number(currectweight) - ItemData.Weight
+    }
+    
+    if (amount < 1)
+        Item.remove();
+
+    AmountTxtElement.textContent = `כמות - ${amount}`;
+}
+
+// פעולות בארסנל
+/**
+ * לאחר שהמשתמש בחר קטגוריה, הפונקציה מציגה את כל החפצים שבתוך הקטגוריה |
+ * צריך להוסיף: גישות, דרגות, פקלים, הכשרות
+ * @param {*} Category הקטגוריה שנבחרה
+ */
+function AddItemsToArsenal(Category)
+{
+    for (Item of Items) {
+        if (Item.Category === Category)
+        {
+            let CloneArsItem = ItemArsenalCopy.cloneNode(true)
+
+            CloneArsItem.children[0].children[0].src = `data:image/png;base64,${Item.Image}`;
+
+            CloneArsItem.children[1].children[0].textContent = Item.Title
+            CloneArsItem.children[1].children[1].textContent = Item.Description
+            CloneArsItem.children[1].children[2].textContent = `משקל: ${Item.Weight}kg`
+
+            CloneArsItem.id = Item.ItemId
+            CloneArsItem.style.display = "flex"
+
+            CloneArsItem.addEventListener("dragstart", function(e) {
+                let Selected = e.target;
+                Selected.classList.add("dragging");
+            })
+    
+            CloneArsItem.addEventListener("dragend", function(e) {
+                let Selected = e.target;
+                Selected.classList.remove("dragging");
+            })
+
+            Arsenal_Right.appendChild(CloneArsItem)
+        }
+    }
+}
+
+/**
+ * מוחקת את כל החפצים שנמצאים בארסנל
+ */
+function RemoveItemsFromArsenal()
+{
+    let ArsenalItemsBox = document.getElementById("Arsenal_Right");
+
+    let ItemsInArsenal = ArsenalItemsBox.querySelectorAll(".Item");
+    ItemsInArsenal.forEach(Item => {
+        if (!Item.classList.contains("Arsenal_Buttons") && Item.id !== "ItemArsenalCopy") {
+            Item.remove();
+        }
+    });
+}
+
+// נתונים
 function SaveLoadout() {    
     let LoadoutSkeleton = [
         ["Primary", "Muzzel", "Side", "Top", ["Mag", 31],
@@ -720,4 +782,49 @@ function SaveLoadout() {
         console.error("Error:", error);
         console.log("Error submitting the form.");
     });
+}
+
+function LoadLoadout(LoadoutSkeleton) {
+
+    // נשקים
+    for (let i = 0; i < 3; i++) {
+        let CurrectBox = document.getElementById(WeaponsItems[i])
+        let AllowItem = WeaponsType[i]
+
+        let Selected = {
+            id: LoadoutSkeleton[0][i]
+        }
+
+        PlaceNewWeaponItem(CurrectBox, AllowItem, Selected)
+    }
+}
+
+/**
+ * @returns מחזירה את כל החפצים שנמצאים בנתונים
+ */
+async function GetAllItems() {
+    try {
+        const response = await fetch(`https://icf-api-ten.vercel.app/GetAllItems`);
+        const data = await response.json();
+
+        if (data.results) {
+            sessionStorage.setItem("Items", JSON.stringify(data.results))
+            Items = data.results
+        }
+    }
+    catch (error) {
+        return
+    }
+}
+
+/**
+ * מקבל את הפקל של המשתמש וטוען אותה באתר
+ */
+async function GetPlayerLoadout() {
+    const response = await fetch(`https://icf-api-ten.vercel.app/GetLoadout/` + UserData2.SteamId);
+    const data = await response.json();
+
+    if (data.results) {
+        LoadLoadout(data.results)
+    }
 }
