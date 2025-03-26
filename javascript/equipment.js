@@ -358,10 +358,6 @@ function PlaceAttachment(Box, WeaponType, Selected = null) {
             break
         }
     }
-    
-    console.log(ItemData)
-    console.log(Items)
-    console.log(Selected)
 
     if (ItemData && ItemData.Type === "Attachment" && ItemData.AtchType === Box.dataset.type && Box.childElementCount < 2 && ItemData.WeaponType === WeaponType) {
         if (ItemData.AtchType === "magazine" && ItemData.Caliber !== Item.Caliber)
@@ -833,7 +829,6 @@ function LoadLoadout(LoadoutSkeleton) {
                         }
                     }
                     
-                    console.log(Selected)
                     PlaceAttachment(AttachmentBox.children[j], AttachmentBox.id, Selected)
                     break
                 }
@@ -860,6 +855,16 @@ function LoadLoadout(LoadoutSkeleton) {
 
             PlaceNewItem(CurrectBox, ["Item", "Attachment", "Facewear", "Nvg"], Selected, true, LoadoutSkeleton[3 + i][1][j][1])
         }
+    }
+
+    if (LoadoutSkeleton[6] !== "") {
+        let CurrectItem = document.getElementById(MainInvItems[6])
+
+        let Selected = {
+            id: LoadoutSkeleton[6]
+        }
+        
+        PlaceNewMainItem(CurrectItem, MainItemsType[6], Selected)
     }
 }
 
