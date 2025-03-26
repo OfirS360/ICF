@@ -76,9 +76,11 @@ async function initializePage() {
     ImportLoadoutBtn.onclick = async () => {
         try {
             let ImportedLoadout = await navigator.clipboard.readText();
-            console.log(ImportedLoadout)
             ImportedLoadout = JSON.parse(ImportedLoadout);
             
+            ImportedLoadout = ImportedLoadout[0]
+            console.log(ImportedLoadout)
+
             ClearLoadout()
             LoadLoadout(ImportedLoadout)
         } catch (error) {
