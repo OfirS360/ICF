@@ -18,6 +18,6 @@ function PopAlert(Title, IsGoodNum, Description) {
         setTimeout(() => {
             AlertBox.style.opacity = 0;
             IsRunning = false
-        }, 5000);
+        }, 3000);
     }
 }
