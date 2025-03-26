@@ -798,6 +798,17 @@ function LoadLoadout(LoadoutSkeleton) {
 
         PlaceNewWeaponItem(CurrectBox, AllowItem, Selected)
     }
+
+    for (let i = 0; i < 3; i++) {
+        let CurrectItem = document.getElementById(MainInvItems[i])
+        let AllowItem = MainItemsType[i]
+
+        let Selected = {
+            id: LoadLoadout[3 + i][0]
+        }
+
+        PlaceNewMainItem(CurrectItem, AllowItem, Selected)
+    }
 }
 
 /**
