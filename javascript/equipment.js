@@ -956,6 +956,8 @@ async function GetPlayerLoadout() {
     const response = await fetch(`https://icf-api-ten.vercel.app/GetLoadout/${UserData2.SteamId}`, {mode: "no-cors"});
     let data = await response.text();
 
+    console.log(data)
+
     if (data) {
         data = JSON.parse(data)
         console.log(data)
