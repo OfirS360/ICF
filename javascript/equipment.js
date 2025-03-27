@@ -215,8 +215,13 @@ function PlaceNewItem(Box, AllowItems, Selected = null, IsLoading = false, Amoun
 
                 let MainItem = Box.parentElement.children[0].children[1]
 
-                if (!MainItem)
-                    return  
+                if (!MainItem) {
+                    if (!IsLoading)
+                        PopAlert("חסר תיק", 0, "כדי לשים חפצים בתוך מקום זה, עליך לשים תיק מתאים")
+                    
+                    return
+                }
+                    
 
                 if (Number(MainItem.dataset.currectweight) + Item.Weight > Number(MainItem.dataset.space))
                 {
@@ -639,8 +644,6 @@ function DecreseItem(Item)
 
     let MainItem = Item.parentElement.parentElement.children[0].children[1]
     let currectweight = MainItem.dataset.currectweight
-
-    console.log(currectweight)
 
     let ItemData;
 
