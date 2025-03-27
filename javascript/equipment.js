@@ -939,7 +939,7 @@ async function GetAllItems() {
 
         let data
 
-        if (data) {
+        if (response) {
             data = await response.json();
         }
         else {
