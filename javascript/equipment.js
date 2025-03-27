@@ -953,7 +953,7 @@ async function GetAllItems() {
  * מקבל את הפקל של המשתמש וטוען אותה באתר
  */
 async function GetPlayerLoadout() {
-    const response = await fetch(`https://icf-api-ten.vercel.app/GetLoadout/${UserData2.SteamId}`, {mode: "no-cors"});
+    const response = await fetch(`https://icf-api-ten.vercel.app/GetLoadout/${UserData2.SteamId}`);
     let data = await response.text();
 
     console.log(data)
