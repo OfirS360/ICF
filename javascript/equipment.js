@@ -934,7 +934,15 @@ function ClearLoadout() {
 async function GetAllItems() {
     try {
         const response = await fetch(`https://icf-api-ten.vercel.app/GetAllItems`);
-        const data = await response.json();
+
+        let data
+
+        if (data) {
+            data = await response.json();
+        }
+        else {
+            return
+        }
 
         if (data.results) {
             sessionStorage.setItem("Items", JSON.stringify(data.results))
