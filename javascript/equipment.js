@@ -956,16 +956,8 @@ async function GetPlayerLoadout() {
     const response = await fetch(`https://icf-api-ten.vercel.app/GetLoadout/${UserData2.SteamId}`);
     let data = await response.text();
 
-    if (response) {
-        data = await response.text();
-    }
-    else { 
-        return
-    }
-
-    data = JSON.parse(data)
-
     if (data) {
+        data = JSON.parse(data)
         console.log(data)
         LoadLoadout(data)
     }
