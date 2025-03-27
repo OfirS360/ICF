@@ -45,7 +45,7 @@ initializePage()
 
 // אתחול הדף
 async function initializePage() {
-    Items = sessionStorage.getItem("Items")
+    let Items = sessionStorage.getItem("Items")
     if (Items) {
         try {
             Items = JSON.parse(Items);
@@ -937,14 +937,7 @@ async function GetAllItems() {
     try {
         const response = await fetch(`https://icf-api-ten.vercel.app/GetAllItems`);
 
-        let data
-
-        if (response) {
-            data = await response.json();
-        }
-        else {
-            return
-        }
+        let data = await response.json();
 
         if (data.results) {
             sessionStorage.setItem("Items", JSON.stringify(data.results))
@@ -962,6 +955,13 @@ async function GetAllItems() {
 async function GetPlayerLoadout() {
     const response = await fetch(`https://icf-api-ten.vercel.app/GetLoadout/${UserData2.SteamId}`);
     let data = await response.text();
+
+    if (response) {
+        data = await response.text();
+    }
+    else { 
+        return
+    }
 
     data = JSON.parse(data)
 
