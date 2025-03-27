@@ -92,27 +92,27 @@ async function initializePage() {
 
     Ars_WeaponsBtn.onclick = () => {
         RemoveItemsFromArsenal()
-        AddItemsToArsenal(Number(Ars_WeaponsBtn.value))
+        AddItemsToArsenal(Number(Ars_WeaponsBtn.value), Items)
     }
 
     Ars_AttachmentsBtn.onclick = () => {
         RemoveItemsFromArsenal()
-        AddItemsToArsenal(Number(Ars_AttachmentsBtn.value))
+        AddItemsToArsenal(Number(Ars_AttachmentsBtn.value), Items)
     }
 
     Ars_MainItemsBtn.onclick = () => {
         RemoveItemsFromArsenal()
-        AddItemsToArsenal(Number(Ars_MainItemsBtn.value))
+        AddItemsToArsenal(Number(Ars_MainItemsBtn.value), Items)
     }
 
     Ars_ClothingBtn.onclick = () => {
         RemoveItemsFromArsenal()
-        AddItemsToArsenal(Number(Ars_ClothingBtn.value))
+        AddItemsToArsenal(Number(Ars_ClothingBtn.value), Items)
     }
 
     Ars_ItemsBtn.onclick = () => {
         RemoveItemsFromArsenal()
-        AddItemsToArsenal(Number(Ars_ItemsBtn.value))
+        AddItemsToArsenal(Number(Ars_ItemsBtn.value), Items)
     }
 
     AddingBIEventLisener(MainInvBoxes, MainInvItems, MainItemsType)
@@ -186,7 +186,7 @@ async function initializePage() {
  * @param {*} Box התיק שאליו צריך לשייך את החפץ
  * @param {*} AllowItems מערך של סוגי חפצים שניתן להכניס אותם לתיק
  */
-function PlaceNewItem(Box, AllowItems, Selected = null, IsLoading = false, Amount)
+function PlaceNewItem(Box, AllowItems, Selected = null, IsLoading = false, Amount)      
 {
     if (!Selected) {
         Selected = document.querySelector(".dragging");
@@ -218,7 +218,7 @@ function PlaceNewItem(Box, AllowItems, Selected = null, IsLoading = false, Amoun
                 if (!MainItem) {
                     if (!IsLoading)
                         PopAlert("חסר תיק", 0, "כדי לשים חפצים בתוך מקום זה, עליך לשים תיק מתאים")
-                    
+
                     return
                 }
                     
@@ -677,7 +677,7 @@ function DecreseItem(Item)
  * צריך להוסיף: גישות, דרגות, פקלים, הכשרות
  * @param {*} Category הקטגוריה שנבחרה
  */
-function AddItemsToArsenal(Category)
+function AddItemsToArsenal(Category, Items)
 {
     for (Item of Items) {
         if (Item.Category === Category)
