@@ -3,6 +3,8 @@ let LoadingScreen = document.getElementById("LoadingContent")
 let SaveLoadoutBtn = document.getElementById("SaveLoadout")
 let ImportLoadoutBtn = document.getElementById("ImportLoadout")
 
+let Items
+
 let DetailBox = document.getElementById("DetailBox")
 let DetailTitle = document.getElementById("DetailTitle")
 let DetailProgress = document.getElementById("DetailProgress")
@@ -43,7 +45,7 @@ initializePage()
 
 // אתחול הדף
 async function initializePage() {
-    let Items = sessionStorage.getItem("Items")
+    Items = sessionStorage.getItem("Items")
     if (Items) {
         try {
             Items = JSON.parse(Items);
