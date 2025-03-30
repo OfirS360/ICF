@@ -239,7 +239,7 @@ function PlaceNewItem(Box, AllowItems, Selected = null, IsLoading = false, Amoun
                     NewItem.id = Selected.id
 
                     let NewItemImg = NewItem.children[1].children[0]
-                    NewItemImg.src = `data:image/png;base64,${Item.Image}`
+                    NewItemImg.src = `${Item.Image}`
 
                     let NewItemTitle = NewItem.children[2].children[0]
                     NewItemTitle.textContent = Item.Title
@@ -291,7 +291,7 @@ function PlaceNewMainItem(Box, AllowItem, Selected = null)
                 MainItemC = MainItemClone.cloneNode(false);
 
                 MainItemC.id = Item.ItemId
-                MainItemC.src = `data:image/png;base64,${Item.Image}`
+                MainItemC.src = `${Item.Image}`
 
                 MainItemC.style.display = "block"
 
@@ -328,7 +328,7 @@ function PlaceNewWeaponItem(Box, AllowItem, Selected = null) {
             MainItemC = WeaponItemClone.cloneNode(true);
 
             MainItemC.id = Item.ItemId
-            MainItemC.children[0].src = `data:image/png;base64,${Item.Image}`
+            MainItemC.children[0].src = `${Item.Image}`
 
             if (Item.Type === "Handgun") {
                 MainItemC.children[0].style.scale = "1.5"
@@ -393,7 +393,7 @@ function PlaceAttachment(Box, WeaponType, Selected = null) {
             return
                 
         AttachmentItem = AttachmentItemClone.cloneNode(true)
-        AttachmentItem.src = `data:image/png;base64,${Item.Image}`
+        AttachmentItem.src = `${Item.Image}`
         AttachmentItem.id = ItemData.ItemId
 
         AddButtonAtchLisener(AttachmentItem)
@@ -686,7 +686,7 @@ function AddItemsToArsenal(Category, Items)
         {
             let CloneArsItem = ItemArsenalCopy.cloneNode(true)
 
-            CloneArsItem.children[0].children[0].src = `data:image/png;base64,${Item.Image}`;
+            CloneArsItem.children[0].children[0].src = `${Item.Image}`;
 
             CloneArsItem.children[1].children[0].textContent = Item.Title
             CloneArsItem.children[1].children[1].textContent = Item.Description
