@@ -568,25 +568,36 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .ProgressBar {
-    
     border-radius: 20px;
 
     width: 75%;
     min-height: 15px;
 }
 
-progress::-webkit-progress-bar {
+.ProgressProfile {
+    border-radius: 20px;
+
+    width: 75%;
+    min-height: 15px;
+}
+
+.ProgressBar::-webkit-progress-bar {
     background-color: #323f52;
     border-radius: 10px; 
-    height: 5px;
+}
+
+.ProgressProfile ::-webkit-progress-bar {
+    background-color: #323f52;
+    border-radius: 10px;
+    height: 10px;
 }
   
-  progress::-webkit-progress-value {
+progress::-webkit-progress-value {
     background-color: #09bfca;
     border-radius: 10px;
 }
   
-  progress::-moz-progress-bar {
+progress::-moz-progress-bar {
     background-color: #09bfca;
     border-radius: 10px;
 }
