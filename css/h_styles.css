@@ -589,7 +589,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .ProgressProfile::-webkit-progress-bar {
     background-color: #323f52;
     border-radius: 10px;
-    height: 10px;
+    height: 5px;
 }
   
 progress::-webkit-progress-value {
