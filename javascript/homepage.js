@@ -25,6 +25,7 @@ async function initializePage() {
     let T_Role = document.getElementById("Role");
     let T_Rank = document.getElementById("RankImg");
     let B_Disconnect = document.getElementById("Disconnect");
+    let ProgressBar = document.getElementById("ProfileProgress")
 
     let SteamAvatar = sessionStorage.getItem("SteamAvatar");
 
@@ -51,7 +52,7 @@ async function initializePage() {
         window.location.replace("https://icf.xitsraz.me/");
     };
 
-    if (UserData2.Premission_Level < 4) {
+    if (UserData.Premission_Level < 4) {
         let ManageElements = document.querySelectorAll(".Manage")
     
         ManageElements.forEach(element => {
@@ -59,7 +60,7 @@ async function initializePage() {
         });
     }
     
-    if (UserData2.Premission_Level < 2) {
+    if (UserData.Premission_Level < 2) {
         let CourseElements = document.querySelectorAll(".Course")
     
         CourseElements.forEach(element => {
@@ -67,13 +68,21 @@ async function initializePage() {
         });
     }
     
-    if (UserData2.Premission_Level < 1 || UserData2.Premission_Level == 2) {
+    if (UserData.Premission_Level < 1 || UserData.Premission_Level == 2) {
         let CommandElements = document.querySelectorAll(".Command")
     
         CommandElements.forEach(element => {
             element.remove()
         });
     }
+
+    if (UserData.Rank < 10) {
+        ProgressBar.max = UserData.Rank * 75
+    }
+    else {
+        ProgressBar.max = UserData.Rank * 55
+    }
+    ProgressBar.value = UserData.xp
 
     // המשך
     let I_Name = document.getElementById("InputName");

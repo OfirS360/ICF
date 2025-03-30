@@ -7,6 +7,15 @@ let T_Avatar = document.getElementById("avatar")
 let T_Role = document.getElementById("Role")
 let T_Rank = document.getElementById("RankImg")
 let B_Disconnect = document.getElementById("Disconnect")
+let ProgressBar = document.getElementById("ProfileProgress")
+
+if (UserData2.Rank < 10) {
+    ProgressBar.max = UserData2.Rank * 75
+}
+else {
+    ProgressBar.max = UserData2.Rank * 55
+}
+ProgressBar.value = UserData2.xp
 
 T_Username.textContent = "שלום, " + UserData2.Name;
 T_Role.textContent = UserData2.Position
