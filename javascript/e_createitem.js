@@ -17,6 +17,15 @@ let CaliberType = document.getElementById("CaliberType")
 let WeaponTypeLbl = document.getElementById("WeaponTypeLbl")
 let WeaponType = document.getElementById("WeaponType")
 
+let Rank = document.getElementById("Rank").value
+if (Rank === "") {
+    Rank = null
+}
+else {
+    Rank = Number(Rank)
+}
+
+
 TypeQ.addEventListener("change", function() {
     AtchLbl.style.display = "none"
     AtchType.style.display = "none"
@@ -110,7 +119,8 @@ ItemForm.onsubmit = async (event) => {
                 Image: imageData,
                 AtchType: AtchType.value,
                 WeaponType: WeaponType.value,
-                Caliber: CaliberType.value
+                Caliber: CaliberType.value,
+                Rank: Rank
             };
 
             console.log(FormItemData)
