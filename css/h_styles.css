@@ -586,7 +586,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-radius: 10px; 
 }
 
-.ProgressProfile ::-webkit-progress-bar {
+.ProgressProfile::-webkit-progress-bar {
     background-color: #323f52;
     border-radius: 10px;
     height: 10px;
