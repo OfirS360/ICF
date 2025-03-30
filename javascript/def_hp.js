@@ -20,14 +20,6 @@ if (UserData2.Premission_Level < 4) {
     });
 }
 
-if (UserData2.Premission_Level == 2) {
-    let CommandElements = document.querySelectorAll(".Command")
-
-    CommandElements.forEach(element => {
-        element.remove()
-    });
-}
-
 if (UserData2.Premission_Level < 2) {
     let CourseElements = document.querySelectorAll(".Course")
 
@@ -36,7 +28,7 @@ if (UserData2.Premission_Level < 2) {
     });
 }
 
-if (UserData2.Premission_Level < 1) {
+if (UserData2.Premission_Level < 1 || UserData2.Premission_Level == 2) {
     let CommandElements = document.querySelectorAll(".Command")
 
     CommandElements.forEach(element => {

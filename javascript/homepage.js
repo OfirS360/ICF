@@ -51,6 +51,30 @@ async function initializePage() {
         window.location.replace("https://icf.xitsraz.me/");
     };
 
+    if (UserData2.Premission_Level < 4) {
+        let ManageElements = document.querySelectorAll(".Manage")
+    
+        ManageElements.forEach(element => {
+            element.remove()
+        });
+    }
+    
+    if (UserData2.Premission_Level < 2) {
+        let CourseElements = document.querySelectorAll(".Course")
+    
+        CourseElements.forEach(element => {
+            element.remove()
+        });
+    }
+    
+    if (UserData2.Premission_Level < 1 || UserData2.Premission_Level == 2) {
+        let CommandElements = document.querySelectorAll(".Command")
+    
+        CommandElements.forEach(element => {
+            element.remove()
+        });
+    }
+
     // המשך
     let I_Name = document.getElementById("InputName");
     let I_SteamId = document.getElementById("InputSteamId");
