@@ -17,15 +17,6 @@ let CaliberType = document.getElementById("CaliberType")
 let WeaponTypeLbl = document.getElementById("WeaponTypeLbl")
 let WeaponType = document.getElementById("WeaponType")
 
-let Rank = document.getElementById("Rank").value
-if (Rank === "") {
-    Rank = null
-}
-else {
-    Rank = Number(Rank)
-}
-
-
 TypeQ.addEventListener("change", function() {
     AtchLbl.style.display = "none"
     AtchType.style.display = "none"
@@ -86,6 +77,15 @@ ItemForm.onsubmit = async (event) => {
     let file = fileInput.files[0];
 
     let reader = new FileReader();
+
+    
+    let Rank = document.getElementById("Rank").value
+    if (Rank === "") {
+        Rank = null
+    }
+    else {
+        Rank = Number(Rank)
+    }
 
         reader.onload = function(e) {
             let base64String = e.target.result;
