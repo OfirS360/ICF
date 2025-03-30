@@ -89,6 +89,7 @@ async function initializePage() {
         } catch (error) {
             console.error("Unvalid Import");
             console.error(error)
+            PopAlert("פעולה לא חוקית", 0, "הפקל שאתה מנסה להכניס לא חוקי, בבקשה תוודא שאתה עושה זאת דרך הארמה")
         }
     }
 
