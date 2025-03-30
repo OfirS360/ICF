@@ -13,7 +13,7 @@ T_Role.textContent = UserData2.Position
 T_Rank.src = `../img/Rank${UserData2.Rank}.png`
 
 if (UserData2.Premission_Level < 4) {
-    let ManageElements = document.querySelectorAll("Manage")
+    let ManageElements = document.querySelectorAll(".Manage")
 
     ManageElements.forEach(element => {
         element.remove()
@@ -21,7 +21,7 @@ if (UserData2.Premission_Level < 4) {
 }
 
 if (UserData2.Premission_Level < 2) {
-    let CourseElements = document.querySelectorAll("Course")
+    let CourseElements = document.querySelectorAll(".Course")
 
     CourseElements.forEach(element => {
         element.remove()
@@ -29,7 +29,7 @@ if (UserData2.Premission_Level < 2) {
 }
 
 if (UserData2.Premission_Level < 1) {
-    let CommandElements = document.querySelectorAll("Command")
+    let CommandElements = document.querySelectorAll(".Command")
 
     CommandElements.forEach(element => {
         element.remove()
