@@ -12,6 +12,30 @@ T_Username.textContent = "שלום, " + UserData2.Name;
 T_Role.textContent = UserData2.Position
 T_Rank.src = `../img/Rank${UserData2.Rank}.png`
 
+if (UserData2.Premission_Level < 4) {
+    ManageElements = document.querySelectorAll("Manage")
+
+    ManageElements.forEach(element => {
+        element.remove()
+    });
+}
+
+if (UserData2.Premission_Level < 2) {
+    ManageElements = document.querySelectorAll("Course")
+
+    ManageElements.forEach(element => {
+        element.remove()
+    });
+}
+
+if (UserData2.Premission_Level < 1) {
+    ManageElements = document.querySelectorAll("Command")
+
+    ManageElements.forEach(element => {
+        element.remove()
+    });
+}
+
 if (SteamAvatar)
     T_Avatar.src = SteamAvatar
 else
