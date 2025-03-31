@@ -1,4 +1,4 @@
-let TeamMembers = getItem("Members")
+let TeamMembers = sessionStorage.getItem("Members")
 
 let TeamTable = document.getElementById("TeamTable")
 
