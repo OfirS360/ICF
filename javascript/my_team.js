@@ -1,5 +1,6 @@
 let TeamMembers
 
+initializePage()
 async function initializePage() {
     await GetAllTeamMembers(UserData2.Team)
 }
