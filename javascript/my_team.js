@@ -30,7 +30,7 @@ async function GetAllTeamMembers(Team) {
 
     if (data.results) {
         sessionStorage.setItem("Members", JSON.stringify(data.results))
-        TeamMembers = data.sort((a, b) => b.Rank - a.Rank);
+        TeamMembers = data.results.sort((a, b) => b.Rank - a.Rank);
         console.log(TeamMembers)
     }
 }
