@@ -300,7 +300,7 @@ a img {
 
 #calendar {
     display: grid;
-    grid-template-columns: repeat(7, 100px);
+    grid-template-columns: repeat(7, 150px);
     grid-template-rows: 50px;
     grid-auto-rows: 100px;
     gap: 2px;

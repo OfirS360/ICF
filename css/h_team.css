@@ -1,0 +1,66 @@
+#TeamBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+
+    margin-top: 50px;
+}
+
+#TopTeamBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.BoxTitle {
+    font-family: "Heebo", system-ui;
+    font-weight: 900;
+    color: #09bfca;
+
+    font-size: 50px;
+}
+
+#TeamImg {
+    height: 55px;
+
+    margin-right: 15px;
+
+    border-radius: 50px;
+}
+
+#TeamTable {
+    display: grid;
+    grid-template-columns: 100px 175px repeat(6, 100px);
+    grid-template-rows: 50px;
+    grid-auto-rows: 75px;
+    gap: 2px;
+    background-color: #151a22;
+
+    padding: 2px;
+}
+
+.TableTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #181e28;
+
+    font-family: "Heebo", system-ui;
+    font-weight: 900;
+    color: #09bfca;
+}
+
+.TableData {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #1a212d;
+
+    font-family: "Heebo", system-ui;
+    color: #f5f5f5;
+
+    overflow: scroll;
+}
