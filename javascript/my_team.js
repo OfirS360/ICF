@@ -1,8 +1,27 @@
-let TeamMembers
+let TeamMembers = getItem("Members")
+
+let TeamTable = document.getElementById("TeamTable")
+
+let UserDataKeys = ["Name", "SteamId", "Rank", "Age", "Role", "Position", "Status", "Premission_Level"]
 
 initializePage()
 async function initializePage() {
-    await GetAllTeamMembers(UserData2.Team)
+    if (!TeamMembers) {
+        await GetAllTeamMembers(UserData2.Team)
+    }
+    else {
+        TeamMembers = JSON.parse(TeamMembers)
+    }
+
+    for (let i = 0; i < TeamMembers.length; i++) {
+        for (let j = 0; j < 8; j++) {
+            let DataBox = document.createElement("div")
+            DataBox.classList.add("TableData")
+            DataBox.textContent = TeamMembers[i][UserDataKeys[j]]
+
+            TeamTable.appendChild(DataBox)
+        }
+    }
 }
 
 async function GetAllTeamMembers(Team) {
@@ -13,6 +32,6 @@ async function GetAllTeamMembers(Team) {
 
     if (data.results) {
         sessionStorage.setItem("Members", JSON.stringify(data.results))
-        TeamMembers = data.results
+        TeamMembers = data.sort((a, b) => b.Rank - a.Rank);
     }
 }
