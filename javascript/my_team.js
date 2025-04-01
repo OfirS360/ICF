@@ -1,5 +1,6 @@
 let TeamMembers = sessionStorage.getItem("Members")
 
+let TeamLogo = document.getElementById("TeamImg")
 let TeamTable = document.getElementById("TeamTable")
 
 let UserDataKeys = ["Name", "SteamId", "Rank", "Age", "Role", "Position", "Status", "Premission_Level"]
@@ -8,6 +9,8 @@ let PremissionText = ["ללא הרשאות", "פיקוד", "צוות הכשרה"
 
 initializePage()
 async function initializePage() {
+    TeamLogo.src = `../img/${UserData2.Team}.png`
+
     if (!TeamMembers) {
         await GetAllTeamMembers(UserData2.Team)
     }
