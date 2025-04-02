@@ -70,6 +70,7 @@ async function initializePage() {
     let Ars_MainItemsBtn = document.getElementById("Ars_MainItems")
     let Ars_ClothingBtn = document.getElementById("Ars_Clothing")
     let Ars_ItemsBtn = document.getElementById("Ars_Items")
+    let Ars_MedicalBtn = document.getElementById("Ars_Medical")
 
     SaveLoadoutBtn.onclick = () => {
         SaveLoadout()
@@ -118,6 +119,11 @@ async function initializePage() {
     Ars_ItemsBtn.onclick = () => {
         RemoveItemsFromArsenal()
         AddItemsToArsenal(Number(Ars_ItemsBtn.value), Items)
+    }
+
+    Ars_MedicalBtn.onclick = () => {
+        RemoveItemsFromArsenal()
+        AddItemsToArsenal(Number(Ars_MedicalBtn.value), Items)
     }
 
     AddingBIEventLisener(MainInvBoxes, MainInvItems, MainItemsType)
