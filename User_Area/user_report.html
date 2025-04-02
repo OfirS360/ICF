@@ -124,7 +124,12 @@
                 <option value="אחר">אחר</option>
             </select>
 
-            <label for="Description" class="Reg_Ask">תיאור: <span class="ReqTxt">*</span></label>
+            <label class="Reg_Ask" id="ChooseLable">בחר קורס שאליו תרצה לצאת: <span class="ReqTxt">*</span></label>
+            <select class="TextInput" id="Choose" required>
+                <option value="" selected disabled>בחר קורס</option>
+            </select>
+
+            <label for="Description" class="Reg_Ask" id="DescriptionLbl">תיאור: <span class="ReqTxt">*</span></label>
             <textarea class="TextInput" rows="3" required dir="rtl" id="Description"></textarea>
 
             <input class="Button" id="submit" type="submit" value="שלח">
