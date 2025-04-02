@@ -8,6 +8,11 @@ let ChooseLable = document.getElementById("ChooseLable")
 
 let Form = document.getElementById("CreateEventForm")
 
+Choose.style.display = "none"
+ChooseLable.style.display = "none"
+Description.style.display = "none"
+DescriptionLable.style.display = "none"
+
 reason.addEventListener("change", function() {
 
     Choose.style.display = "none"
@@ -29,7 +34,7 @@ reason.addEventListener("change", function() {
         Description.style.display = "block"
         DescriptionLable.style.display = "block"
 
-        DescriptionLable.textContent = "פרט על התקלה"
+        DescriptionLable.innerHTML = `פרט על התקלה <span class="ReqTxt">*</span>`
 
         Description.setAttribute("required", "")
     }
@@ -38,7 +43,7 @@ reason.addEventListener("change", function() {
         Description.style.display = "block"
         DescriptionLable.style.display = "block"
 
-        DescriptionLable.textContent = "תיאור על השליחה"
+        DescriptionLable.innerHTML = `תיאור על השליחה <span class="ReqTxt">*</span>`
 
         Description.setAttribute("required", "")
     }
