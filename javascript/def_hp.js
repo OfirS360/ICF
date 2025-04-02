@@ -22,7 +22,7 @@ async function GetUserData() {
 
     if (data.results) {
         UserData2 = data.results
-        sessionStorage.setItem("userData", UserData2)
+        sessionStorage.setItem("userData", JSON.stringify(data.results))
     }
 }
 
