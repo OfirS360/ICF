@@ -10,6 +10,7 @@ async function initializePage() {
 
     reloadbtn.onclick = async () => {
         await GetUserData();
+        UpdateData()
     }
 
     UpdateData()
