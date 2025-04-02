@@ -55,7 +55,8 @@ Form.onsubmit = async (event) => {
     let FormItemData = {
         Reason: document.getElementById("reason").value,
         Choose: document.getElementById("Choose").value,
-        Description: document.getElementById("Description").value
+        Description: document.getElementById("Description").value,
+        Team: UserData2.Team
     }
 
     console.log(FormItemData)

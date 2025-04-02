@@ -173,9 +173,6 @@ a img {
     font-weight: 500;
     border-radius: 75px;
 
-    margin-right: 20px;
-    margin-top: 20px;
-
     padding: 10px;
     padding-left: 30px;
 }
@@ -682,4 +679,40 @@ progress::-moz-progress-bar {
 
 .AddonHeader {
     margin-bottom: 10px;
+}
+
+#Profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin-right: 20px;
+    padding-top: 20px;
+}
+
+#reload-profile {
+    height: 65px;
+    width: 65px;
+    
+    align-self: center;
+    background-color: #202833;
+
+    padding: 10px 10px;
+
+    border-radius: 50px;
+    border: none;
+
+    margin-right: 10px;
+
+    transition: all 0.3s;
+}
+
+#reload-profile:hover {
+    background-color: #232c39;
+}
+
+#Reload-img {
+    height: 35px;
+
+    border: none;
 }
