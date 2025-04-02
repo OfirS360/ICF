@@ -6,18 +6,31 @@ initializePage()
 
 async function initializePage() {
 
+    let reloadbtn = document.getElementById("reload-profile")
+
+    reloadbtn.onclick = async () => {
+        await GetUserData();
+    }
+
+    UpdateData()
+}
+
+async function GetUserData() {
+    const response = await fetch(`https://icf-api-ten.vercel.app/GetUserData/${UserData2.SteamId}`)
+    const data = await response.json()
+
+    if (data.results) {
+        UserData2 = data.results
+    }
+}
+
+function UpdateData() {
     let T_Username = document.getElementById("Username")
     let T_Avatar = document.getElementById("avatar")
     let T_Role = document.getElementById("Role")
     let T_Rank = document.getElementById("RankImg")
     let B_Disconnect = document.getElementById("Disconnect")
     let ProgressBar = document.getElementById("ProfileProgress")
-
-    let reloadbtn = document.getElementById("reload-profile")
-
-    reloadbtn.onclick = async () => {
-        await GetUserData();
-    }
 
     if (UserData2.Rank < 10) {
         ProgressBar.max = UserData2.Rank * 75
@@ -72,14 +85,5 @@ async function initializePage() {
     B_Disconnect.onclick = () => {
         sessionStorage.clear()
         window.location.replace("https://icf.xitsraz.me/");
-    }
-}
-
-async function GetUserData() {
-    const response = await fetch(`https://icf-api-ten.vercel.app/${UserData2.SteamId}`)
-    const data = await response.json()
-
-    if (data.results) {
-        UserData2 = data.results
     }
 }
