@@ -691,8 +691,8 @@ progress::-moz-progress-bar {
 }
 
 #reload-profile {
-    height: 65px;
-    width: 65px;
+    height: 45px;
+    width: 45px;
     
     align-self: center;
     background-color: #202833;
@@ -712,7 +712,7 @@ progress::-moz-progress-bar {
 }
 
 #Reload-img {
-    height: 35px;
+    height: 20px;
 
     border: none;
 }
