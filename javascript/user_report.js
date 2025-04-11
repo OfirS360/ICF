@@ -56,8 +56,25 @@ Form.onsubmit = async (event) => {
         Reason: document.getElementById("reason").value,
         Choose: document.getElementById("Choose").value,
         Description: document.getElementById("Description").value,
-        Team: UserData2.Team
+        Team: UserData2.Team,
+        SteamId: UserData2.SteamId
     }
 
-    console.log(FormItemData)
+    fetch("https://icf-api-ten.vercel.app/ReportFormSend", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(FormItemData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Success:", data);
+        console.log("Form submitted successfully!");
+        window.location.href = "https://icf.xitsraz.me/User_Area/homepage"
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        console.log("Error submitting the form.");
+    });
 }

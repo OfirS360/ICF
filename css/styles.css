@@ -213,7 +213,7 @@ body
 }
 
 #Reg_MainTitle {
-    margin-bottom: 20px;
+    margin-bottom: 0;
 }
 
 .TextInput {
@@ -456,4 +456,15 @@ body
 
     width: 500px;
     margin: 0 auto;
+}
+
+#CreateAccountForm {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+#FromDes {
+    margin-bottom: 50px;
+    margin-top: 5px;
 }
