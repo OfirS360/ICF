@@ -1,10 +1,15 @@
 let ItemForm = document.getElementById("CreateAccountForm")
+let Button = document.getElementById("submit")
+
 let Teams = ["Mechine", "Odin", "Akrav", "Lavie", "Drakon"]
 let TeamsText = ["חפק מכונה", "צוות אודין", "צוות עקרב", "צוות לביא", "צוות דרקון"]
 
 
 ItemForm.onsubmit = async (event) => {
     event.preventDefault();
+
+    Button.style.backgroundColor = "#171c24"
+    Button.disabled = true
 
     let Team = null;
 
@@ -45,5 +50,10 @@ ItemForm.onsubmit = async (event) => {
     .catch(error => {
         console.error("Error:", error);
         console.log("Error submitting the form.");
+
+        Button.style.backgroundColor = "#202833"
+        Button.disabled = false
+
+        alert("התרחשה שגיאה, בבקשה תוודא שהפרטים נכונים")
     });
 }
