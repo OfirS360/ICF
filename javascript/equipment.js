@@ -57,7 +57,7 @@ async function initializePage() {
         Items = [];
     }
     LoadingScreen.style.display = "flex"
-    await GetAllItems()
+    Items = await GetAllItems()
     await GetPlayerLoadout()
     LoadingScreen.style.display = "none"
 
@@ -71,6 +71,8 @@ async function initializePage() {
     let Ars_ClothingBtn = document.getElementById("Ars_Clothing")
     let Ars_ItemsBtn = document.getElementById("Ars_Items")
     let Ars_MedicalBtn = document.getElementById("Ars_Medical")
+
+    AddItemsToArsenal(Number(Ars_WeaponsBtn.value), Items)
 
     SaveLoadoutBtn.onclick = () => {
         SaveLoadout()
@@ -952,6 +954,11 @@ async function GetAllItems() {
             sessionStorage.setItem("Items", JSON.stringify(data.results))
             Items = data.results
         }
+        else {
+            await GetAllItems();
+        }
+
+        return Items;
     }
     catch (error) {
         return
