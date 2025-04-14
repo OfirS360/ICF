@@ -1,10 +1,10 @@
-let UserData2 = sessionStorage.getItem("userData")
-UserData2 = JSON.parse(UserData2)
-let SteamAvatar = sessionStorage.getItem("SteamAvatar")
-
 initializePage()
 
 async function initializePage() {
+    let UserData2 = sessionStorage.getItem("userData")
+    UserData2 = JSON.parse(UserData2)
+    let SteamAvatar = sessionStorage.getItem("SteamAvatar")
+    SteamAvatar = JSON.parse(SteamAvatar)
 
     let reloadbtn = document.getElementById("reload-profile")
 
@@ -34,6 +34,7 @@ async function GetUserImage() {
     
     if (data.response.players.length > 0) {
         sessionStorage.setItem("SteamAvatar", data.response.players[0].avatarfull);
+        SteamAvatar = data.response.players[0].avatarfull;
     }
 }
 
