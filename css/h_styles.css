@@ -724,7 +724,7 @@ progress::-moz-progress-bar {
     color: #f5f5f5;
 
     margin: 0;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .ProfileTitleData {
@@ -735,7 +735,7 @@ progress::-moz-progress-bar {
         
 
     margin: 0;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 #ProfileCard {
