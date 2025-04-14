@@ -1,3 +1,5 @@
+initializePage();
+
 async function initializePage() {
     const SteamApi = `3E37434837BF21352A799F672E4062F1`;
 
@@ -90,23 +92,23 @@ async function initializePage() {
     let I_Age = document.getElementById("InputAge");
     let I_Rank = document.getElementById("InputRank");
     let I_Role = document.getElementById("InputRole");
-    let I_Position = document.getElementById("InputPosition");
-    let I_Status = document.getElementById("InputStatus");
+    let ActiveImg = document.getElementById("ActiveImg")
+    let SteamImg = document.getElementById("ProfileImg")
 
     const RankInText = ["טוראי", "טוראי ראשון", "סמל", "סמל ראשון", "רב סמל", "רב סמל ראשון", "רב סמל מתקדם", "רב סמל בכיר", "רב נגד משנה", "רב נגד", "סגן משנה", "סגן", "סרן", "רב סרן", "סגן אלוף", "אלוף משנה"];
 
-    I_Name.value = UserData.Name;
-    I_SteamId.value = UserData.SteamId;
-    I_Age.value = UserData.Age;
-    I_Role.value = UserData.Role;
-    I_Position.value = UserData.Position;
-    I_Rank.value = RankInText[UserData.Rank - 1];
+    I_Name.textContent = UserData.Name;
+    I_SteamId.textContent = UserData.SteamId;
+    I_Age.textContent = UserData.Age;
+    I_Role.textContent = UserData.Role;
+    I_Rank.textContent = RankInText[UserData.Rank - 1];
+    SteamImg.src = sessionStorage.getItem("SteamAvatar")
 
     if (UserData.Status) {
-        I_Status.value = "פעיל";
+        ActiveImg.src = "../img/active.png"
     } else {
-        I_Status.value = "לא פעיל";
-    }
+        ActiveImg.src = "../img/not_active.png"
+    }   
 
     // Close Events
     fetch(`https://icf-api-ten.vercel.app/GetCloseEvents`)
@@ -151,8 +153,6 @@ async function initializePage() {
             console.error("שגיאה ב-API:", error);
         });
 }
-
-initializePage();
 
 async function CheckIfUserExist(SteamId) {
     try {
