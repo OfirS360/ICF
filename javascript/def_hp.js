@@ -1,7 +1,6 @@
 let UserData2 = sessionStorage.getItem("userData")
 UserData2 = JSON.parse(UserData2)
 let SteamAvatar = sessionStorage.getItem("SteamAvatar")
-SteamAvatar = JSON.parse(SteamAvatar)
 
 initializePage()
 
