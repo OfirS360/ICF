@@ -88,7 +88,6 @@ async function initializePage() {
 
     // המשך
     let I_Name = document.getElementById("InputName");
-    let I_SteamId = document.getElementById("InputSteamId");
     let I_Age = document.getElementById("InputAge");
     let I_Rank = document.getElementById("InputRank");
     let I_Role = document.getElementById("InputRole");
@@ -98,7 +97,6 @@ async function initializePage() {
     const RankInText = ["טוראי", "טוראי ראשון", "סמל", "סמל ראשון", "רב סמל", "רב סמל ראשון", "רב סמל מתקדם", "רב סמל בכיר", "רב נגד משנה", "רב נגד", "סגן משנה", "סגן", "סרן", "רב סרן", "סגן אלוף", "אלוף משנה"];
 
     I_Name.textContent = UserData.Name;
-    I_SteamId.textContent = UserData.SteamId;
     I_Age.textContent = UserData.Age;
     I_Role.textContent = UserData.Role;
     I_Rank.textContent = RankInText[UserData.Rank - 1];
