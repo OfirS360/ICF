@@ -32,20 +32,22 @@ const BackBtn = document.getElementById("Forward")
 const EventName = document.getElementById("EventName")
 const EventDescription = document.getElementById("EventDescription")
 
+UpdateCalender();
+
 fetch(`https://icf-api-ten.vercel.app/GetAllEvents`)
-    .then(response => response.json())
-    .then(data => {
+.then(response => response.json())
+.then(data => {
 
-        if (data.results && data.results.length > 0) {
-            sessionStorage.setItem("Events", JSON.stringify(data.results));
-            EventsData = JSON.parse(sessionStorage.getItem("Events"));
+    if (data.results && data.results.length > 0) {
+        sessionStorage.setItem("Events", JSON.stringify(data.results));
+        EventsData = JSON.parse(sessionStorage.getItem("Events"));
 
-            UpdateCalender();
-        }
-    })
-    .catch(error => {
-        console.error("Error fetching events:", error);
-    });
+        UpdateCalender();
+    }
+})
+.catch(error => {
+    console.error("Error fetching events:", error);
+});
 
 
 
