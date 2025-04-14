@@ -29,7 +29,7 @@ async function GetUserData() {
 }
 
 async function GetUserImage() {
-    const response = await fetch(`https://icf-api-ten.vercel.app/getSteamUser/${SteamId}`);
+    const response = await fetch(`https://icf-api-ten.vercel.app/getSteamUser/${UserData2.SteamId}`);
     const data = await response.json();
     
     if (data.response.players.length > 0) {
