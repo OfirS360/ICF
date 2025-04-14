@@ -10,7 +10,9 @@ async function initializePage() {
 
     reloadbtn.onclick = async () => {
         await GetUserData();
-        UpdateData()
+        await GetUserImage();
+        UpdateData();
+        PopAlert("הטעינה הושלמה", 1, "הפרטים שלך כרגע עדכניים לרגע זה.")
     }
 
     UpdateData()
@@ -23,6 +25,15 @@ async function GetUserData() {
     if (data.results) {
         UserData2 = data.results
         sessionStorage.setItem("userData", JSON.stringify(data.results))
+    }
+}
+
+async function GetUserImage() {
+    const response = await fetch(`https://icf-api-ten.vercel.app/getSteamUser/${SteamId}`);
+    const data = await response.json();
+    
+    if (data.response.players.length > 0) {
+        sessionStorage.setItem("SteamAvatar", data.response.players[0].avatarfull);
     }
 }
 
