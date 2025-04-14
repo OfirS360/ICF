@@ -766,7 +766,7 @@ progress::-moz-progress-bar {
     left: 125px;
     top: 125px;
 
-    height: 50px;
+    height: 40px;
 
     z-index: 5;
 }
