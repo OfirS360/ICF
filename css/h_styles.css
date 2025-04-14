@@ -756,16 +756,15 @@ progress::-moz-progress-bar {
     left: 25px;
     top: 25px;
 
-    height: 150px;
-    width: auto;
+    height: 125px;
 
     border-radius: 10px;
 }
 
 #ActiveImg {
     position: absolute;
-    left: 145px;
-    top: 145px;
+    left: 125px;
+    top: 125px;
 
     height: 50px;
 
