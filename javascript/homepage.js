@@ -8,6 +8,9 @@ async function initializePage() {
 
     if (!UserData) {
         try {
+            let LoadingBox = document.getElementById("LoadingBox")
+            LoadingBox.style.display = "flex"
+
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             let SteamId = urlParams.get('openid.claimed_id');
@@ -23,9 +26,10 @@ async function initializePage() {
         }
         catch (error) {
             window.location.href = "https://icf.xitsraz.me/Error"
-        }
-        
+        }   
     }
+
+    LoadingBox.style.display = "none"
 
     // def_hp
     let T_Username = document.getElementById("Username");

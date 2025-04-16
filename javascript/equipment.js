@@ -1,4 +1,4 @@
-let LoadingScreen = document.getElementById("LoadingContent")
+let LoadingBox = document.getElementById("LoadingBox")
 
 let SaveLoadoutBtn = document.getElementById("SaveLoadout")
 let ImportLoadoutBtn = document.getElementById("ImportLoadout")
@@ -47,20 +47,17 @@ initializePage()
 async function initializePage() {
     let Items = sessionStorage.getItem("Items")
     if (Items) {
-        try {
-            Items = JSON.parse(Items);
-        } catch (error) {
-            Items = [];
-        }
+        Items = JSON.parse(Items); 
     } 
     else {
-        Items = [];
+        LoadingBox.style.display = "flex"
+        Items = await GetAllItems()
+        LoadingBox.style.display = "none"
     }
-    LoadingScreen.style.display = "flex"
-    Items = await GetAllItems()
+    
     await GetPlayerLoadout()
-    LoadingScreen.style.display = "none"
-
+    Items = await GetAllItems()
+    
     Items.sort((a, b) => a.Type.localeCompare(b.Type))
 
     console.log(Items)
