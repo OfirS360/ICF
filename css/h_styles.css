@@ -825,6 +825,15 @@ progress::-moz-progress-bar {
 }
 
 #LoadingPDes {
+    font-family: "Heebo", system-ui;
+    color: #f5f5f5;
+
+    font-size: 15;
+
     margin: 0;
     margin-right: 5px;
+}
+
+#LoadingPAnim {
+    height: 50px;
 }
