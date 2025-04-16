@@ -29,8 +29,6 @@ async function initializePage() {
         }   
     }
 
-    LoadingBox.style.display = "none"
-
     // def_hp
     let T_Username = document.getElementById("Username");
     let T_Avatar = document.getElementById("avatar");
@@ -116,7 +114,9 @@ async function initializePage() {
         ActiveImg.src = "../img/active.png"
     } else {
         ActiveImg.src = "../img/not_active.png"
-    }   
+    }
+
+    LoadingBox.style.display = "none"
 
     // Close Events
     fetch(`https://icf-api-ten.vercel.app/GetCloseEvents`)
