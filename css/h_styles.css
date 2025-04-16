@@ -657,7 +657,7 @@ progress::-moz-progress-bar {
 
     transition: all 0.3s;
 
-    z-index: 10000;
+    z-index: -1;
 }
 
 #AlertTitle {
