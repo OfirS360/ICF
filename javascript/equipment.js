@@ -56,8 +56,8 @@ async function initializePage() {
     }
     Items.sort((a, b) => a.Type.localeCompare(b.Type))
 
-    await GetPlayerLoadout(Items)
     LoadingBox.style.display = "none"
+    await GetPlayerLoadout(Items)
     
     Items = await GetAllItems();
     
