@@ -24,6 +24,17 @@ async function initializePage() {
         TeamMembers = JSON.parse(TeamMembers)
     }
 
+    UpdateTable()
+
+    await GetAllTeamMembers(UserData2.Team)
+
+    UpdateTable()
+}
+
+/**
+ * מעדכן את הטבלה
+ */
+function UpdateTable() {
     for (let i = 0; i < TeamMembers.length; i++) {
         for (let j = 0; j < 8; j++) {
             let DataBox = document.createElement("div")
@@ -47,6 +58,9 @@ async function initializePage() {
     }
 }
 
+/**
+ * מעדכן את המשתמשים
+ */
 async function GetAllTeamMembers(Team) {
     const response = await fetch(`https://icf-api-ten.vercel.app/GetAllTeamMembers/${Team}`)
     let data = await response.json();
@@ -54,6 +68,5 @@ async function GetAllTeamMembers(Team) {
     if (data.results) {
         sessionStorage.setItem("Members", JSON.stringify(data.results.sort((a, b) => b.Rank - a.Rank)))
         TeamMembers = data.results.sort((a, b) => b.Rank - a.Rank);
-        console.log(TeamMembers)
     }
 }
