@@ -59,7 +59,7 @@ async function initializePage() {
     LoadingBox.style.display = "none"
     await GetPlayerLoadout(Items)
     
-    Items = await GetAllItems();
+    Items = GetAllItems();
     
     let Ars_WeaponsBtn = document.getElementById("Ars_Weapons")
     let Ars_AttachmentsBtn = document.getElementById("Ars_Attachments")
