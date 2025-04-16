@@ -46,17 +46,17 @@ initializePage()
 // אתחול הדף
 async function initializePage() {
     let Items = sessionStorage.getItem("Items")
+    LoadingBox.style.display = "flex"
     if (Items) {
         Items = JSON.parse(Items); 
     } 
     else {
-        LoadingBox.style.display = "flex"
         Items = await GetAllItems()
-        LoadingBox.style.display = "none"
     }
-    
     await GetPlayerLoadout()
-    Items = await GetAllItems()
+    LoadingBox.style.display = "none"
+    
+    Items = GetAllItems()
     
     Items.sort((a, b) => a.Type.localeCompare(b.Type))
 
