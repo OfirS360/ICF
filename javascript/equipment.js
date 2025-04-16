@@ -950,16 +950,15 @@ async function GetAllItems() {
 
         if (data.results) {
             sessionStorage.setItem("Items", JSON.stringify(data.results))
-            Items = data.results
+            return data.results;
         }
         else {
-            await GetAllItems();
+            return await GetAllItems();
         }
 
-        return Items;
     }
     catch (error) {
-        return
+        return [];
     }
 }
 
