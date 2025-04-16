@@ -47,20 +47,21 @@ initializePage()
 async function initializePage() {
     let Items = sessionStorage.getItem("Items")
     LoadingBox.style.display = "flex"
+
     if (Items) {
         Items = JSON.parse(Items); 
     } 
     else {
-        Items = await GetAllItems()
+        Items = await GetAllItems();
     }
     Items.sort((a, b) => a.Type.localeCompare(b.Type))
 
     console.log(Items)
 
-    await GetPlayerLoadout(Items)
+    await GetPlayerLoadout()
     LoadingBox.style.display = "none"
     
-    Items = GetAllItems()
+    Items = await GetAllItems();
     
     let Ars_WeaponsBtn = document.getElementById("Ars_Weapons")
     let Ars_AttachmentsBtn = document.getElementById("Ars_Attachments")
@@ -323,7 +324,7 @@ function PlaceNewMainItem(Box, AllowItem, Selected = null)
  * @param {*} Box הסלוט שאליו החפץ נכנס
  * @param {*} AllowItem סוג נשק מתאים שאפשר להכניס אותו לסלוט
  */
-function PlaceNewWeaponItem(Box, AllowItem, Selected = null, Items) {
+function PlaceNewWeaponItem(Box, AllowItem, Selected = null) {
 
     if (!Selected) {
         Selected = document.querySelector(".dragging");
@@ -839,7 +840,7 @@ function SaveLoadout() {
     });
 }
 
-function LoadLoadout(LoadoutSkeleton, Items) {
+function LoadLoadout(LoadoutSkeleton) {
 
     // נשקים
     for (let i = 0; i < 3; i++) {
@@ -850,7 +851,7 @@ function LoadLoadout(LoadoutSkeleton, Items) {
             id: LoadoutSkeleton[i][0]
         }
 
-        PlaceNewWeaponItem(CurrectBox, AllowItem, Selected, Items)
+        PlaceNewWeaponItem(CurrectBox, AllowItem, Selected)
 
         let AttachmentBox = document.querySelector(`#${LoadoutSkeleton[i][0]} .Attachments_Box`)
         if (!AttachmentBox)
@@ -965,13 +966,13 @@ async function GetAllItems() {
 /**
  * מקבל את הפקל של המשתמש וטוען אותה באתר
  */
-async function GetPlayerLoadout(Items) {
+async function GetPlayerLoadout() {
     const response = await fetch(`https://icf-api-ten.vercel.app/GetLoadout/${UserData2.SteamId}`);
     let data = await response.text();
 
     if (data) {
         data = JSON.parse(data)
         console.log(data)
-        LoadLoadout(data, Items)
+        LoadLoadout(data)
     }
 }
