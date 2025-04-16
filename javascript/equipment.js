@@ -53,15 +53,15 @@ async function initializePage() {
     else {
         Items = await GetAllItems()
     }
+    Items.sort((a, b) => a.Type.localeCompare(b.Type))
+
+    console.log(Items)
+
     await GetPlayerLoadout()
     LoadingBox.style.display = "none"
     
     Items = GetAllItems()
     
-    Items.sort((a, b) => a.Type.localeCompare(b.Type))
-
-    console.log(Items)
-
     let Ars_WeaponsBtn = document.getElementById("Ars_Weapons")
     let Ars_AttachmentsBtn = document.getElementById("Ars_Attachments")
     let Ars_MainItemsBtn = document.getElementById("Ars_MainItems")
