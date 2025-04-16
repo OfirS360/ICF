@@ -45,7 +45,7 @@ initializePage()
 
 // אתחול הדף
 async function initializePage() {
-    let Items = sessionStorage.getItem("Items")
+    Items = sessionStorage.getItem("Items")
     LoadingBox.style.display = "flex"
 
     if (Items) {
