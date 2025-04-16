@@ -58,9 +58,7 @@ async function initializePage() {
 
     LoadingBox.style.display = "none"
     await GetPlayerLoadout(Items)
-    
-    Items = GetAllItems();
-    
+        
     let Ars_WeaponsBtn = document.getElementById("Ars_Weapons")
     let Ars_AttachmentsBtn = document.getElementById("Ars_Attachments")
     let Ars_MainItemsBtn = document.getElementById("Ars_MainItems")
@@ -69,6 +67,8 @@ async function initializePage() {
     let Ars_MedicalBtn = document.getElementById("Ars_Medical")
 
     AddItemsToArsenal(Number(Ars_WeaponsBtn.value), Items)
+
+    Items = GetAllItems();
 
     SaveLoadoutBtn.onclick = () => {
         SaveLoadout()
