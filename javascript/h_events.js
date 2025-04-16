@@ -20,6 +20,8 @@ let year = today.getFullYear();
 let month = today.getMonth() + 1;
 let day = today.getDate();
 
+let LoadingPakal = document.getElementById("LoadingPakal")
+
 let TC_Title = document.getElementById("TC_Title")
 const Content = document.getElementById("content")
 const EventBox = document.getElementById("EventsBox")
@@ -34,6 +36,8 @@ const EventDescription = document.getElementById("EventDescription")
 
 UpdateCalender();
 
+LoadingPakal.style.display = "flex"
+
 fetch(`https://icf-api-ten.vercel.app/GetAllEvents`)
 .then(response => response.json())
 .then(data => {
@@ -41,6 +45,8 @@ fetch(`https://icf-api-ten.vercel.app/GetAllEvents`)
     if (data.results && data.results.length > 0) {
         sessionStorage.setItem("Events", JSON.stringify(data.results));
         EventsData = JSON.parse(sessionStorage.getItem("Events"));
+
+        LoadingPakal.style.display = "none"
 
         UpdateCalender();
     }
