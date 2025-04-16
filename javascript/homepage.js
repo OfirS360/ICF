@@ -9,7 +9,7 @@ async function initializePage() {
     if (!UserData) {
         try {
             let LoadingBox = document.getElementById("LoadingBox")
-            // LoadingBox.style.display = "flex"
+            LoadingBox.style.display = "flex"
 
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
