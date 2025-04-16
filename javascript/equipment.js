@@ -56,8 +56,6 @@ async function initializePage() {
     }
     Items.sort((a, b) => a.Type.localeCompare(b.Type))
 
-    console.log(Items)
-
     await GetPlayerLoadout()
     LoadingBox.style.display = "none"
     
@@ -329,6 +327,8 @@ function PlaceNewWeaponItem(Box, AllowItem, Selected = null) {
     if (!Selected) {
         Selected = document.querySelector(".dragging");
     }
+
+    console.log(Items)
 
     for (Item of Items)
     {
