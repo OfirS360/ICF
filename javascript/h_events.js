@@ -13,8 +13,8 @@ else {
 const today = new Date();
 const months = ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"];
 
-const Teams = ["מברג", "מכונה", "עקרב", "תלתן", "לביא", "לא מגיע"]
-const TeamsKey = ["Mavreg", "Mechine", "Akrav", "Tiltan", "Lavie", "NotComing"]
+const Teams = ["מברג", "מכונה", "עקרב", "אודין", "לביא", "לא מגיע"]
+const TeamsKey = ["Mavreg", "Mechine", "Akrav", "Odin", "Lavie", "NotComing"]
 
 let year = today.getFullYear();
 let month = today.getMonth() + 1;
