@@ -21,6 +21,7 @@ let month = today.getMonth() + 1;
 let day = today.getDate();
 
 let LoadingPakal = document.getElementById("LoadingPakal")
+let LoadingPDes = document.getElementById("LoadingPDes")
 
 let TC_Title = document.getElementById("TC_Title")
 const Content = document.getElementById("content")
@@ -36,6 +37,7 @@ const EventDescription = document.getElementById("EventDescription")
 
 UpdateCalender();
 
+LoadingPDes.textContent = "טוען אירועים..."
 LoadingPakal.style.display = "flex"
 
 fetch(`https://icf-api-ten.vercel.app/GetAllEvents`)
@@ -416,6 +418,9 @@ function HitpakdutBtn(IsComing, Id) {
         SteamId: UserData2.SteamId
     }
 
+    LoadingPDes.textContent = "שולח נתונים..."
+    LoadingPakal.style.display = "flex"
+
     fetch("https://icf-api-ten.vercel.app/UpdateHitpakdut", {
         method: "POST",
         headers: {
@@ -427,6 +432,8 @@ function HitpakdutBtn(IsComing, Id) {
     .then(data => {
         if (data.results) {
             UpdateHitpakdut(Id, data.results);
+            PopAlert("התפקדת בהצלחה!", 1, "עכשיו אתה רשום בהתפקדות, בהצלחה במשימה.")
+            LoadingPakal.style.display = "none"
         } else {
             console.warn("No updated Hitpakdut data received");
         }
