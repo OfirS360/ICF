@@ -57,7 +57,6 @@ async function initializePage() {
     Items.sort((a, b) => a.Type.localeCompare(b.Type))
 
     LoadingBox.style.display = "none"
-    await GetPlayerLoadout(Items)
         
     let Ars_WeaponsBtn = document.getElementById("Ars_Weapons")
     let Ars_AttachmentsBtn = document.getElementById("Ars_Attachments")
@@ -69,6 +68,7 @@ async function initializePage() {
     AddItemsToArsenal(Number(Ars_WeaponsBtn.value), Items)
 
     Items = await GetAllItems();
+    await GetPlayerLoadout(Items)
 
     SaveLoadoutBtn.onclick = () => {
         SaveLoadout()
