@@ -68,7 +68,7 @@ async function initializePage() {
 
     AddItemsToArsenal(Number(Ars_WeaponsBtn.value), Items)
 
-    Items = GetAllItems();
+    Items = await GetAllItems();
 
     SaveLoadoutBtn.onclick = () => {
         SaveLoadout()
