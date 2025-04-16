@@ -56,7 +56,7 @@ async function initializePage() {
     }
     Items.sort((a, b) => a.Type.localeCompare(b.Type))
 
-    await GetPlayerLoadout()
+    await GetPlayerLoadout(Items)
     LoadingBox.style.display = "none"
     
     Items = await GetAllItems();
@@ -322,8 +322,8 @@ function PlaceNewMainItem(Box, AllowItem, Selected = null)
  * @param {*} Box הסלוט שאליו החפץ נכנס
  * @param {*} AllowItem סוג נשק מתאים שאפשר להכניס אותו לסלוט
  */
-function PlaceNewWeaponItem(Box, AllowItem, Selected = null) {
-
+function PlaceNewWeaponItem(Box, AllowItem, Selected = null, Items) {
+    
     if (!Selected) {
         Selected = document.querySelector(".dragging");
     }
@@ -840,7 +840,7 @@ function SaveLoadout() {
     });
 }
 
-function LoadLoadout(LoadoutSkeleton) {
+function LoadLoadout(LoadoutSkeleton, Items) {
 
     // נשקים
     for (let i = 0; i < 3; i++) {
@@ -851,7 +851,7 @@ function LoadLoadout(LoadoutSkeleton) {
             id: LoadoutSkeleton[i][0]
         }
 
-        PlaceNewWeaponItem(CurrectBox, AllowItem, Selected)
+        PlaceNewWeaponItem(CurrectBox, AllowItem, Selected, Items)
 
         let AttachmentBox = document.querySelector(`#${LoadoutSkeleton[i][0]} .Attachments_Box`)
         if (!AttachmentBox)
@@ -965,13 +965,13 @@ async function GetAllItems() {
 /**
  * מקבל את הפקל של המשתמש וטוען אותה באתר
  */
-async function GetPlayerLoadout() {
+async function GetPlayerLoadout(Items) {
     const response = await fetch(`https://icf-api-ten.vercel.app/GetLoadout/${UserData2.SteamId}`);
     let data = await response.text();
 
     if (data) {
         data = JSON.parse(data)
         console.log(data)
-        LoadLoadout(data)
+        LoadLoadout(data, Items)
     }
 }
