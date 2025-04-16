@@ -59,7 +59,7 @@ if (UserData2.Premission_Level > 0)
     Content.appendChild(AddEventBtn)
 
     AddEventBtn.onclick = () => {
-        window.location.href = "h_createevent.html";
+        window.location.href = "https://icf.xitsraz.me/User_Area/h_createevent";
     }
 }
 
