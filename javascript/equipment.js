@@ -1,4 +1,5 @@
 let LoadingBox = document.getElementById("LoadingBox")
+let LoadingPakal = document.getElementById("LoadingPakal")
 
 let SaveLoadoutBtn = document.getElementById("SaveLoadout")
 let ImportLoadoutBtn = document.getElementById("ImportLoadout")
@@ -68,7 +69,11 @@ async function initializePage() {
     AddItemsToArsenal(Number(Ars_WeaponsBtn.value), Items)
 
     Items = await GetAllItems();
+
+    LoadingPakal.style.display = "flex"
     await GetPlayerLoadout(Items)
+    LoadingPakal.style.display = "none"
+
 
     SaveLoadoutBtn.onclick = () => {
         SaveLoadout()
