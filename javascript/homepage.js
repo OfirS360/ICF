@@ -7,21 +7,31 @@ async function initializePage() {
     UserData = JSON.parse(UserData);
 
     if (!UserData) {
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        let SteamId = urlParams.get('openid.claimed_id');
-        SteamId = SteamId.split('/').pop();
-        SteamId = {
-            SteamId: SteamId
-        };
+        try {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            let SteamId = urlParams.get('openid.claimed_id');
+            SteamId = SteamId.split('/').pop();
+            SteamId = {
+                SteamId: SteamId
+            };
 
-        await CheckIfUserExist(SteamId);
-        await getSteamUser(SteamId.SteamId);
+            await CheckIfUserExist(SteamId);
+            await getSteamUser(SteamId.SteamId);
 
-        location.reload(true);
+            location.reload(true);
+        }
+        catch (error) {
+            window.location.href = "https://icf.xitsraz.me/Error"
+        }
+        
     }
 
     // def_hp
+    if (!UserData2) {
+        window.location.href = "https://icf.xitsraz.me/Error"
+    }
+
     let T_Username = document.getElementById("Username");
     let T_Avatar = document.getElementById("avatar");
     let T_Role = document.getElementById("Role");

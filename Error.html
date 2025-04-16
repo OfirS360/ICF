@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/error.css">
+    <link rel="shortcut icon" type="x-icon" href="img/ICF_Logo.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+
+    <title>Error</title>
+</head>
+<body>
+    <nav id="MainBox" dir="rtl">
+        <img src="img/ICF_Error.png" id="ErrorImg">
+        <h1 id="Title">אופס!</h1>
+        <p id="SubTitle">התרחשה שגיאה, תוודא שיש לך את ההרשאות הנכונות לעמוד אתה מנסה לגשת.</p>
+        <button id="GoBack">חזור</button>
+
+        <script>
+            const GoBackBtn = document.getElementById("GoBack")
+
+            GoBackBtn.onclick = () => {
+                history.go(-2);
+            }
+        </script>
+    </nav>
+</body>

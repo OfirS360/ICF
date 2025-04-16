@@ -1,0 +1,57 @@
+body {
+    display: flex;
+    justify-content: center;
+
+    background-color: #0b0c10;
+
+    padding-bottom: 100px;
+}
+
+#MainBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#ErrorImg {
+    height: 300px;
+}
+
+#Title {
+    font-family: "Heebo", system-ui;
+    font-weight: 900;
+    color: #919191;
+    font-size: 40px;
+
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#SubTitle {
+    font-family: "Heebo", system-ui;
+    font-weight: 600;
+    color: #b4b4b4;
+    font-size: 15px;
+}
+
+#GoBack {
+    height: 50px;
+    width: 100px;
+
+    background-color: #12141c;
+    color: #d4d4d4;
+
+    font-family: "Heebo", system-ui;
+    font-weight: 700;
+    font-size: 15px;
+
+    border: none;
+    border-radius: 50px;
+
+    transition: all 0.3s;
+}
+
+#GoBack:hover {
+    background-color: #171924;
+}

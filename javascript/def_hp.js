@@ -6,6 +6,10 @@ initializePage()
 
 async function initializePage() {
 
+    if (!UserData2) {
+        window.location.href = "https://icf.xitsraz.me/Error"
+    }
+
     let reloadbtn = document.getElementById("reload-profile")
 
     reloadbtn.onclick = async () => {

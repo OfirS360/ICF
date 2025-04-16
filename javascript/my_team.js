@@ -9,6 +9,12 @@ let PremissionText = ["ללא הרשאות", "פיקוד", "צוות הכשרה"
 
 initializePage()
 async function initializePage() {
+
+    if (UserData2.Premission_Level != 1 || UserData2.Premission_Level < 3)
+    {
+        window.location.href = "https://icf.xitsraz.me/Error";
+    }
+
     TeamLogo.src = `../img/${UserData2.Team}.png`
 
     if (!TeamMembers) {

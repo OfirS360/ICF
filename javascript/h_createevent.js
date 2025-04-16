@@ -2,7 +2,7 @@ const Form = document.getElementById("CreateEventForm")
 
 if (UserData2.Premission_Level == 0)
 {
-    window.location.href = "h_events.html";
+    window.location.href = "https://icf.xitsraz.me/Error";
 }
 
 Form.onsubmit = async (event) => {
