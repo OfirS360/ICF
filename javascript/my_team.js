@@ -28,8 +28,9 @@ async function initializePage() {
 
     await GetAllTeamMembers(UserData2.Team)
 
+    ClearTable()
     UpdateTable()
-}
+}   
 
 /**
  * מעדכן את הטבלה
@@ -56,6 +57,14 @@ function UpdateTable() {
             TeamTable.appendChild(DataBox)
         }
     }
+}
+
+function ClearTable() {
+    let DataBoxs = document.querySelectorAll(".TableData")
+
+    DataBoxs.forEach(Data => {
+        Data.remove()
+    })
 }
 
 /**
