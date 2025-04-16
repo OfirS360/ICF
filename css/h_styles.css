@@ -584,23 +584,31 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .ProgressBar::-webkit-progress-bar {
     background-color: #323f52;
-    border-radius: 10px; 
+    border-radius: 10px;
+
+    transition: all 0.3s;
 }
 
 .ProgressProfile::-webkit-progress-bar {
     background-color: #323f52;
     border-radius: 10px;
     height: 5px;
+
+    transition: all 0.3s;
 }
   
 progress::-webkit-progress-value {
     background-color: #09bfca;
     border-radius: 10px;
+
+    transition: all 0.3s;
 }
   
 progress::-moz-progress-bar {
     background-color: #09bfca;
     border-radius: 10px;
+
+    transition: all 0.3s;
 }
 
 .TeamImg {
