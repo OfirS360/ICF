@@ -22,7 +22,13 @@
             const GoBackBtn = document.getElementById("GoBack")
 
             GoBackBtn.onclick = () => {
-                history.go(-2);
+                let referrer = document.referrer;
+                
+                if (referrer.includes("/User_Area/")) {
+                    history.go(-1);
+                } else {
+                    history.go(-2);
+                }
             }
         </script>
     </nav>
