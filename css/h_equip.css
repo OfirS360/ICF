@@ -674,6 +674,21 @@
 
 }
 
+#LoadingPakal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    position: absolute;
+    bottom: 15px;
+    right: 0;
+}
+
+#LoadingDes {
+    margin: 0;
+    margin-right: 5px;
+}
+
 /* Create Item */
 #AtchType {
     display: none;
