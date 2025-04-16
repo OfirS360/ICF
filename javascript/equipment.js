@@ -80,8 +80,6 @@ async function initializePage() {
             ImportedLoadout = JSON.parse(ImportedLoadout);
             
             ImportedLoadout = ImportedLoadout[0]
-            console.log(ImportedLoadout)
-
             ClearLoadout()
             LoadLoadout(ImportedLoadout)
             PopAlert("הפקל נטען!", 1, "עכשיו תוכל לערוך לפי רצונך, רק אל תשכח לשמור.")
@@ -327,8 +325,6 @@ function PlaceNewWeaponItem(Box, AllowItem, Selected = null) {
     if (!Selected) {
         Selected = document.querySelector(".dragging");
     }
-
-    console.log(Items)
 
     for (Item of Items)
     {
@@ -820,8 +816,6 @@ function SaveLoadout() {
         SteamId: UserData2.SteamId,
         Loadout: JSON.stringify(LoadoutSkeleton)
     }
-
-    console.log(LoadoutForm)
     
     fetch("https://icf-api-ten.vercel.app/SaveLoadout", {
         method: "POST",
@@ -836,7 +830,6 @@ function SaveLoadout() {
     })
     .catch(error => {
         console.error("Error:", error);
-        console.log("Error submitting the form.");
     });
 }
 
@@ -971,7 +964,6 @@ async function GetPlayerLoadout() {
 
     if (data) {
         data = JSON.parse(data)
-        console.log(data)
         LoadLoadout(data)
     }
 }
