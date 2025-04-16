@@ -28,10 +28,6 @@ async function initializePage() {
     }
 
     // def_hp
-    if (!UserData2) {
-        window.location.href = "https://icf.xitsraz.me/Error"
-    }
-
     let T_Username = document.getElementById("Username");
     let T_Avatar = document.getElementById("avatar");
     let T_Role = document.getElementById("Role");
