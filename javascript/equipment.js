@@ -74,6 +74,7 @@ async function initializePage() {
     await GetPlayerLoadout(Items)
     LoadingPakal.style.display = "none"
 
+    Items.sort((a, b) => a.Type.localeCompare(b.Type))
 
     SaveLoadoutBtn.onclick = () => {
         SaveLoadout()
