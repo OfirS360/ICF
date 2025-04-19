@@ -171,14 +171,14 @@ function UpdateCalender() {
 
                         let NewEventDescription = document.createElement("p")
                         NewEventDescription.classList.add("D_Contex")
-                        NewEventDescription.innerHTML = '<span style="color: #09bfca; font-weight: 600; margin-left: 5px;">תיאור - </span> ' + EventsData[i].Description;
+                        NewEventDescription.innerHTML = '<span style="color: #09bfca; font-weight: 600; margin-left: 5px; white-space: nowrap; align-self: flex-start;">תיאור - </span> ' + EventsData[i].Description;
 
                         DetailsBox.appendChild(NewEventTitle)
                         DetailsBox.appendChild(NewEventDescription)
                     }
                     else {
                         EventName.textContent = EventsData[i].Title
-                        EventDescription.innerHTML = '<span style="color: #09bfca; font-weight: 600; margin-left: 5px;">תיאור - </span> ' + EventsData[i].Description
+                        EventDescription.innerHTML = '<span style="color: #09bfca; font-weight: 600; margin-left: 5px; white-space: nowrap; align-self: flex-start;">תיאור - </span> ' + EventsData[i].Description
                     }
 
                     let EventType = document.createElement("p")
