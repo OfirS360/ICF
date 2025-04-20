@@ -1,0 +1,281 @@
+<html lang="en">
+<head>
+    <!-- <script src="../../javascript/def_hp.js" defer></script> -->
+    <script src="../../javascript/alert_box.js" defer></script>
+    <script src="../../javascript/Hitpakdut.js" defer></script>
+    <link rel="stylesheet" href="../../css/h_styles.css">
+    <link rel="stylesheet" href="../../css/Hitpakdut.css">
+    <link rel="shortcut icon" type="x-icon" href="../../img/ICF_Logo.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+    <title>ICF - אזור אישי</title>
+</head>
+<body>
+    <nav class="sidebar" id="sidebar" dir="rtl">
+        <div id="Header">
+            <p id="Headertxt">אזור אישי</p>
+            <img src="../../img/ICF_Logo.png" alt="" id="sidebarimg">
+        </div>
+        <a href="https://icf.xitsraz.me/User_Area/homepage" dir="rtl">
+            <img src="../../img/profile.png" height="20px" alt="">
+            הפרופיל שלי
+        </a>
+        <a href="https://icf.xitsraz.me/Error" dir="rtl">
+            <img src="../../img/chat.png" height="20px" alt="">
+            צא'טים - בקרוב
+        </a>
+        <a href="https://icf.xitsraz.me/User_Area/h_events" id="CurrectPage" dir="rtl">
+            <img src="../../img/calendar.png" height="20px" alt="">
+            אירועים
+        </a>
+        <a href="https://icf.xitsraz.me/User_Area/equipment" dir="rtl">
+            <img src="../../img/dog-tag.png" height="20px" alt="">
+            הפק"ל שלי
+        </a>
+        <a href="https://icf.xitsraz.me/User_Area/user_report" dir="rtl">
+            <img src="../../img/report.png" height="20px" alt="">
+            בקשות ודיווחים
+        </a>
+
+        <p id="Headertxt" class="AddonHeader Command">פיקוד</p>
+
+        <a href="https://icf.xitsraz.me/User_Area/my_team" dir="rtl" class="Command">
+            <img src="../../img/team.png" height="20px" alt="">
+            הצוות שלי
+        </a>
+
+        <a href="#" dir="rtl" class="Command">
+            <img src="../../img/report.png" height="20px" alt="">
+            בקשות ודיווחים
+        </a>
+
+        <a href="#" dir="rtl" class="Command">
+            <img src="../../img/report-doc.png" height="20px" alt="">
+            דוחות
+        </a>
+
+        <p id="Headertxt" class="AddonHeader Course">צוות הכשרה</p>
+
+        <a href="#" dir="rtl" class="Course">
+            <img src="../../img/add-user.png" height="20px" alt="">
+            הוסף משתמש
+        </a>
+
+        <a href="#" dir="rtl" class="Course">
+            <img src="../../img/report.png" height="20px" alt="">
+            טפסי הרשמה
+        </a>
+
+        <a href="#" dir="rtl" class="Course">
+            <img src="../../img/union.png" height="20px" alt="">
+            טירונים במסלול
+        </a>
+
+        <p id="Headertxt" class="AddonHeader Manage">הנהלה</p>
+
+        <a href="#" dir="rtl" class="Manage">
+            <img src="../../img/team.png" height="20px" alt="">
+            שחקני הקלאן
+        </a>
+
+        <a href="#" dir="rtl" class="Manage">
+            <img src="../../img/manage.png" height="20px" alt="">
+            ניהול משתמשים
+        </a>
+
+        <a href="#" dir="rtl" class="Manage">
+            <img src="../../img/manage.png" height="20px" alt="">
+            ניהול צוותים
+        </a>
+
+        <a href="#" dir="rtl" class="Manage">
+            <img src="../../img/report-doc.png" height="20px" alt="">
+            דוחות
+        </a>
+
+        <a href="#" dir="rtl" id="Disconnect">
+            <img src="../../img/logout.png" height="20px" alt="">
+            התנתק
+        </a>
+    </nav>
+
+    <div class="content" id="content" dir="rtl">
+
+        <!-- Alert Box -->
+        <div id="AlertBox" dir="rtl">
+            <h1 id="AlertTitle">
+                כותרת התראה
+                <img id="AlertImg" src="../../img/v_mark.png">
+            </h1>
+            <p id="AlertDescription">תיאור התראה</p>
+        </div>
+
+        <div id="Profile">
+            <div id="TopProfile">
+                <img src="" alt="" id="avatar">
+                <img src="../../img/Rank1.png" alt="" id="RankImg">
+                <div id="Text_Right">
+                    <p class="TopTest" id="Username" dir="rtl">שלום, null</p>
+                    <p class="TopTest" id="Role" dir="rtl">תפקיד</p>
+                    <progress class="ProgressProfile" id="ProfileProgress" max="" value=""></progress>
+                </div>
+            </div>
+            <button id="reload-profile"> <img id="Reload-img" src="../../img/reload.png"> </button>
+        </div>
+
+        <div id="HitpakdutMain" dir="rtl">
+            <h1 id="HitpakdutTitle">התפקדות צוות לביא</h1>
+            <p id="HitpakdutDescirption">אירוע - </p>
+
+            <div id="HitpakdutHodPikud">
+                <h1 class="BoxTitle">חוליה פיקודית</h1>
+
+                <div id="HitpakdutHodPikudButtons">
+                    <button class="HitpkdutButton" data-Pakal="Mafkaz" style="margin-left: 5px;">
+                        <h2 class="BtnTitle">מפק"צ</h2>
+                        <p class="BtnDisplay">ריק</p>
+                    </button>
+                    <button class="HitpkdutButton" data-Pakal="Kashar" data-SecondPakal="Matol">
+                        <h2 class="BtnTitle">רץ \ מטול</h2>
+                        <p class="BtnDisplay">ריק</p>
+                    </button>
+                </div>
+                
+            </div>
+
+            <div id="HitpakdutTeams">
+                <div id="TeamA" class="Teams" style="margin-left: 25px;">
+                    <h1 class="BoxTitle">חוליית חוד</h1>
+
+                    <button class="HitpkdutButton" data-Pakal="Mefaked">
+                        <h2 class="BtnTitle">מפקד חולייה</h2>
+                        <p class="BtnDisplay">ריק</p>
+                    </button>
+
+                    <div class="TeamMembers">
+                        <button class="HitpkdutButton" data-Pakal="Negev">
+                            <h2 class="BtnTitle">נגב חוד</h2>
+                            <p class="BtnDisplay">ריק</p>
+                        </button>
+    
+                        <button class="HitpkdutButton" data-Pakal="Kala">
+                            <h2 class="BtnTitle">קלע חוד</h2>
+                            <p class="BtnDisplay">ריק</p>
+                        </button>
+
+                        <button class="HitpkdutButton" data-Pakal="Matol">
+                            <h2 class="BtnTitle">מטול \ תצפית</h2>
+                            <p class="BtnDisplay">ריק</p>
+                        </button>
+
+                        <button class="HitpkdutButton" data-Pakal="Chablan">
+                            <h2 class="BtnTitle">חבלן</h2>
+                            <p class="BtnDisplay">ריק</p>
+                        </button>
+
+                        <button class="HitpkdutButton" data-Pakal="Drone">
+                            <h2 class="BtnTitle">רחפן</h2>
+                            <p class="BtnDisplay">ריק</p>
+                        </button>
+
+                        <button class="HitpkdutButton" data-Pakal="Medic">
+                            <h2 class="BtnTitle">חובש</h2>
+                            <p class="BtnDisplay">ריק</p>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="TeamB" class="Teams">
+                    <h1 class="BoxTitle">חוליית רתק</h1>
+
+                    <button class="HitpkdutButton" data-Pakal="Mefaked">
+                        <h2 class="BtnTitle">מפקד חולייה</h2>
+                        <p class="BtnDisplay">ריק</p>
+                    </button>
+
+                    <div class="TeamMembers">
+                        <button class="HitpkdutButton" data-Pakal="Sniper">
+                            <h2 class="BtnTitle">צלף סער</h2>
+                            <p class="BtnDisplay">ריק</p>
+                        </button>
+    
+                        <button class="HitpkdutButton" data-Pakal="Negev">
+                            <h2 class="BtnTitle">נגב</h2>
+                            <p class="BtnDisplay">ריק</p>
+                        </button>
+
+                        <button class="HitpkdutButton" data-Pakal="Negev">
+                            <h2 class="BtnTitle">נגב</h2>
+                            <p class="BtnDisplay">ריק</p>
+                        </button>
+
+                        <button class="HitpkdutButton" data-Pakal="Rocket">
+                            <h2 class="BtnTitle">טילן כתף</h2>
+                            <p class="BtnDisplay">ריק</p>
+                        </button>
+
+                        <button class="HitpkdutButton" data-Pakal="Matol">
+                            <h2 class="BtnTitle">מטול</h2>
+                            <p class="BtnDisplay">ריק</p>
+                        </button>
+
+                        <button class="HitpkdutButton" data-Pakal="Medic">
+                            <h2 class="BtnTitle">חובש</h2>
+                            <p class="BtnDisplay">ריק</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="HitpakdutRetekPikud">
+                <h1 class="BoxTitle">חוליה פיקודית</h1>
+
+                <div id="HitpakdutHodPikudButtons">
+                    <button class="HitpkdutButton" data-Pakal="Mefaked" style="margin-left: 5px;">
+                        <h2 class="BtnTitle">סמל \ מכווין אש</h2>
+                        <p class="BtnDisplay">ריק</p>
+                    </button>
+                    <button class="HitpkdutButton" data-Pakal="Paramedic">
+                        <h2 class="BtnTitle">פארמדיק</h2>
+                        <p class="BtnDisplay">ריק</p>
+                    </button>
+                </div>
+            </div>
+
+            <div id="HitpakdutSpare">
+                <h1 class="BoxTitle">מקומות נוספים</h1>
+
+                <div id="HitpakdutHodPikudButtons">
+                    <button class="HitpkdutButton" data-Pakal="Chapash" style="margin-left: 5px;">
+                        <h2 class="BtnTitle">חפ"ש</h2>
+                        <p class="BtnDisplay">ריק</p>
+                    </button>
+
+                    <button class="HitpkdutButton" data-Pakal="Chapash" style="margin-left: 5px;">
+                        <h2 class="BtnTitle">חפ"ש</h2>
+                        <p class="BtnDisplay">ריק</p>
+                    </button>
+
+                    <button class="HitpkdutButton" data-Pakal="Chapash" style="margin-left: 5px;">
+                        <h2 class="BtnTitle">חפ"ש</h2>
+                        <p class="BtnDisplay">ריק</p>
+                    </button>
+
+                    <button class="HitpkdutButton" data-Pakal="Chapash" style="margin-left: 5px;">
+                        <h2 class="BtnTitle">חפ"ש</h2>
+                        <p class="BtnDisplay">ריק</p>
+                    </button>
+
+                    <button class="HitpkdutButton" data-Pakal="Chapash">
+                        <h2 class="BtnTitle">חפ"ש</h2>
+                        <p class="BtnDisplay">ריק</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
